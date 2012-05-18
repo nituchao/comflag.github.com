@@ -1,0 +1,435 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Mac OS X安装过程常见问题总结 - comflag</title>
+  <meta name="author" content="liang">
+
+  
+  <meta name="description" content="一直使用的是Mac OS 10.7，最近终于经受不住群里童鞋们的诱惑，准备安装10.7.3，于是下载了10.7.3原版dmg镜像，在Mac OS Lion下按照以前安装盘制作教程在硬盘上重新制作了一个10.7.3的安装盘，然后进行覆盖安装。这个安装盘位于我的硬盘的最后一个分区，大小8.0G。 但是 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.comflag.com/blog/2012/05/18/mac-os-xan-zhuang-guo-cheng-chang-jian-cuo-wu-zong-jie">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="comflag" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-21843359-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">comflag</a></h1>
+  
+    <h2>Stay Hungry Stay Foolish!</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.comflag.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">文章归档</a></li>
+  <li><a href="/aboutme/index.html">关于我</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Mac OS X安装过程常见问题总结</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-18T20:27:00+08:00" pubdate data-updated="true">May 18<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>一直使用的是Mac OS 10.7，最近终于经受不住群里童鞋们的诱惑，准备安装10.7.3，于是下载了10.7.3原版dmg镜像，在Mac OS Lion下按照以前安装盘制作教程在硬盘上重新制作了一个10.7.3的安装盘，然后进行覆盖安装。这个安装盘位于我的硬盘的最后一个分区，大小8.0G。</p>
+
+<!--more-->
+
+
+<p>但是，在安装的过程中，出现了几个一起从来没有出现的问题。</p>
+
+<ul>
+<li>启动安装盘，风火轮后黑屏，除了电源灯和蓝牙灯亮外，计算机没有反应。使用-v -f命令查看，命令行字幕滚动完毕后，计算机也是黑屏，不响应。</li>
+<li>启动安装盘，风火轮后进入安装界面，选择语言后下一步，提示”此版本的Mac os Lion不能安装到您的计算机上”，然后，就没有然后了。</li>
+<li>启动安装盘，风火轮后进入安装界面，选择语言后下一步，计算机自动关机。</li>
+<li>安装万能声卡驱动VoodooHDA.pkg后，开机出现无限风火轮，需要在windows下删除S/L/E下的VoodooHDA.kext驱动后才能进系统，当然，此时声卡还是无法驱动。</li>
+</ul>
+
+
+<p>表示以上几个问题在安装Mac OS 10.7时从来没有出现过。但是经过几天的研究，终于一个个都解决了。</p>
+
+<hr />
+
+<h1>解决办法:</h1>
+
+<ul>
+<li><p>启动安装盘，风火轮后黑屏</p>
+
+<p>  这个应该是显卡未识别的问题，解决办法很简单也很传统–替换dsdt.aml文件即可。需要说明的是，我用的是之前10.7版本的dsdt.aml，如果你的计算机出现这种黑屏，请替换下面我提供的新的dsdt.aml，我现在在10.7.3下用的就是这个dsdt.aml。</p></li>
+<li><p>启动安装盘，选择语言后提示”此版本的Mac os Lion不能安装到您的计算机上”</p></li>
+<li><p>启动安装盘，风火轮后进入安装界面，选择语言后下一步，计算机自动关机</p>
+
+<p>  这两个问题，通过查看安装日志，应该是安装盘里的OSInstall和OSInstall.mpkg没有替换或者替换的版本不当造成的。可以替换成下面提供的新的OSInstall和OSInstall.mpkg文件。</p></li>
+<li><p>声卡驱动导致系统无限风火轮</p>
+
+<p>  这个问题的解决很简单，我出现这个问题是因为在系统盘的E/E目录下放置了一个Apple原版的声卡驱动AppleHDADisabler.kext，导致两个驱动冲突了，只需要把E/E目录下的那个AppleHDADisabler.kext驱动删除，系统就可以正常引导，并且正常驱动声卡了。</p></li>
+</ul>
+
+
+<hr />
+
+<p>适合于Dell D630的Mac OS X 10.7.3最新可用破解文件: 传送门</p>
+
+<ul>
+<li><p>dsdt.aml</p></li>
+<li><p>OSInstall和OSInstall.mpkg</p></li>
+<li><p>fakeSMC.kext</p></li>
+</ul>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">liang</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-18T20:27:00+08:00" pubdate data-updated="true">May 18<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/java/'>JAVA</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.comflag.com/blog/2012/05/18/mac-os-xan-zhuang-guo-cheng-chang-jian-cuo-wu-zong-jie/" data-via="" data-counturl="http://www.comflag.com/blog/2012/05/18/mac-os-xan-zhuang-guo-cheng-chang-jian-cuo-wu-zong-jie/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/05/18/eclipseli-rmicha-jian-de-shi-yong/" title="Previous Post: Eclipse里RMI插件的使用">&laquo; Eclipse里RMI插件的使用</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/05/18/icloudti-shi-yi-da-dao-zhang-hu-shu-liang-xian-zhi-de-jie-jue-ban-fa/" title="Next Post: iCloud提示已达到帐户数量限制的解决办法">iCloud提示已达到帐户数量限制的解决办法 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+ <h1>Categories</h1>
+ <ul id="categories">
+ <li class='category'><a href=' /blog/categories/java/'>JAVA (5)</a></li>
+<li class='category'><a href=' /blog/categories/macos/'>MacOS (2)</a></li>
+<li class='category'><a href=' /blog/categories/ppc/'>PPC (2)</a></li>
+<li class='category'><a href=' /blog/categories/ubuntu/'>Ubuntu (3)</a></li>
+<li class='category'><a href=' /blog/categories/web/'>Web (1)</a></li>
+<li class='category'><a href=' /blog/categories/开源项目/'>开源项目 (1)</a></li>
+<li class='category'><a href=' /blog/categories/翻译/'>翻译 (1)</a></li>
+
+ </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/05/18/grub2yin-dao-an-zhuang-ubuntu11-dot-04/">grub2引导安装ubuntu11.04</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/18/ubuntuxia-an-zhuang-apache-plus-php-plus-mysysql/">ubuntu下安装Apache+PHP+Mysysql</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/18/ubuntuzai-zhong-duan-zhong-shi-yong-lynxfang-wen-hu-lian-wang/">Ubuntu在终端中使用lynx访问互联网</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/18/rang-ppccheng-wei-webfu-wu-qi-yu-pcjin-xing-shu-ju-tong-bu/">让PPC成为web服务器与PC进行数据同步</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/18/fei-ge-chuan-shu-ppcban-shi-xian-ppcyu-pcde-tong-xin-he-wen-jian-jiao-liu/">飞鸽传输PPC版实现PPC与PC的通信和文件交流</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+<!--
+JSON-P Google Plus fetcher for Octopress
+(c) Jolam Jiang // MIT License
+
+You can see the tutorial of adding sidebar here:
+http://bandj.us/jo/blog/blog/2011/12/03/adding-google-plus-sidebar-to-octopress/
+-->
+
+<section>
+  <!-- load jquery -->
+  <script type="text/javascript" src="https://www.google.com/jsapi?key=AIzaSyCqR5_JXEJlRpJJmjLwiRxNR2M5xyxEOBI"></script>
+  <script type="text/javascript">
+    google.load("jquery", "1.7.1");
+  </script>
+  <!-- load jquery end -->
+  <script type="text/javascript">
+
+    $.noConflict();
+    jQuery(document).ready(function(){
+      plusLoadingStart();
+    });
+    jQuery.noConflict();
+
+    function plusLoadingStart() {
+      jQuery("#gplus_sidebar").css("display", "none");
+      getJSON();
+    }
+
+    function getJSON() {
+        jQuery.getJSON('https://www.googleapis.com/plus/v1/people/111349295116322770756?fields=aboutMe%2CdisplayName%2Cimage&pp=1&key=AIzaSyCqR5_JXEJlRpJJmjLwiRxNR2M5xyxEOBI&callback=?', function(resp){
+          updateProfile(resp);
+        });
+        jQuery.getJSON('https://www.googleapis.com/plus/v1/people/111349295116322770756/activities/public?alt=json&maxResults=10&fields=items&pp=1&key=AIzaSyCqR5_JXEJlRpJJmjLwiRxNR2M5xyxEOBI&callback=?', function(resp){
+          updatePosts(resp);
+        });
+      jQuery("#gplus_sidebar").css("display","block");
+    }
+
+    function updateProfile(resp) {
+      jQuery('#gplus_sidebar_profile_displayName').html(resp.displayName);
+      jQuery('#gplus_sidebar_profile_aboutMe').html(resp.aboutMe);
+      jQuery('#gplus_sidebar_profile_img').attr("src", resp.image.url);
+    }
+
+    function updatePosts(resp) {
+      var content = '';
+      for(var i = 0; i < resp.items.length; i++) {
+        var item = resp.items[i];
+        attachments = item.object.attachments;
+        content += appendLi(item.title, item.url, item.published, attachments);
+      }
+      jQuery('#gplus_sidebar_posts_ul').html(content);
+    }
+
+    function appendLi(title, url, time, attachments) {
+      if(title.length > 130) {
+        title = title.substring(0, 130);
+      }
+      var reg = /[\r\n][\r\n]/g;
+      title = title.replace(reg, "");
+      reg = /[\r\n]/g;
+      if(attachments == null) {
+        return '<li><p><a href="' + url + '">' + title + '</a> </p><p class="time_and_attachment">' + time.substring(0, 10) + '</p></li>';
+      } else {
+        attach_url = attachments[0].url;
+        attach_url = attach_url.replace(reg, "");
+        return '<li><p><a href="' + url + '">' + title + '</a></p><p class="time_and_attachment">' + time.substring(0, 10) + '<span class="attachment_span"><a href="' + attach_url + '">[attachment]</a></span></p></li>';
+      }
+    }
+
+  </script>
+  <style>
+    #gplus_sidebar_profile {
+      display: block;
+    }
+    #gplus_sidebar_posts a:link, #gplus_sidebar_posts a:visited  {
+      display: block;
+      text-decoration: none;
+    }
+    #gplus_sidebar_profile_img {
+      margin-top: .6em !important;
+    }
+    #gplus_sidebar_profile p {
+      margin-bottom: .1em !important;
+    }
+    #gplus_sidebar_posts p {
+      margin-bottom: .2em !important; 
+    }
+    #gplus_sidebar_posts .attachment_span {
+      float : right;
+    }
+    #gplus_sidebar_posts .time_and_attachment {
+      margin-top: .5em !important;
+      font-size: 60%;
+    }
+  </style>
+  <div id="gplus_sidebar_profile">
+    <h1>G+ Profile</h1>
+    <img id="gplus_sidebar_profile_img" src="http://www.gravatar.com/avatar/111349295116322770756?d=mm" />
+    <a href="https://plus.google.com/111349295116322770756/posts/"><p id="gplus_sidebar_profile_displayName">loading...</p></a>
+    <p id="gplus_sidebar_profile_aboutMe">loading...</p>
+  </div>
+  <div id="gplus_sidebar_posts">
+    <h1>Recent G+ Posts</h1>
+    <ul id="gplus_sidebar_posts_ul" class="recent_posts">
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/zhangliang605?count=8&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/zhangliang605">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+
+<section class="googleplus googleplus-hidden">
+  <h1>
+    <a href="https://plus.google.com/111349295116322770756?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - liang -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'comflagblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://www.comflag.com/blog/2012/05/18/mac-os-xan-zhuang-guo-cheng-chang-jian-cuo-wu-zong-jie/';
+        var disqus_url = 'http://www.comflag.com/blog/2012/05/18/mac-os-xan-zhuang-guo-cheng-chang-jian-cuo-wu-zong-jie/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

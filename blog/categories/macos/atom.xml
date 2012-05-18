@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: MacOS | comflag]]></title>
+  <link href="http://www.comflag.com/blog/categories/macos/atom.xml" rel="self"/>
+  <link href="http://www.comflag.com/"/>
+  <updated>2012-05-18T22:01:50+08:00</updated>
+  <id>http://www.comflag.com/</id>
+  <author>
+    <name><![CDATA[liang]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[iCloud提示已达到帐户数量限制的解决办法]]></title>
+    <link href="http://www.comflag.com/blog/2012/05/18/icloudti-shi-yi-da-dao-zhang-hu-shu-liang-xian-zhi-de-jie-jue-ban-fa/"/>
+    <updated>2012-05-18T20:31:00+08:00</updated>
+    <id>http://www.comflag.com/blog/2012/05/18/icloudti-shi-yi-da-dao-zhang-hu-shu-liang-xian-zhi-de-jie-jue-ban-fa</id>
+    <content type="html"><![CDATA[<p>自从安装了Mac OS X 10.7.3后，iClound就一直不能使用，输入Apple ID后一直提示”已达到账户数量限制”，英文提示”Account Limit Reached”，但自己明明只在这一个Mac OS下登陆过，并且App Store和iTunes都可以正常登陆和使用。后来用英文在google里才找到了解决办法。现在已经能正常登陆iClound了。</p>
+
+<!--more-->
+
+
+<h1>解决办法</h1>
+
+<ul>
+<li>使用Chameleon Wizard生成一个带有有效serial number的smbios.plist文件，并把这个文件放到系统盘Extra目录下，注意，这一步最总要的是那个serial number，比如我的是 “CK9377851G0”。</li>
+</ul>
+
+
+<p><img src="http://pic.yupoo.com/comflag/BUbbT9VO/yqEJU.png" width="800" height="600"></p>
+
+<ul>
+<li>确保你的以太网卡(有线网)在系统信息页面显示的是”en0”。</li>
+</ul>
+
+
+<p><img src="http://pic.yupoo.com/comflag/BUbbUUKC/F47sC.png" width="800" height="600"></p>
+
+<ul>
+<li>确保你的WI-FI网卡(无线网)在系统信息页面显示的是”en1”。</li>
+</ul>
+
+
+<p><img src="http://pic.yupoo.com/comflag/BUbbUzCB/snoL8.png" width="800" height="600"></p>
+
+<ul>
+<li><p>确保你的org.chameleon.Boot.plist中有下面两行代码，如果没有请手动添加</p>
+
+<pre><code>  &lt;key&gt;EthernetBuiltIn&lt;/key&gt;
+  &lt;string&gt;Yes&lt;/string&gt;
+</code></pre></li>
+<li><p>重启计算机</p></li>
+</ul>
+
+
+<h5>说明:用到的工具比如Chameleon Wizard 4.1可以在网上很容易找到~~</h5>
+
+<hr />
+
+<p>重启计算机后，在系统设置偏好里打开icloud，输入账号，密码就应该能登陆了。</p>
+
+<p><img src="http://pic.yupoo.com/comflag/BUbbUsV7/4rr16.png" width="800" height="600"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Dell D630安装Mac OS Lion]]></title>
+    <link href="http://www.comflag.com/blog/2012/05/18/dell-d630an-zhuang-mac-os-lion/"/>
+    <updated>2012-05-18T19:59:00+08:00</updated>
+    <id>http://www.comflag.com/blog/2012/05/18/dell-d630an-zhuang-mac-os-lion</id>
+    <content type="html"><![CDATA[<p>经过两天多的折腾总算是让Dell D630完美的运行起了Lion，相比较以前的破解版本，我发现原版的Lion和D630结合更加完美，现在除了键盘快捷键这个硬伤意外，Lion基本完美了。</p>
+
+<p>建个Dell D630的QQ群，群里基本上都已经体验上Mac OS X了。</p>
+
+<p>群号:190557497</p>
+
+<!--more-->
+
+
+<p>Dell D630的相关驱动已经上传到Dbank上了，<a href="http://www.dbank.com/">传送门</a></p>
+
+<pre><code>账户名:  d630driver@163.com
+密码: helloworld
+</code></pre>
+
+<p>电脑现状： 显卡驱动正常1024x800 无线网卡驱动正常 有线网卡驱动正常 蓝牙驱动正常 声卡驱动正常，可以视频聊QQ 关机/重启/睡眠正常使用</p>
+
+<ul>
+<li>电脑型号：  戴尔 Latitude D630</li>
+<li>操作系统：   Mac os X 10.7 Lion 原版<br/></li>
+<li>处理器：      特尔 酷睿2 双核 T8100 @ 2.10GHz 笔记本处理器</li>
+<li>主板：         戴尔 0WM416 (英特尔 PM965/GM965/GL960/GS965 - ICH8M 笔记本芯片组)</li>
+<li>内存：         2 GB ( 金士顿 DDR2 800MHz / 三星 DDR2 800MHz )</li>
+<li>主硬盘：      希捷 ST9160411ASG ( 160 GB / 7200 转/分 )</li>
+<li>显卡：         Nvidia Quadro NVS 135M ( 128 MB / 戴尔 )</li>
+<li>显示器：      三星 SEC3157 ( 14 英寸 )</li>
+<li>光驱：         日立-LG DVD+-RW GSA-T21N DVD刻录机<br/></li>
+<li>声卡：         矽玛特 Sigmatel @ 英特尔 82801H(ICH8) 高保真音频</li>
+<li>网卡：         博通 BCM5755M NetXtreme Gigabit Ethernet / 戴尔</li>
+<li>无线网卡:     Dell Wireless 1395 WLAN无线上网(ID:pci14e4,4315)</li>
+</ul>
+
+
+<p><img src="http://pic.yupoo.com/comflag/BhfQ2iBq/sAZbh.jpg" width="800" height="600" title="Mac OS X" alt="Mac OS X"></p>
+
+<p><img src="http://pic.yupoo.com/comflag/BnuwAL6A/medium.jpg" width="800" height="600" title="Mac OS X" alt="Mac OS X"></p>
+
+<p><img src="http://pic.yupoo.com/comflag/BhfQ2Upf/medium.jpg" width="800" height="600" title="Mac OS X" alt="Mac OS X"></p>
+]]></content>
+  </entry>
+  
+</feed>

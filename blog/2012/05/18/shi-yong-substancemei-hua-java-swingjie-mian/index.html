@@ -1,0 +1,495 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>使用substance美化Java Swing界面 - comflag</title>
+  <meta name="author" content="liang">
+
+  
+  <meta name="description" content="Java的一个优势是它有非常非常多的开源项目，我们可以非常自由的使用这些开源项目为自己的程序提供便利。 substance是一个开源的Java项目，它的目标是为Java Swing提供美化。 现在我们谈到的substance是一个jar包，里面封装了20多种皮肤类， &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.comflag.com/blog/2012/05/18/shi-yong-substancemei-hua-java-swingjie-mian">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="comflag" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-21843359-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">comflag</a></h1>
+  
+    <h2>Stay Hungry Stay Foolish!</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.comflag.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">文章归档</a></li>
+  <li><a href="/aboutme/index.html">关于我</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">使用substance美化Java Swing界面</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-18T20:07:00+08:00" pubdate data-updated="true">May 18<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Java的一个优势是它有非常非常多的开源项目，我们可以非常自由的使用这些开源项目为自己的程序提供便利。</p>
+
+<p>substance是一个开源的Java项目，它的目标是为Java Swing提供美化。</p>
+
+<!--more-->
+
+
+<p>现在我们谈到的substance是一个jar包，里面封装了20多种皮肤类，这些皮肤类毫无疑问的可以被用来美化Java Swing界面。</p>
+
+<p>另外，我们还可以用substance为程序添加水印图片，这些水印图片可以设置透明度0~1.0，从而显示出非常剔透的效果。</p>
+
+<hr />
+
+<p>我编写了一个非常简单易懂的样例程序，封装了11种substance皮肤，并为每种皮肤添加了水印图片，这些皮肤封装在类Skins中，以静态方法提供，可以直接用类名(Skins)调用，源码大家可以到我的github主页下载，在SubstanceDemo项目页面，点击左上方”Code”标签里的”ZIP”按钮即可下载源码:</p>
+
+<p><a href="https://github.com/comflag/SubstanceDemo">SubstanceDemo</a></p>
+
+<hr />
+
+<ul>
+<li>在eclipse中选中项目右键选择”构建路径”，将substance.jar添加到工程中。</li>
+<li>编写代码，设置相关主题，以及水印，比如，我在Skins.class下添加如下静态方法，设置Sahara主题</li>
+</ul>
+
+
+<figure class='code'><figcaption><span>设置相关主题  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">setThemeSahara</span><span class="o">()</span>
+</span><span class='line'><span class="o">{</span>
+</span><span class='line'>      <span class="n">JFrame</span><span class="o">.</span><span class="na">setDefaultLookAndFeelDecorated</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">JDialog</span><span class="o">.</span><span class="na">setDefaultLookAndFeelDecorated</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">try</span> <span class="o">{</span>
+</span><span class='line'>              <span class="c1">//为皮肤添加水印图片，引号里是图片的相对路径</span>
+</span><span class='line'>              <span class="n">SubstanceImageWatermark</span> <span class="n">watermark</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SubstanceImageWatermark</span><span class="o">(</span><span class="n">ServerGui</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getResourceAsStream</span><span class="o">(</span><span class="s">&quot;/common/picture/yellow_s.png&quot;</span><span class="o">));</span>
+</span><span class='line'>              <span class="n">watermark</span><span class="o">.</span><span class="na">setKind</span><span class="o">(</span><span class="n">ImageWatermarkKind</span><span class="o">.</span><span class="na">APP_ANCHOR</span><span class="o">);</span>
+</span><span class='line'>              <span class="c1">//设置水印透明度</span>
+</span><span class='line'>              <span class="n">watermark</span><span class="o">.</span><span class="na">setOpacity</span><span class="o">((</span><span class="kt">float</span><span class="o">)</span> <span class="mf">0.35</span><span class="o">);</span>
+</span><span class='line'>              <span class="n">UIManager</span><span class="o">.</span><span class="na">setLookAndFeel</span><span class="o">(</span><span class="k">new</span> <span class="n">SubstanceSaharaLookAndFeel</span><span class="o">());</span>
+</span><span class='line'>              <span class="n">SubstanceSkin</span> <span class="n">skin</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SaharaSkin</span><span class="o">().</span><span class="na">withWatermark</span><span class="o">(</span><span class="n">watermark</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>              <span class="n">SubstanceLookAndFeel</span><span class="o">.</span><span class="na">setSkin</span><span class="o">(</span><span class="n">skin</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">UnsupportedLookAndFeelException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>              <span class="n">ex</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span><span class='line'>          <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>在Main函数里调用上面的方法，即可完成皮肤修改。这里需要说明的是，在调用上面的方法之前，要加上下面两句代码。</li>
+</ul>
+
+
+<figure class='code'><figcaption><span>Main函数  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">JFrame</span><span class="o">.</span><span class="na">setDefaultLookAndFeelDecorated</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>  <span class="n">JDialog</span><span class="o">.</span><span class="na">setDefaultLookAndFeelDecorated</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>  <span class="n">Skins</span><span class="o">.</span><span class="na">setThemeNebula</span><span class="o">();</span>        <span class="c1">//setThemeSahara是类Skins的静态方法</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>另外，直接在Main函数里调用就行了，不用再开辟类似下面的线程</p>
+
+<figure class='code'><figcaption><span>GUI  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">EventQueue</span><span class="o">.</span><span class="na">invokeLater</span><span class="o">(</span><span class="k">new</span> <span class="n">Runnable</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>          <span class="c1">//do something</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'><span class="o">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://pic.yupoo.com/comflag/BTnpKNPC/9ihaO.png" width="800" height="600" title="Substance" alt="Substance"></p>
+
+<p><img src="http://pic.yupoo.com/comflag/BTnpL5Mv/iYDwh.png" width="800" height="600" title="Substance" alt="Substance"></p>
+
+<p><img src="http://pic.yupoo.com/comflag/BTjEUgJi/A9ttz.png" width="800" height="600" title="Substance" alt="Substance"></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">liang</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-18T20:07:00+08:00" pubdate data-updated="true">May 18<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/java/'>JAVA</a>, <a class='category' href='/blog/categories/开源项目/'>开源项目</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.comflag.com/blog/2012/05/18/shi-yong-substancemei-hua-java-swingjie-mian/" data-via="" data-counturl="http://www.comflag.com/blog/2012/05/18/shi-yong-substancemei-hua-java-swingjie-mian/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/05/18/dell-d630an-zhuang-mac-os-lion/" title="Previous Post: Dell D630安装Mac OS Lion">&laquo; Dell D630安装Mac OS Lion</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/05/18/java-rmichu-yuan-cheng-stubwei-zhao-dao-yi-chang/" title="Next Post: Java RMI出远程stub未找到异常">Java RMI出远程stub未找到异常 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+ <h1>Categories</h1>
+ <ul id="categories">
+ <li class='category'><a href=' /blog/categories/java/'>JAVA (5)</a></li>
+<li class='category'><a href=' /blog/categories/macos/'>MacOS (2)</a></li>
+<li class='category'><a href=' /blog/categories/ppc/'>PPC (2)</a></li>
+<li class='category'><a href=' /blog/categories/ubuntu/'>Ubuntu (3)</a></li>
+<li class='category'><a href=' /blog/categories/web/'>Web (1)</a></li>
+<li class='category'><a href=' /blog/categories/开源项目/'>开源项目 (1)</a></li>
+<li class='category'><a href=' /blog/categories/翻译/'>翻译 (1)</a></li>
+
+ </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/05/18/grub2yin-dao-an-zhuang-ubuntu11-dot-04/">grub2引导安装ubuntu11.04</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/18/ubuntuxia-an-zhuang-apache-plus-php-plus-mysysql/">ubuntu下安装Apache+PHP+Mysysql</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/18/ubuntuzai-zhong-duan-zhong-shi-yong-lynxfang-wen-hu-lian-wang/">Ubuntu在终端中使用lynx访问互联网</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/18/rang-ppccheng-wei-webfu-wu-qi-yu-pcjin-xing-shu-ju-tong-bu/">让PPC成为web服务器与PC进行数据同步</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/18/fei-ge-chuan-shu-ppcban-shi-xian-ppcyu-pcde-tong-xin-he-wen-jian-jiao-liu/">飞鸽传输PPC版实现PPC与PC的通信和文件交流</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+<!--
+JSON-P Google Plus fetcher for Octopress
+(c) Jolam Jiang // MIT License
+
+You can see the tutorial of adding sidebar here:
+http://bandj.us/jo/blog/blog/2011/12/03/adding-google-plus-sidebar-to-octopress/
+-->
+
+<section>
+  <!-- load jquery -->
+  <script type="text/javascript" src="https://www.google.com/jsapi?key=AIzaSyCqR5_JXEJlRpJJmjLwiRxNR2M5xyxEOBI"></script>
+  <script type="text/javascript">
+    google.load("jquery", "1.7.1");
+  </script>
+  <!-- load jquery end -->
+  <script type="text/javascript">
+
+    $.noConflict();
+    jQuery(document).ready(function(){
+      plusLoadingStart();
+    });
+    jQuery.noConflict();
+
+    function plusLoadingStart() {
+      jQuery("#gplus_sidebar").css("display", "none");
+      getJSON();
+    }
+
+    function getJSON() {
+        jQuery.getJSON('https://www.googleapis.com/plus/v1/people/111349295116322770756?fields=aboutMe%2CdisplayName%2Cimage&pp=1&key=AIzaSyCqR5_JXEJlRpJJmjLwiRxNR2M5xyxEOBI&callback=?', function(resp){
+          updateProfile(resp);
+        });
+        jQuery.getJSON('https://www.googleapis.com/plus/v1/people/111349295116322770756/activities/public?alt=json&maxResults=10&fields=items&pp=1&key=AIzaSyCqR5_JXEJlRpJJmjLwiRxNR2M5xyxEOBI&callback=?', function(resp){
+          updatePosts(resp);
+        });
+      jQuery("#gplus_sidebar").css("display","block");
+    }
+
+    function updateProfile(resp) {
+      jQuery('#gplus_sidebar_profile_displayName').html(resp.displayName);
+      jQuery('#gplus_sidebar_profile_aboutMe').html(resp.aboutMe);
+      jQuery('#gplus_sidebar_profile_img').attr("src", resp.image.url);
+    }
+
+    function updatePosts(resp) {
+      var content = '';
+      for(var i = 0; i < resp.items.length; i++) {
+        var item = resp.items[i];
+        attachments = item.object.attachments;
+        content += appendLi(item.title, item.url, item.published, attachments);
+      }
+      jQuery('#gplus_sidebar_posts_ul').html(content);
+    }
+
+    function appendLi(title, url, time, attachments) {
+      if(title.length > 130) {
+        title = title.substring(0, 130);
+      }
+      var reg = /[\r\n][\r\n]/g;
+      title = title.replace(reg, "");
+      reg = /[\r\n]/g;
+      if(attachments == null) {
+        return '<li><p><a href="' + url + '">' + title + '</a> </p><p class="time_and_attachment">' + time.substring(0, 10) + '</p></li>';
+      } else {
+        attach_url = attachments[0].url;
+        attach_url = attach_url.replace(reg, "");
+        return '<li><p><a href="' + url + '">' + title + '</a></p><p class="time_and_attachment">' + time.substring(0, 10) + '<span class="attachment_span"><a href="' + attach_url + '">[attachment]</a></span></p></li>';
+      }
+    }
+
+  </script>
+  <style>
+    #gplus_sidebar_profile {
+      display: block;
+    }
+    #gplus_sidebar_posts a:link, #gplus_sidebar_posts a:visited  {
+      display: block;
+      text-decoration: none;
+    }
+    #gplus_sidebar_profile_img {
+      margin-top: .6em !important;
+    }
+    #gplus_sidebar_profile p {
+      margin-bottom: .1em !important;
+    }
+    #gplus_sidebar_posts p {
+      margin-bottom: .2em !important; 
+    }
+    #gplus_sidebar_posts .attachment_span {
+      float : right;
+    }
+    #gplus_sidebar_posts .time_and_attachment {
+      margin-top: .5em !important;
+      font-size: 60%;
+    }
+  </style>
+  <div id="gplus_sidebar_profile">
+    <h1>G+ Profile</h1>
+    <img id="gplus_sidebar_profile_img" src="http://www.gravatar.com/avatar/111349295116322770756?d=mm" />
+    <a href="https://plus.google.com/111349295116322770756/posts/"><p id="gplus_sidebar_profile_displayName">loading...</p></a>
+    <p id="gplus_sidebar_profile_aboutMe">loading...</p>
+  </div>
+  <div id="gplus_sidebar_posts">
+    <h1>Recent G+ Posts</h1>
+    <ul id="gplus_sidebar_posts_ul" class="recent_posts">
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/zhangliang605?count=8&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/zhangliang605">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+
+<section class="googleplus googleplus-hidden">
+  <h1>
+    <a href="https://plus.google.com/111349295116322770756?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - liang -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'comflagblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://www.comflag.com/blog/2012/05/18/shi-yong-substancemei-hua-java-swingjie-mian/';
+        var disqus_url = 'http://www.comflag.com/blog/2012/05/18/shi-yong-substancemei-hua-java-swingjie-mian/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: PPC | comflag]]></title>
+  <link href="http://www.comflag.com/blog/categories/ppc/atom.xml" rel="self"/>
+  <link href="http://www.comflag.com/"/>
+  <updated>2012-05-18T22:01:50+08:00</updated>
+  <id>http://www.comflag.com/</id>
+  <author>
+    <name><![CDATA[liang]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[让PPC成为web服务器与PC进行数据同步]]></title>
+    <link href="http://www.comflag.com/blog/2012/05/18/rang-ppccheng-wei-webfu-wu-qi-yu-pcjin-xing-shu-ju-tong-bu/"/>
+    <updated>2012-05-18T20:39:00+08:00</updated>
+    <id>http://www.comflag.com/blog/2012/05/18/rang-ppccheng-wei-webfu-wu-qi-yu-pcjin-xing-shu-ju-tong-bu</id>
+    <content type="html"><![CDATA[<p>为了让手机和电脑同步数据，我可是下了老力气了，继电脑共享硬盘和使用飞鸽传书之后，我又找到了第三种方法，使用一个软件叫romote-access的软件，这是个手机软件，大家可以在网上下载。</p>
+
+<!--more-->
+
+
+<p>首先是手机安装romote-access.cab这个软件，然后，打开这个软件，第一次使用会提示你输入密码，密码必须不小与4个字符，然后确定后进入界面。</p>
+
+<p><img class="left" src="http://pic.yupoo.com/comflag/BUCvfme4/jlIYC.png" width="100" height="100"></p>
+
+<p>然后，如果手机和电脑的无线网络链接后，界面会显示手机的IP地址，你查一下是否和电脑无线网卡在一个网段，如果在，点击Enable，界面的Enable图标变成绿色。最后，在电脑的浏览器里输入输入手机IP地址，回车后就会出现一个登录界面，输入刚才的密码，connect后你就可以看到手机上的内容了，有手机ROM里的数据，手机SD卡数据，甚至还有短信，对了，在这个管理界面里可以发送和接收短信啊。 更强大的是，如果你使用的是IE浏览器，就可一开启高级界面模式，一个非常华丽的资源管理器就会出现在你面前，太漂亮了～～到目前位置，romote-access是我最喜欢的手机和电脑无线同步工具，那叫一个华丽的界面，我太喜欢了～～</p>
+
+<p><img src="http://pic.yupoo.com/comflag/BUCvfLCo/8FbkJ.png" width="800" height="600"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[飞鸽传输PPC版实现PPC与PC的通信和文件交流]]></title>
+    <link href="http://www.comflag.com/blog/2012/05/18/fei-ge-chuan-shu-ppcban-shi-xian-ppcyu-pcde-tong-xin-he-wen-jian-jiao-liu/"/>
+    <updated>2012-05-18T20:38:00+08:00</updated>
+    <id>http://www.comflag.com/blog/2012/05/18/fei-ge-chuan-shu-ppcban-shi-xian-ppcyu-pcde-tong-xin-he-wen-jian-jiao-liu</id>
+    <content type="html"><![CDATA[<p>通过共享电脑硬盘可以使PPC访问电脑硬盘上的资料，但是，如何将电脑上的资料不通过USB数据线而放到PPC上呢，其实可以用飞鸽传书来实现。飞鸽传书有PC版的和PPC版的，下载的时候要注意。</p>
+
+<!--more-->
+
+
+<p>关于wifi的设置很简单，其中要注意的是用PPC的网卡IP地址一定要和电脑的无线网卡IP地址在一个网段，要不然相互发现不了，这一步可以在电脑的cmd命令行模式下ping 手机网卡IP来判断是否链接上。设置好以后，分别在PPC上和电脑上运行飞鸽传书，刷新后就能发现对方了，这是可以对话，聊天，还可以发送文件。我寒假在家由于没有数据线，就是这样子同步电脑和手机数据的，对于我的TOUCH VIVA现在虽然已经非常过时了，我觉得n多功能我还没开发出来，吼吼～～</p>
+]]></content>
+  </entry>
+  
+</feed>

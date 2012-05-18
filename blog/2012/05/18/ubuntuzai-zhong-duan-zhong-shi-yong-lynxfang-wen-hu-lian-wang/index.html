@@ -1,0 +1,556 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Ubuntu在终端中使用lynx访问互联网 - comflag</title>
+  <meta name="author" content="liang">
+
+  
+  <meta name="description" content="大家熟悉的Opera是一个灵巧的浏览器。它发布于1996年。但是在它诞生的前一年一个命令行下的全能的浏览器已经在众多志愿者的帮助一下悄然走进了我们的世界，这就是Lynx浏览器. Lynx 是一个字符界面下的全功能的WWW浏览器。Lynx 可以运行在很多种 操作系统下，如VMS, UNIX, &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.comflag.com/blog/2012/05/18/ubuntuzai-zhong-duan-zhong-shi-yong-lynxfang-wen-hu-lian-wang">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="comflag" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-21843359-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">comflag</a></h1>
+  
+    <h2>Stay Hungry Stay Foolish!</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.comflag.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">文章归档</a></li>
+  <li><a href="/aboutme/index.html">关于我</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Ubuntu在终端中使用lynx访问互联网</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-18T20:42:00+08:00" pubdate data-updated="true">May 18<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>大家熟悉的Opera是一个灵巧的浏览器。它发布于1996年。但是在它诞生的前一年一个命令行下的全能的浏览器已经在众多志愿者的帮助一下悄然走进了我们的世界，这就是Lynx浏览器.</p>
+
+<!--more-->
+
+
+<p>Lynx 是一个字符界面下的全功能的WWW浏览器。Lynx 可以运行在很多种 操作系统下，如VMS, UNIX, Windows 95, Windows NT等，当然也包括Linux。 由于没有漂亮的图形界面，所以 Lynx 占用资源极少，而且速度很快。另外 Lynx 还是唯一能在字符终端下运行的 WWW 浏览器，相比较之前介绍的w3m是有过之而无不及啊。</p>
+
+<p>Lynx支持多种协议。可以以 lynx filename 和 lynx PROTOCOL: //HOST/PATH/FILENAME 的形式 运行 Lynx ，其中前一种用于浏览本地文件，后一种用于浏览 Internet。 协议 (PROTOCOL)，可以是 http, gopher, ftp 和 wais。***### 在ubuntu下可以在终端输入如下命令安装即可:</p>
+
+<pre><code>sudo apt-get install lynx
+</code></pre>
+
+<p>注意: 如果终端提示没有找到软件包，可以在添加如下源然后更新后在安装即可:</p>
+
+<ul>
+<li><p>打开源文件</p>
+
+<pre><code>  sudo gedit /etc/apt/sources.list
+</code></pre></li>
+<li><p>添加源</p></li>
+</ul>
+
+
+<figure class='code'><figcaption><span>添加源 </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>  deb http://mirrors.163.com/ubuntu/ maverick main universe restricted multiverse
+</span><span class='line'>  deb-src http://mirrors.163.com/ubuntu/ maverick main universe restricted multiverse
+</span><span class='line'>  deb http://mirrors.163.com/ubuntu/ maverick-security universe main multiverse restricted
+</span><span class='line'>  deb-src http://mirrors.163.com/ubuntu/ maverick-security universe main multiverse restricted
+</span><span class='line'>  deb http://mirrors.163.com/ubuntu/ maverick-updates universe main multiverse restricted
+</span><span class='line'>  deb http://mirrors.163.com/ubuntu/ maverick-proposed universe main multiverse restricted
+</span><span class='line'>  deb-src http://mirrors.163.com/ubuntu/ maverick-proposed universe main multiverse restricted
+</span><span class='line'>  deb http://mirrors.163.com/ubuntu/ maverick-backports universe main multiverse restricted
+</span><span class='line'>  deb-src http://mirrors.163.com/ubuntu/ maverick-backports universe main multiverse restricted
+</span><span class='line'>  deb-src http://mirrors.163.com/ubuntu/ maverick-updates universe main multiverse restricted
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><p>更新</p>
+
+<pre><code>  sudo apt-get update
+</code></pre></li>
+</ul>
+
+
+<hr />
+
+<h1>使用</h1>
+
+<ul>
+<li><p>浏览网页:直接在终端中输入命令即可</p>
+
+<pre><code>  lynx localhost/wordpress
+</code></pre></li>
+<li><p>浏览本地文件:直接在终端中输入本地目录,可以使用tab补全</p>
+
+<pre><code>  lynx /home
+</code></pre></li>
+</ul>
+
+
+<hr />
+
+<h1>基本操作</h1>
+
+<ul>
+<li><p>移动命令</p>
+
+<ul>
+<li>下方向键：页面上的下一个链接(用高亮度显示)。</li>
+<li>上方向键：页面上的前一个链接(用高亮度显示)。</li>
+<li>回车和右方向键：跳转到链接指向的地址。</li>
+<li>左方向键：回到上一个页面。</li>
+</ul>
+</li>
+<li><p>滚动命令：</p>
+
+<ul>
+<li>+,Page-Down,Space,Ctrl+f：向下翻页。</li>
+<li>-,Page-Up,b,Ctrl+b：向上翻页。</li>
+<li>Ctrl+a： 移动到当前页的最前面。</li>
+<li>Ctrl+e： 移动到当前页的最后面。</li>
+<li>Ctrl+n： 向下翻两行。</li>
+<li>Ctrl+p： 往回翻两行。</li>
+<li>)： 向下翻半页。</li>
+<li>(： 往回翻半页。</li>
+</ul>
+</li>
+<li><p>文件操作命令：</p>
+
+<ul>
+<li>c： 建立一个新文件。</li>
+<li>d： 下载选中的文件。</li>
+<li>E： 编辑选中的文件。</li>
+<li>f： 为当前文件显示一个选项菜单。</li>
+<li>m： 修改选中文件的名字或位置。</li>
+<li>r： 删除选中的文件。</li>
+<li>t： Tag highlighted file。</li>
+<li>u： 上载一个文件到当前目录。</li>
+</ul>
+</li>
+<li><p>其他命令：</p>
+
+<ul>
+<li>?,h： 帮助。</li>
+<li>a： 把当前链接加入到一个书签文件里。</li>
+<li>c： 向页面的拥有者发送意见或建议。</li>
+<li>d： 下载当前链接。</li>
+<li>e： 编辑当前文件。</li>
+<li>g： 跳转到一个用户指定的URL或文件。</li>
+<li>G： 编辑当前页的URL，并跳转到这个URL。</li>
+<li>i： 显示文档索引。</li>
+<li>j： 执行预先定义的“短”命令。</li>
+<li>k： 显示键盘命令列表。</li>
+<li>l： 列出当前页上所有链接的地址。</li>
+<li>m： 回到首页。</li>
+<li>o： 设置选项。</li>
+<li>p： 把当前页输出到文件，e-mail，打印机或其他地方。</li>
+<li>q： 退出。</li>
+<li>/： 在当前页内查找字符串。</li>
+<li>s： 在外部搜索输入的字符串。</li>
+<li>n： 搜索下一个。</li>
+<li>v： 查看一个书签文件。</li>
+<li>V： 跳转到访问过的地址。</li>
+<li>x： 不使用缓存。</li>
+<li>z： 停止当前传输。</li>
+<li>[backspace]：跳转到历史页(同 V 命令)。</li>
+<li>=： 显示当前页的信息。</li>
+<li>： 查看当前页的源代码。</li>
+<li>!： 回到shell提示符下。</li>
+<li>_： 清除当前任务的所有授权信息。</li>
+<li>： 图形链接模式的切换开关。</li>
+<li>@： 8位传输模式或CJK模式的切换开关。</li>
+<li>[： pseudo_inlines 模式的切换开关。</li>
+<li>]： 为当前页或当前链接发送一个“HEAD”请求。</li>
+<li>Ctrl+r： 重新装如当前页并且刷新屏幕。</li>
+<li>Ctrl+w： 刷新屏幕。</li>
+<li>）Ctrl+u： 删除输入的行。</li>
+<li>Ctrl+g： 取消输入或者传送。</li>
+<li>Ctrl+t： 跟踪模式的切换开关。</li>
+<li>;： 看 Lynx 对当前任务的跟踪记录。</li>
+<li>Ctrl+k： 调用 Cookie Jar 页。</li>
+<li>数字键： 到后面的第 n 个链接。</li>
+</ul>
+
+
+<hr />
+
+<p>  # Unix系统的终端真是可见一斑啊… <br/>
+  <img src="http://pic.yupoo.com/comflag/B6xMCJ5X/5EZqI.png" width="800" height="600"></p>
+
+<p>  <img src="http://pic.yupoo.com/comflag/B6xMyAss/jsKF2.png" width="800" height="600"></p></li>
+</ul>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">liang</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-18T20:42:00+08:00" pubdate data-updated="true">May 18<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ubuntu/'>Ubuntu</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.comflag.com/blog/2012/05/18/ubuntuzai-zhong-duan-zhong-shi-yong-lynxfang-wen-hu-lian-wang/" data-via="" data-counturl="http://www.comflag.com/blog/2012/05/18/ubuntuzai-zhong-duan-zhong-shi-yong-lynxfang-wen-hu-lian-wang/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/05/18/rang-ppccheng-wei-webfu-wu-qi-yu-pcjin-xing-shu-ju-tong-bu/" title="Previous Post: 让PPC成为web服务器与PC进行数据同步">&laquo; 让PPC成为web服务器与PC进行数据同步</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/05/18/ubuntuxia-an-zhuang-apache-plus-php-plus-mysysql/" title="Next Post: ubuntu下安装Apache+PHP+Mysysql">ubuntu下安装Apache+PHP+Mysysql &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+ <h1>Categories</h1>
+ <ul id="categories">
+ <li class='category'><a href=' /blog/categories/java/'>JAVA (5)</a></li>
+<li class='category'><a href=' /blog/categories/macos/'>MacOS (2)</a></li>
+<li class='category'><a href=' /blog/categories/ppc/'>PPC (2)</a></li>
+<li class='category'><a href=' /blog/categories/ubuntu/'>Ubuntu (3)</a></li>
+<li class='category'><a href=' /blog/categories/web/'>Web (1)</a></li>
+<li class='category'><a href=' /blog/categories/开源项目/'>开源项目 (1)</a></li>
+<li class='category'><a href=' /blog/categories/翻译/'>翻译 (1)</a></li>
+
+ </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/05/18/grub2yin-dao-an-zhuang-ubuntu11-dot-04/">grub2引导安装ubuntu11.04</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/18/ubuntuxia-an-zhuang-apache-plus-php-plus-mysysql/">ubuntu下安装Apache+PHP+Mysysql</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/18/ubuntuzai-zhong-duan-zhong-shi-yong-lynxfang-wen-hu-lian-wang/">Ubuntu在终端中使用lynx访问互联网</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/18/rang-ppccheng-wei-webfu-wu-qi-yu-pcjin-xing-shu-ju-tong-bu/">让PPC成为web服务器与PC进行数据同步</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/18/fei-ge-chuan-shu-ppcban-shi-xian-ppcyu-pcde-tong-xin-he-wen-jian-jiao-liu/">飞鸽传输PPC版实现PPC与PC的通信和文件交流</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+<!--
+JSON-P Google Plus fetcher for Octopress
+(c) Jolam Jiang // MIT License
+
+You can see the tutorial of adding sidebar here:
+http://bandj.us/jo/blog/blog/2011/12/03/adding-google-plus-sidebar-to-octopress/
+-->
+
+<section>
+  <!-- load jquery -->
+  <script type="text/javascript" src="https://www.google.com/jsapi?key=AIzaSyCqR5_JXEJlRpJJmjLwiRxNR2M5xyxEOBI"></script>
+  <script type="text/javascript">
+    google.load("jquery", "1.7.1");
+  </script>
+  <!-- load jquery end -->
+  <script type="text/javascript">
+
+    $.noConflict();
+    jQuery(document).ready(function(){
+      plusLoadingStart();
+    });
+    jQuery.noConflict();
+
+    function plusLoadingStart() {
+      jQuery("#gplus_sidebar").css("display", "none");
+      getJSON();
+    }
+
+    function getJSON() {
+        jQuery.getJSON('https://www.googleapis.com/plus/v1/people/111349295116322770756?fields=aboutMe%2CdisplayName%2Cimage&pp=1&key=AIzaSyCqR5_JXEJlRpJJmjLwiRxNR2M5xyxEOBI&callback=?', function(resp){
+          updateProfile(resp);
+        });
+        jQuery.getJSON('https://www.googleapis.com/plus/v1/people/111349295116322770756/activities/public?alt=json&maxResults=10&fields=items&pp=1&key=AIzaSyCqR5_JXEJlRpJJmjLwiRxNR2M5xyxEOBI&callback=?', function(resp){
+          updatePosts(resp);
+        });
+      jQuery("#gplus_sidebar").css("display","block");
+    }
+
+    function updateProfile(resp) {
+      jQuery('#gplus_sidebar_profile_displayName').html(resp.displayName);
+      jQuery('#gplus_sidebar_profile_aboutMe').html(resp.aboutMe);
+      jQuery('#gplus_sidebar_profile_img').attr("src", resp.image.url);
+    }
+
+    function updatePosts(resp) {
+      var content = '';
+      for(var i = 0; i < resp.items.length; i++) {
+        var item = resp.items[i];
+        attachments = item.object.attachments;
+        content += appendLi(item.title, item.url, item.published, attachments);
+      }
+      jQuery('#gplus_sidebar_posts_ul').html(content);
+    }
+
+    function appendLi(title, url, time, attachments) {
+      if(title.length > 130) {
+        title = title.substring(0, 130);
+      }
+      var reg = /[\r\n][\r\n]/g;
+      title = title.replace(reg, "");
+      reg = /[\r\n]/g;
+      if(attachments == null) {
+        return '<li><p><a href="' + url + '">' + title + '</a> </p><p class="time_and_attachment">' + time.substring(0, 10) + '</p></li>';
+      } else {
+        attach_url = attachments[0].url;
+        attach_url = attach_url.replace(reg, "");
+        return '<li><p><a href="' + url + '">' + title + '</a></p><p class="time_and_attachment">' + time.substring(0, 10) + '<span class="attachment_span"><a href="' + attach_url + '">[attachment]</a></span></p></li>';
+      }
+    }
+
+  </script>
+  <style>
+    #gplus_sidebar_profile {
+      display: block;
+    }
+    #gplus_sidebar_posts a:link, #gplus_sidebar_posts a:visited  {
+      display: block;
+      text-decoration: none;
+    }
+    #gplus_sidebar_profile_img {
+      margin-top: .6em !important;
+    }
+    #gplus_sidebar_profile p {
+      margin-bottom: .1em !important;
+    }
+    #gplus_sidebar_posts p {
+      margin-bottom: .2em !important; 
+    }
+    #gplus_sidebar_posts .attachment_span {
+      float : right;
+    }
+    #gplus_sidebar_posts .time_and_attachment {
+      margin-top: .5em !important;
+      font-size: 60%;
+    }
+  </style>
+  <div id="gplus_sidebar_profile">
+    <h1>G+ Profile</h1>
+    <img id="gplus_sidebar_profile_img" src="http://www.gravatar.com/avatar/111349295116322770756?d=mm" />
+    <a href="https://plus.google.com/111349295116322770756/posts/"><p id="gplus_sidebar_profile_displayName">loading...</p></a>
+    <p id="gplus_sidebar_profile_aboutMe">loading...</p>
+  </div>
+  <div id="gplus_sidebar_posts">
+    <h1>Recent G+ Posts</h1>
+    <ul id="gplus_sidebar_posts_ul" class="recent_posts">
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/zhangliang605?count=8&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/zhangliang605">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+
+<section class="googleplus googleplus-hidden">
+  <h1>
+    <a href="https://plus.google.com/111349295116322770756?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - liang -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'comflagblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://www.comflag.com/blog/2012/05/18/ubuntuzai-zhong-duan-zhong-shi-yong-lynxfang-wen-hu-lian-wang/';
+        var disqus_url = 'http://www.comflag.com/blog/2012/05/18/ubuntuzai-zhong-duan-zhong-shi-yong-lynxfang-wen-hu-lian-wang/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

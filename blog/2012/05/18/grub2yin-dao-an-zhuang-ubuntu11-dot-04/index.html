@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>comflag</title>
+  <title>grub2引导安装ubuntu11.04 - comflag</title>
   <meta name="author" content="liang">
 
   
-  <meta name="description" content="写在前面:这篇文章早几天就想写了，因为方法早就想好了，今天在自己电脑上实践了一下，成功了，嘿嘿，这才决定写出来。很多人下载了ubuntu11.04的iso镜像后通常要不刻CD盘，要不刻录到u盘，刻CD盘费钱，刻u盘不一定能成功。 ">
+  <meta name="description" content="写在前面:这篇文章早几天就想写了，因为方法早就想好了，今天在自己电脑上实践了一下，成功了，嘿嘿，这才决定写出来。很多人下载了ubuntu11.04的iso镜像后通常要不刻CD盘，要不刻录到u盘，刻CD盘费钱，刻u盘不一定能成功。 其实， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.comflag.com">
+  <link rel="canonical" href="http://www.comflag.com/blog/2012/05/18/grub2yin-dao-an-zhuang-ubuntu11-dot-04">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -75,15 +75,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/05/18/grub2yin-dao-an-zhuang-ubuntu11-dot-04/">grub2引导安装ubuntu11.04</a></h1>
+      <h1 class="entry-title">grub2引导安装ubuntu11.04</h1>
     
     
       <p class="meta">
@@ -106,70 +103,69 @@
   </header>
 
 
-  <div class="entry-content"><p>写在前面:这篇文章早几天就想写了，因为方法早就想好了，今天在自己电脑上实践了一下，成功了，嘿嘿，这才决定写出来。很多人下载了ubuntu11.04的iso镜像后通常要不刻CD盘，要不刻录到u盘，刻CD盘费钱，刻u盘不一定能成功。</p>
+<div class="entry-content"><p>写在前面:这篇文章早几天就想写了，因为方法早就想好了，今天在自己电脑上实践了一下，成功了，嘿嘿，这才决定写出来。很多人下载了ubuntu11.04的iso镜像后通常要不刻CD盘，要不刻录到u盘，刻CD盘费钱，刻u盘不一定能成功。</p>
+
+<!--more-->
+
+
+<p>其实，我们可以用ubuntu自带的引导器grub2来直接引导启动硬盘上的ISO镜像。整个过程只有简单的几个命令，启动速度非常快(毕竟ISO镜像是在硬盘上，光盘和u盘还是不能比的)，而且低碳环保，嘿嘿~~</p>
+
+<ul>
+<li><p>步骤一，要有gurb2的命令行环境，如果以前安装了ubutnu则开机就是gurb2(注:burg也是gurb2哦，一样的操作)，在选择菜单按’c’键自动进入命令行模式(按’ESC’退出命令行模式)，如果没有安装过ubuntu，可以将grub2安装到u盘，开机从u盘启动即可进入gurb2菜单，这个方法很多…</p></li>
+<li><p>步骤二，下载ubuntu的iso镜像，放在硬盘分区的根目录下，建议放在根目录下，这样在命令行下好找，不容易出问题，比如我的放在了D盘。</p></li>
+<li><p>步骤三，重启电脑，进入grub2的命令行模式，一步一步输入以下命令。</p></li>
+</ul>
+
+
+<figure class='code'><figcaption><span>grub</span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>grub&gt; <span class="nb">set </span><span class="nv">root</span><span class="o">=(</span>hd0,2<span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'>grub&gt; loopback loop <span class="o">(</span>hd0,2<span class="o">)</span>/ubuntu-11.04-desktop-i386.iso
+</span><span class='line'>
+</span><span class='line'>grub&gt; linux <span class="o">(</span>loop<span class="o">)</span>/casper/vmlinuz <span class="nv">boot</span><span class="o">=</span>casper iso-scan/filename<span class="o">=</span>/ubuntu-11.04-desktop-i386.iso
+</span><span class='line'>
+</span><span class='line'>grub&gt; initrd <span class="o">(</span>loop<span class="o">)</span>/casper/initrd.lz
+</span><span class='line'>
+</span><span class='line'>grub&gt; boot
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>步骤四，上一步的boot命令执行后计算机开始命令行的滚屏，爽，最后如果成功，会提示很多选项ok，然后ubuntu的iso镜像顺利引导，进入ubuntu11.04的live cd桌面，桌面上有install ubuntu的字样，和光盘启动时的样子一模一样，接下来的安装工作就简单了…</li>
+</ul>
+
+
+<h1>第三步中命令的解释：</h1>
+
+<ul>
+<li><p>set root=(hd0,2)，设置根目录为(hd0,2)，因为我的iso镜像放在D盘，我的D盘对应着gurb2硬盘目录的(hd0,2)，hd0表示第一块硬盘(硬盘以0开始计数),2表示第2个分区(分区从1开始计数)。</p></li>
+<li><p>loopback loop (hd0,2)/ubuntu-11.04-desktop-i386.iso，创建一个回放设备loop，回放设备可以加载iso镜像，这里将我D盘根目录下的ubuntu的iso镜像加载到loop中，从此loop就代表了这个iso镜像，就像是cd光驱一样，可以查看iso中文件和目录。</p></li>
+<li><p>linux (loop)/casper/vmlinuz boot=casper iso-scan/filename=/ubuntu-11.04-desktop-i386.iso，这一步很重要，我失败好几次都是在这里，注意，iso-scan/filename是设置iso镜像的绝对路径的意思，在第一步将(hd0,2)设置为根目录，这里直接用/ubuntu-11.04-desktop-i386.iso就表示根目录下的这个iso镜像，一定不能用./ubuntu…或者(hd0,2)/ubuntu…,我都试了，失败。casper是iso镜像里的一个目录，如果你用虚拟光驱打开了这个iso就可以看到casper这个目录，vmlinuz毫无疑问是/casper的文件，它和ubuntu的引导有关，boot=casper这也很重要，因为不同的linux版本是不一样的，ubuntu的标志是casper，red hat好像是live，请注意。</p></li>
+<li><p>initrd (loop)/casper/initrd.lz，这个也是和引导有关的，initrd.lz是iso镜像中casper目录下的initrd.lz文件，不要写错了。</p></li>
+<li><p>boot，这个命令是启动的意思，该命令执行后，系统就会从(hd0,2)启动并加载iso镜像了。</p></li>
+<li><p>启动后，接下来是命令行的滚屏，如果失败，会提示诸如ubuntu.xxx.iso镜像找不到的问题。这通常都是你的iso镜像路径设置的不对，要仔细检查。</p></li>
+</ul>
 
 </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/05/18/grub2yin-dao-an-zhuang-ubuntu11-dot-04/">阅读全文</a>
-    </footer>
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/05/18/ubuntuxia-an-zhuang-apache-plus-php-plus-mysysql/">ubuntu下安装Apache+PHP+Mysysql</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
   
 
+<span class="byline author vcard">Posted by <span class="fn">liang</span></span>
 
-<time datetime="2012-05-18T20:54:00+08:00" pubdate data-updated="true">May 18<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>电影《社交网络》中，facebook创始人马克.扎克失恋后入侵哈佛大学宿舍楼服务器，窃取数据库资料，并在两个小时内完成了一个给校内女生评分的交互网站，该网站一天内点击数过10W，直接导致学校服务器崩溃。。。。。。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/05/18/ubuntuxia-an-zhuang-apache-plus-php-plus-mysysql/">阅读全文</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/05/18/ubuntuzai-zhong-duan-zhong-shi-yong-lynxfang-wen-hu-lian-wang/">Ubuntu在终端中使用lynx访问互联网</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -181,325 +177,44 @@
   
 
 
-<time datetime="2012-05-18T20:42:00+08:00" pubdate data-updated="true">May 18<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>大家熟悉的Opera是一个灵巧的浏览器。它发布于1996年。但是在它诞生的前一年一个命令行下的全能的浏览器已经在众多志愿者的帮助一下悄然走进了我们的世界，这就是Lynx浏览器.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/05/18/ubuntuzai-zhong-duan-zhong-shi-yong-lynxfang-wen-hu-lian-wang/">阅读全文</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
+<time datetime="2012-05-18T21:02:00+08:00" pubdate data-updated="true">May 18<span>th</span>, 2012</time>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/05/18/rang-ppccheng-wei-webfu-wu-qi-yu-pcjin-xing-shu-ju-tong-bu/">让PPC成为web服务器与PC进行数据同步</a></h1>
-    
-    
-      <p class="meta">
-        
 
-
-
-
-
-
-
-
+<span class="categories">
   
+    <a class='category' href='/blog/categories/ubuntu/'>Ubuntu</a>
+  
+</span>
 
 
-<time datetime="2012-05-18T20:39:00+08:00" pubdate data-updated="true">May 18<span>th</span>, 2012</time>
-        
-      </p>
+    </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>为了让手机和电脑同步数据，我可是下了老力气了，继电脑共享硬盘和使用飞鸽传书之后，我又找到了第三种方法，使用一个软件叫romote-access的软件，这是个手机软件，大家可以在网上下载。</p>
-
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.comflag.com/blog/2012/05/18/grub2yin-dao-an-zhuang-ubuntu11-dot-04/" data-via="" data-counturl="http://www.comflag.com/blog/2012/05/18/grub2yin-dao-an-zhuang-ubuntu11-dot-04/" >Tweet</a>
+  
+  
+  
 </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/05/18/rang-ppccheng-wei-webfu-wu-qi-yu-pcjin-xing-shu-ju-tong-bu/">阅读全文</a>
-    </footer>
-  
 
-
-    </article>
-  
-  
-    <article>
+    
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/05/18/fei-ge-chuan-shu-ppcban-shi-xian-ppcyu-pcde-tong-xin-he-wen-jian-jiao-liu/">飞鸽传输PPC版实现PPC与PC的通信和文件交流</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-18T20:38:00+08:00" pubdate data-updated="true">May 18<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>通过共享电脑硬盘可以使PPC访问电脑硬盘上的资料，但是，如何将电脑上的资料不通过USB数据线而放到PPC上呢，其实可以用飞鸽传书来实现。飞鸽传书有PC版的和PPC版的，下载的时候要注意。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/05/18/fei-ge-chuan-shu-ppcban-shi-xian-ppcyu-pcde-tong-xin-he-wen-jian-jiao-liu/">阅读全文</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
+        <a class="basic-alignment left" href="/blog/2012/05/18/ubuntuxia-an-zhuang-apache-plus-php-plus-mysysql/" title="Previous Post: ubuntu下安装Apache+PHP+Mysysql">&laquo; ubuntu下安装Apache+PHP+Mysysql</a>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/05/18/icloudti-shi-yi-da-dao-zhang-hu-shu-liang-xian-zhi-de-jie-jue-ban-fa/">iCloud提示已达到帐户数量限制的解决办法</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-18T20:31:00+08:00" pubdate data-updated="true">May 18<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>自从安装了Mac OS X 10.7.3后，iClound就一直不能使用，输入Apple ID后一直提示”已达到账户数量限制”，英文提示”Account Limit Reached”，但自己明明只在这一个Mac OS下登陆过，并且App Store和iTunes都可以正常登陆和使用。后来用英文在google里才找到了解决办法。现在已经能正常登陆iClound了。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/05/18/icloudti-shi-yi-da-dao-zhang-hu-shu-liang-xian-zhi-de-jie-jue-ban-fa/">阅读全文</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/05/18/mac-os-xan-zhuang-guo-cheng-chang-jian-cuo-wu-zong-jie/">Mac OS X安装过程常见问题总结</a></h1>
-    
-    
-      <p class="meta">
-        
+    </p>
+  </footer>
+</article>
 
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-18T20:27:00+08:00" pubdate data-updated="true">May 18<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>一直使用的是Mac OS 10.7，最近终于经受不住群里童鞋们的诱惑，准备安装10.7.3，于是下载了10.7.3原版dmg镜像，在Mac OS Lion下按照以前安装盘制作教程在硬盘上重新制作了一个10.7.3的安装盘，然后进行覆盖安装。这个安装盘位于我的硬盘的最后一个分区，大小8.0G。</p>
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/05/18/mac-os-xan-zhuang-guo-cheng-chang-jian-cuo-wu-zong-jie/">阅读全文</a>
-    </footer>
-  
 
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/05/18/eclipseli-rmicha-jian-de-shi-yong/">Eclipse里RMI插件的使用</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-18T20:22:00+08:00" pubdate data-updated="true">May 18<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>在Eclipse下编写RMI程序现在有一个非常好的插件RMI-plug，现在的最新版本是2.1.6，支持Eclipse3.5.x，它的主页有非常详细的各个版本信息的说明，<a href="http://www.genady.net/rmi/v20/index.html">RMI-plugin主页</a>。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/05/18/eclipseli-rmicha-jian-de-shi-yong/">阅读全文</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/05/18/java-rmichu-yuan-cheng-stubwei-zhao-dao-yi-chang/">Java RMI出远程stub未找到异常</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-18T20:18:00+08:00" pubdate data-updated="true">May 18<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>最近在做一个项目，题目是《基于Java的分布式计算系统》，这个题目要求使用Java RMI技术。</p>
-
-<p>这个分布式系统涉及到三个实体，分别是客户端，服务器，和工作站，因此我在Eclipse里分别创建了三个工程。每个工程维护自己的本地对象，并向其他的远程实体提供远程方法调用(RMI)接口。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/05/18/java-rmichu-yuan-cheng-stubwei-zhao-dao-yi-chang/">阅读全文</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/05/18/shi-yong-substancemei-hua-java-swingjie-mian/">使用substance美化Java Swing界面</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-18T20:07:00+08:00" pubdate data-updated="true">May 18<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Java的一个优势是它有非常非常多的开源项目，我们可以非常自由的使用这些开源项目为自己的程序提供便利。</p>
-
-<p>substance是一个开源的Java项目，它的目标是为Java Swing提供美化。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/05/18/shi-yong-substancemei-hua-java-swingjie-mian/">阅读全文</a>
-    </footer>
-  
-
-
-    </article>
-  
-  <div class="pagination">
-    
-      <a class="prev" href="/blog/page/2/">&larr; Older</a>
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
 <aside class="sidebar">
   
     <section>
@@ -642,8 +357,8 @@ http://bandj.us/jo/blog/blog/2011/12/03/adding-google-plus-sidebar-to-octopress/
   <div id="gplus_sidebar_profile">
     <h1>G+ Profile</h1>
     <img id="gplus_sidebar_profile_img" src="http://www.gravatar.com/avatar/111349295116322770756?d=mm" />
-    <a href="https://plus.google.com/111349295116322770756/posts/"><p id="gplus_sidebar_profile_displayName">loading&#8230;</p></a>
-    <p id="gplus_sidebar_profile_aboutMe">loading&#8230;</p>
+    <a href="https://plus.google.com/111349295116322770756/posts/"><p id="gplus_sidebar_profile_displayName">loading...</p></a>
+    <p id="gplus_sidebar_profile_aboutMe">loading...</p>
   </div>
   <div id="gplus_sidebar_posts">
     <h1>Recent G+ Posts</h1>
@@ -674,6 +389,7 @@ http://bandj.us/jo/blog/blog/2011/12/03/adding-google-plus-sidebar-to-octopress/
   
 </aside>
 
+
     </div>
   </div>
   <footer role="contentinfo"><p>
@@ -688,7 +404,10 @@ http://bandj.us/jo/blog/blog/2011/12/03/adding-google-plus-sidebar-to-octopress/
       var disqus_shortname = 'comflagblog';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://www.comflag.com/blog/2012/05/18/grub2yin-dao-an-zhuang-ubuntu11-dot-04/';
+        var disqus_url = 'http://www.comflag.com/blog/2012/05/18/grub2yin-dao-an-zhuang-ubuntu11-dot-04/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

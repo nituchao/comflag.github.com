@@ -1,0 +1,447 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Eclipse里RMI插件的使用 - comflag</title>
+  <meta name="author" content="liang">
+
+  
+  <meta name="description" content="在Eclipse下编写RMI程序现在有一个非常好的插件RMI-plug，现在的最新版本是2.1.6，支持Eclipse3.5.x，它的主页有非常详细的各个版本信息的说明，RMI-plugin主页。 注意事项 如何你是第一次使用RMI，那么使用RMI有一些需要注意的地方。 这是一个收费插件， &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.comflag.com/blog/2012/05/18/eclipseli-rmicha-jian-de-shi-yong">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="comflag" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-21843359-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">comflag</a></h1>
+  
+    <h2>Stay Hungry Stay Foolish!</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.comflag.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">文章归档</a></li>
+  <li><a href="/aboutme/index.html">关于我</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Eclipse里RMI插件的使用</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-18T20:22:00+08:00" pubdate data-updated="true">May 18<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>在Eclipse下编写RMI程序现在有一个非常好的插件RMI-plug，现在的最新版本是2.1.6，支持Eclipse3.5.x，它的主页有非常详细的各个版本信息的说明，<a href="http://www.genady.net/rmi/v20/index.html">RMI-plugin主页</a>。</p>
+
+<!--more-->
+
+
+<h1>注意事项</h1>
+
+<p>如何你是第一次使用RMI，那么使用RMI有一些需要注意的地方。</p>
+
+<hr />
+
+<ul>
+<li>这是一个收费插件，但是它为进行个人学习，以及开发开源软件的程序员提供免费的个人序列号(personal licenec)。免费的个人序列号有效期4个月，开源软件开发者序列号有效期长达1年。如果你为改进RMI-plugin作出贡献，这个项目组还会付给你钱。在申请也很简单，填写基本信息和申请理由，一周之内就会收到回复邮件，我现在已经申请到了两个序列号。如果个人开发，还是不要想着去破解了，我试过，那个破解的经常出错。个人序列号申请</li>
+<li>插件版本选择很重要。在下载页面，你会看到各个版本的RMI插件，基本上每个版本后面都写着支持Eclipse版本，虽然你会感慨RMI插件开发并没有跟上Eclipse的更新速度，但是请严格使用匹配的RMI插件版本和对应的Eclipse版本，比如v2.1.6支持Eclipse 3.5.x，如果你非要在Eclipse 3.7版里装RMI-plug v2.1.6，那么，很大程度上说，RMI-plug是不会正常工作的。所以一定要严格匹配版本，不要耍小聪明。RMI-plugin下载页面</li>
+</ul>
+
+
+<hr />
+
+<h1>RMI插件带来的好处</h1>
+
+<ul>
+<li><p>RMI插件可以自动生成桩(stub)文件，这就省去了一直使用rmic命令的麻烦。在Eclipse项目里右键选择”RMI” –> “Enable Stubs Generationg”开启自动生成桩文件。</p></li>
+<li><p>RMI插件可以方便的配置codebase和策略文件。在菜单栏里(或工具栏)选择”运行” –> “运行配置”，选中你要配置的RMI程序，点击标签栏里的”RMI VM Properties”标签，前两项就分别是策略文件和codebase。</p></li>
+<li><p>RMI Registry视图可以显示当前绑定(bind)到指定端口号的Register上的远程接口信息，包括远程接口位置，提供的远程方法等。该视图在菜单栏的”窗口”–>”显示视图” –> “其他” –> “RMI Views”里可以打开。</p></li>
+<li><p>RMI Spy视图可以监视远程接口的调用情况，你在这里可以清楚地看到那些远程对象被调用了，是谁调用的，请求信息，以及返回值信息等。要想开启该功能，你需要在”运行配置”的”RMI Lunch”标签页勾选该选项。关于RMI Spy的运行机制，可以参考我翻译的插件官方提供的说明文档。该视图菜单栏的”窗口”–>”显示视图” –> “其他” –> “RMI Views”里可以打开。</p></li>
+</ul>
+
+
+<hr />
+
+<h1>RMI插件安装 – 安装帮助</h1>
+
+<ul>
+<li><p>下载离线安装包。在插件下载页面，下载对应版本的zip安装包。保存并关闭Eclipse。如果之前装过老版本的RMI插件，要先删除。然后吧安装文件解压缩，得到”plugins” 和 “features”文件夹，把里面的内容对应放大Eclipse根目录下的对应文件夹内。重新打开Eclipse就会发现RMI插件已经装好了。</p></li>
+<li><p>在线安装。以Eclipse3.5为例，依次选中菜单栏的”help” –> “Install New Software” 在”Work with”出点击”Add”，在弹出对话框输入下面的信息点击确定，然后根据提示即可安装:</p>
+
+<p>  Name: RMI-plug</p>
+
+<p>  Location: http://www.genady.net/rmi/v20/install_e35/</p></li>
+<li><p>安装完后，在菜单栏的“窗口“ –> “首选项“ –>”Java” –> “RMI”里输入注册码，完成注册。 建议使用在线安装方法，这样不容易出错。</p></li>
+</ul>
+
+
+<hr />
+
+<h1>RMI插件的使用</h1>
+
+<p>如果你上面的步骤没有错的话，使用RMI其实非常简单。</p>
+
+<p>1, 第一次运行某个程序，需要在”运行配置”里配置java策略文件和codebase。</p>
+
+<p>2，点击”运行”，运行方式选择”RMI Application”。</p>
+
+<hr />
+
+<p>希望上面的内容能为大家编写RMI程序提供一些帮助。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">liang</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-18T20:22:00+08:00" pubdate data-updated="true">May 18<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/java/'>JAVA</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.comflag.com/blog/2012/05/18/eclipseli-rmicha-jian-de-shi-yong/" data-via="" data-counturl="http://www.comflag.com/blog/2012/05/18/eclipseli-rmicha-jian-de-shi-yong/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/05/18/java-rmichu-yuan-cheng-stubwei-zhao-dao-yi-chang/" title="Previous Post: Java RMI出远程stub未找到异常">&laquo; Java RMI出远程stub未找到异常</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/05/18/mac-os-xan-zhuang-guo-cheng-chang-jian-cuo-wu-zong-jie/" title="Next Post: Mac OS X安装过程常见问题总结">Mac OS X安装过程常见问题总结 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+ <h1>Categories</h1>
+ <ul id="categories">
+ <li class='category'><a href=' /blog/categories/java/'>JAVA (5)</a></li>
+<li class='category'><a href=' /blog/categories/macos/'>MacOS (2)</a></li>
+<li class='category'><a href=' /blog/categories/ppc/'>PPC (2)</a></li>
+<li class='category'><a href=' /blog/categories/ubuntu/'>Ubuntu (3)</a></li>
+<li class='category'><a href=' /blog/categories/web/'>Web (1)</a></li>
+<li class='category'><a href=' /blog/categories/开源项目/'>开源项目 (1)</a></li>
+<li class='category'><a href=' /blog/categories/翻译/'>翻译 (1)</a></li>
+
+ </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/05/18/grub2yin-dao-an-zhuang-ubuntu11-dot-04/">grub2引导安装ubuntu11.04</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/18/ubuntuxia-an-zhuang-apache-plus-php-plus-mysysql/">ubuntu下安装Apache+PHP+Mysysql</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/18/ubuntuzai-zhong-duan-zhong-shi-yong-lynxfang-wen-hu-lian-wang/">Ubuntu在终端中使用lynx访问互联网</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/18/rang-ppccheng-wei-webfu-wu-qi-yu-pcjin-xing-shu-ju-tong-bu/">让PPC成为web服务器与PC进行数据同步</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/05/18/fei-ge-chuan-shu-ppcban-shi-xian-ppcyu-pcde-tong-xin-he-wen-jian-jiao-liu/">飞鸽传输PPC版实现PPC与PC的通信和文件交流</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+<!--
+JSON-P Google Plus fetcher for Octopress
+(c) Jolam Jiang // MIT License
+
+You can see the tutorial of adding sidebar here:
+http://bandj.us/jo/blog/blog/2011/12/03/adding-google-plus-sidebar-to-octopress/
+-->
+
+<section>
+  <!-- load jquery -->
+  <script type="text/javascript" src="https://www.google.com/jsapi?key=AIzaSyCqR5_JXEJlRpJJmjLwiRxNR2M5xyxEOBI"></script>
+  <script type="text/javascript">
+    google.load("jquery", "1.7.1");
+  </script>
+  <!-- load jquery end -->
+  <script type="text/javascript">
+
+    $.noConflict();
+    jQuery(document).ready(function(){
+      plusLoadingStart();
+    });
+    jQuery.noConflict();
+
+    function plusLoadingStart() {
+      jQuery("#gplus_sidebar").css("display", "none");
+      getJSON();
+    }
+
+    function getJSON() {
+        jQuery.getJSON('https://www.googleapis.com/plus/v1/people/111349295116322770756?fields=aboutMe%2CdisplayName%2Cimage&pp=1&key=AIzaSyCqR5_JXEJlRpJJmjLwiRxNR2M5xyxEOBI&callback=?', function(resp){
+          updateProfile(resp);
+        });
+        jQuery.getJSON('https://www.googleapis.com/plus/v1/people/111349295116322770756/activities/public?alt=json&maxResults=10&fields=items&pp=1&key=AIzaSyCqR5_JXEJlRpJJmjLwiRxNR2M5xyxEOBI&callback=?', function(resp){
+          updatePosts(resp);
+        });
+      jQuery("#gplus_sidebar").css("display","block");
+    }
+
+    function updateProfile(resp) {
+      jQuery('#gplus_sidebar_profile_displayName').html(resp.displayName);
+      jQuery('#gplus_sidebar_profile_aboutMe').html(resp.aboutMe);
+      jQuery('#gplus_sidebar_profile_img').attr("src", resp.image.url);
+    }
+
+    function updatePosts(resp) {
+      var content = '';
+      for(var i = 0; i < resp.items.length; i++) {
+        var item = resp.items[i];
+        attachments = item.object.attachments;
+        content += appendLi(item.title, item.url, item.published, attachments);
+      }
+      jQuery('#gplus_sidebar_posts_ul').html(content);
+    }
+
+    function appendLi(title, url, time, attachments) {
+      if(title.length > 130) {
+        title = title.substring(0, 130);
+      }
+      var reg = /[\r\n][\r\n]/g;
+      title = title.replace(reg, "");
+      reg = /[\r\n]/g;
+      if(attachments == null) {
+        return '<li><p><a href="' + url + '">' + title + '</a> </p><p class="time_and_attachment">' + time.substring(0, 10) + '</p></li>';
+      } else {
+        attach_url = attachments[0].url;
+        attach_url = attach_url.replace(reg, "");
+        return '<li><p><a href="' + url + '">' + title + '</a></p><p class="time_and_attachment">' + time.substring(0, 10) + '<span class="attachment_span"><a href="' + attach_url + '">[attachment]</a></span></p></li>';
+      }
+    }
+
+  </script>
+  <style>
+    #gplus_sidebar_profile {
+      display: block;
+    }
+    #gplus_sidebar_posts a:link, #gplus_sidebar_posts a:visited  {
+      display: block;
+      text-decoration: none;
+    }
+    #gplus_sidebar_profile_img {
+      margin-top: .6em !important;
+    }
+    #gplus_sidebar_profile p {
+      margin-bottom: .1em !important;
+    }
+    #gplus_sidebar_posts p {
+      margin-bottom: .2em !important; 
+    }
+    #gplus_sidebar_posts .attachment_span {
+      float : right;
+    }
+    #gplus_sidebar_posts .time_and_attachment {
+      margin-top: .5em !important;
+      font-size: 60%;
+    }
+  </style>
+  <div id="gplus_sidebar_profile">
+    <h1>G+ Profile</h1>
+    <img id="gplus_sidebar_profile_img" src="http://www.gravatar.com/avatar/111349295116322770756?d=mm" />
+    <a href="https://plus.google.com/111349295116322770756/posts/"><p id="gplus_sidebar_profile_displayName">loading...</p></a>
+    <p id="gplus_sidebar_profile_aboutMe">loading...</p>
+  </div>
+  <div id="gplus_sidebar_posts">
+    <h1>Recent G+ Posts</h1>
+    <ul id="gplus_sidebar_posts_ul" class="recent_posts">
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/zhangliang605?count=8&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/zhangliang605">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+
+<section class="googleplus googleplus-hidden">
+  <h1>
+    <a href="https://plus.google.com/111349295116322770756?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - liang -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'comflagblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://www.comflag.com/blog/2012/05/18/eclipseli-rmicha-jian-de-shi-yong/';
+        var disqus_url = 'http://www.comflag.com/blog/2012/05/18/eclipseli-rmicha-jian-de-shi-yong/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

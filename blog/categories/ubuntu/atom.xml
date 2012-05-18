@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Ubuntu | comflag]]></title>
+  <link href="http://www.comflag.com/blog/categories/ubuntu/atom.xml" rel="self"/>
+  <link href="http://www.comflag.com/"/>
+  <updated>2012-05-18T22:01:50+08:00</updated>
+  <id>http://www.comflag.com/</id>
+  <author>
+    <name><![CDATA[liang]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[grub2引导安装ubuntu11.04]]></title>
+    <link href="http://www.comflag.com/blog/2012/05/18/grub2yin-dao-an-zhuang-ubuntu11-dot-04/"/>
+    <updated>2012-05-18T21:02:00+08:00</updated>
+    <id>http://www.comflag.com/blog/2012/05/18/grub2yin-dao-an-zhuang-ubuntu11-dot-04</id>
+    <content type="html"><![CDATA[<p>写在前面:这篇文章早几天就想写了，因为方法早就想好了，今天在自己电脑上实践了一下，成功了，嘿嘿，这才决定写出来。很多人下载了ubuntu11.04的iso镜像后通常要不刻CD盘，要不刻录到u盘，刻CD盘费钱，刻u盘不一定能成功。</p>
+
+<!--more-->
+
+
+<p>其实，我们可以用ubuntu自带的引导器grub2来直接引导启动硬盘上的ISO镜像。整个过程只有简单的几个命令，启动速度非常快(毕竟ISO镜像是在硬盘上，光盘和u盘还是不能比的)，而且低碳环保，嘿嘿~~</p>
+
+<ul>
+<li><p>步骤一，要有gurb2的命令行环境，如果以前安装了ubutnu则开机就是gurb2(注:burg也是gurb2哦，一样的操作)，在选择菜单按’c’键自动进入命令行模式(按’ESC’退出命令行模式)，如果没有安装过ubuntu，可以将grub2安装到u盘，开机从u盘启动即可进入gurb2菜单，这个方法很多…</p></li>
+<li><p>步骤二，下载ubuntu的iso镜像，放在硬盘分区的根目录下，建议放在根目录下，这样在命令行下好找，不容易出问题，比如我的放在了D盘。</p></li>
+<li><p>步骤三，重启电脑，进入grub2的命令行模式，一步一步输入以下命令。</p></li>
+</ul>
+
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>grub</span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;grub&gt; <span class="nb">set </span><span class="nv">root</span><span class="o">=(</span>hd0,2<span class="o">)</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;grub&gt; loopback loop <span class="o">(</span>hd0,2<span class="o">)</span>/ubuntu-11.04-desktop-i386.iso&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;grub&gt; linux <span class="o">(</span>loop<span class="o">)</span>/casper/vmlinuz <span class="nv">boot</span><span class="o">=</span>casper iso-scan/filename<span class="o">=</span>/ubuntu-11.04-desktop-i386.iso&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;grub&gt; initrd <span class="o">(</span>loop<span class="o">)</span>/casper/initrd.lz&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;grub&gt; boot&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<ul>
+<li>步骤四，上一步的boot命令执行后计算机开始命令行的滚屏，爽，最后如果成功，会提示很多选项ok，然后ubuntu的iso镜像顺利引导，进入ubuntu11.04的live cd桌面，桌面上有install ubuntu的字样，和光盘启动时的样子一模一样，接下来的安装工作就简单了…</li>
+</ul>
+
+
+<h1>第三步中命令的解释：</h1>
+
+<ul>
+<li><p>set root=(hd0,2)，设置根目录为(hd0,2)，因为我的iso镜像放在D盘，我的D盘对应着gurb2硬盘目录的(hd0,2)，hd0表示第一块硬盘(硬盘以0开始计数),2表示第2个分区(分区从1开始计数)。</p></li>
+<li><p>loopback loop (hd0,2)/ubuntu-11.04-desktop-i386.iso，创建一个回放设备loop，回放设备可以加载iso镜像，这里将我D盘根目录下的ubuntu的iso镜像加载到loop中，从此loop就代表了这个iso镜像，就像是cd光驱一样，可以查看iso中文件和目录。</p></li>
+<li><p>linux (loop)/casper/vmlinuz boot=casper iso-scan/filename=/ubuntu-11.04-desktop-i386.iso，这一步很重要，我失败好几次都是在这里，注意，iso-scan/filename是设置iso镜像的绝对路径的意思，在第一步将(hd0,2)设置为根目录，这里直接用/ubuntu-11.04-desktop-i386.iso就表示根目录下的这个iso镜像，一定不能用./ubuntu…或者(hd0,2)/ubuntu…,我都试了，失败。casper是iso镜像里的一个目录，如果你用虚拟光驱打开了这个iso就可以看到casper这个目录，vmlinuz毫无疑问是/casper的文件，它和ubuntu的引导有关，boot=casper这也很重要，因为不同的linux版本是不一样的，ubuntu的标志是casper，red hat好像是live，请注意。</p></li>
+<li><p>initrd (loop)/casper/initrd.lz，这个也是和引导有关的，initrd.lz是iso镜像中casper目录下的initrd.lz文件，不要写错了。</p></li>
+<li><p>boot，这个命令是启动的意思，该命令执行后，系统就会从(hd0,2)启动并加载iso镜像了。</p></li>
+<li><p>启动后，接下来是命令行的滚屏，如果失败，会提示诸如ubuntu.xxx.iso镜像找不到的问题。这通常都是你的iso镜像路径设置的不对，要仔细检查。</p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[ubuntu下安装Apache+PHP+Mysysql]]></title>
+    <link href="http://www.comflag.com/blog/2012/05/18/ubuntuxia-an-zhuang-apache-plus-php-plus-mysysql/"/>
+    <updated>2012-05-18T20:54:00+08:00</updated>
+    <id>http://www.comflag.com/blog/2012/05/18/ubuntuxia-an-zhuang-apache-plus-php-plus-mysysql</id>
+    <content type="html"><![CDATA[<p>电影《社交网络》中，facebook创始人马克.扎克失恋后入侵哈佛大学宿舍楼服务器，窃取数据库资料，并在两个小时内完成了一个给校内女生评分的交互网站，该网站一天内点击数过10W，直接导致学校服务器崩溃。。。。。。</p>
+
+<!--more-->
+
+
+<p>其实，构建那样一个网站并不需要很多高深的技术，任何一个有一定网络编程基础的人都可以做到。马克构建网站所用的是Apache服务器和PHP服务器脚本语言，而facebook后台也是用Apache+PHP+Mysql写的，当然，现在facebooke服务器的吞吐能力已经大的惊人了。</p>
+
+<p>话说回来，很多人可能已经用上ubuntu了，大家可能花了大量时间在ubuntu的美化上，这无可厚非，但是，ubuntu应该给我们的工作和学习带来更多的便利和方便。ubuntu作为linux，为我们提供了强大的网络方面的功能，其中的服务器技术尤其强大，安全。如果不学习linux的网络技术，很难说自己掌握了linux。</p>
+
+<p>今天，我在ubuntu下配置了一个Apache服务器。通过Apache我们可以学习php网络编程，可以用它来部署自己本地的wordpress博客，从而进一步通过网络和朋友交流。从此，你将深刻体会到网络带个我们的神奇力量，至少我是这样觉得的…</p>
+
+<ul>
+<li><p>步骤一，安装apache2</p>
+
+<pre><code>  sudo apt-get install apache2
+</code></pre>
+
+<p>  安装完成。运行如下命令重启下：</p>
+
+<pre><code>  sudo /etc/init.d/apache2 restart
+</code></pre>
+
+<p>  在浏览器里输入http://localhost或者是http://127.0.0.1，如果看到了It works!，那就说明Apache就成功的安装了，Apache的默认安装，会在/var下建立一个名为www的目录，这个就是Web目录了，所有要能过浏览器访问的Web文件都要放到这个目录里。</p></li>
+<li><p>步骤二 ，安装php,在终端输入命令</p>
+
+<pre><code>  sudo apt-get install libapache2-mod-php5 php5
+</code></pre>
+
+<p>  此外，建议安装扩展php5-gd php5-mysql，安装方式同上. 安装完后，我们要重新启动Apache，让它加载PHP模块：</p>
+
+<pre><code>  sudo /etc/init.d/apache2 restart
+</code></pre>
+
+<p>  接下来，我们就在Web目录下面新建一个test.php文件来测试PHP是否能正常的运行，命令：</p>
+
+<pre><code>  sudo gedit /var/www/test.php
+</code></pre>
+
+<p>  然后输入:</p>
+
+<pre><code>  &lt;?php echo hello,world!! ?&gt;
+</code></pre>
+
+<p>  接着保存文件,在浏览器里输入http://127.0.0.1/test.php，如果在网页中显示hello,world!!，那就说明PHP已经正常运行了。</p></li>
+<li><p>步骤三,安装mysql数据库:</p>
+
+<p>  在终端输入命令</p>
+
+<pre><code>  sudo apt-get install mysql-server mysql-client
+</code></pre>
+
+<p>  apt-get程序会自动下载安装最新的mysql版本。在安装的最后，它会要求里输入root的密码，注意，这里的root密码可不是Ubuntu的root密码啊，是你要给MySQL设定的root密码。</p></li>
+<li><p>步骤四,安装phpmyadmin-Mysql数据库管理</p>
+
+<p>  在终端输入命令</p>
+
+<pre><code>  sudo apt-get install phpmyadmin
+</code></pre>
+
+<p>  phpmyadmin设置：在安装过程中会要求选择Web server：apache2或lighttpd，使用空格键选定apache2，按tab键然后确定。然后会要求输入设置的Mysql数据库密码连接密码Password of the database’s administrative user。</p>
+
+<p>  然后将phpmyadmin与apache2建立连接，以我的为例：www目录在/var/www，phpmyadmin在/usr/share /phpmyadmin目录，所以就用命令：</p>
+
+<pre><code>  sudo ln -s /usr/share/phpmyadmin /var/www
+</code></pre>
+
+<p>  建立链接。 phpmyadmin测试：在浏览器地址栏中打开http://localhost/phpmyadmin。</p></li>
+</ul>
+
+
+<h3>以上LAMP的基本组件就安装完毕了，下面我们再来看一些其他的设置：</h3>
+
+<ul>
+<li><p>步骤五，设置Ubuntu文件执行读写权限
+  LAMP组建安装好之后，PHP网络服务器根目录默认设置是在：/var/www。由于Linux系统的安全性原则，改目录下的文件读写权限是只允许root用户操作的，所以我们不能在www文件夹中新建php文件，也不能修改和删除，必须要先修改/var/www目录的读写权限。在界面管理器中通过右键属性不能修改文件权限，得执行root终端命令：</p>
+
+<pre><code>  sudo chmod 777 /var/www
+</code></pre>
+
+<p>  然后就可以写入html或php文件了。777是linux中的最高权限，表示可读，可写，可执行。</p></li>
+</ul>
+
+
+<h2>注:</h2>
+
+<p>1，Apache是世界使用排名第一的Web服务器软件。它可以运行在几乎所有广泛使用的计算机平台上，由于其跨平台和安全性被广泛使用，是最流行的Web服务器端软件之一。同时Apache音译为阿帕奇，是北美印第安人的一个部落，叫阿帕奇族，在美国的西南部，以勇敢和忍耐力著称。</p>
+
+<p>2，MySql是一个小型关系型数据库，目前MySQL被广泛地应用在Internet上的中小型网站中。由于其体积小、速度快、总体拥有成本低，尤其是开放源码这一特点，许多中小型网站为了降低网站总体拥有成本而选择了MySQL作为网站数据库。</p>
+
+<p>3，PHP，是英文超级文本预处理语言Hypertext Preprocessor的缩写。PHP 是一种 HTML 内嵌式的语言，是一种在服务器端执行的嵌入HTML文档的脚本语言，语言的风格有类似于C语言，被广泛的运用。</p>
+
+<p>PS: 这个黄金组合是我网络编程的开始，也是我最喜欢的工具…</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ubuntu在终端中使用lynx访问互联网]]></title>
+    <link href="http://www.comflag.com/blog/2012/05/18/ubuntuzai-zhong-duan-zhong-shi-yong-lynxfang-wen-hu-lian-wang/"/>
+    <updated>2012-05-18T20:42:00+08:00</updated>
+    <id>http://www.comflag.com/blog/2012/05/18/ubuntuzai-zhong-duan-zhong-shi-yong-lynxfang-wen-hu-lian-wang</id>
+    <content type="html"><![CDATA[<p>大家熟悉的Opera是一个灵巧的浏览器。它发布于1996年。但是在它诞生的前一年一个命令行下的全能的浏览器已经在众多志愿者的帮助一下悄然走进了我们的世界，这就是Lynx浏览器.</p>
+
+<!--more-->
+
+
+<p>Lynx 是一个字符界面下的全功能的WWW浏览器。Lynx 可以运行在很多种 操作系统下，如VMS, UNIX, Windows 95, Windows NT等，当然也包括Linux。 由于没有漂亮的图形界面，所以 Lynx 占用资源极少，而且速度很快。另外 Lynx 还是唯一能在字符终端下运行的 WWW 浏览器，相比较之前介绍的w3m是有过之而无不及啊。</p>
+
+<p>Lynx支持多种协议。可以以 lynx filename 和 lynx PROTOCOL: //HOST/PATH/FILENAME 的形式 运行 Lynx ，其中前一种用于浏览本地文件，后一种用于浏览 Internet。 协议 (PROTOCOL)，可以是 http, gopher, ftp 和 wais。***### 在ubuntu下可以在终端输入如下命令安装即可:</p>
+
+<pre><code>sudo apt-get install lynx
+</code></pre>
+
+<p>注意: 如果终端提示没有找到软件包，可以在添加如下源然后更新后在安装即可:</p>
+
+<ul>
+<li><p>打开源文件</p>
+
+<pre><code>  sudo gedit /etc/apt/sources.list
+</code></pre></li>
+<li><p>添加源</p></li>
+</ul>
+
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>添加源 </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>  deb http://mirrors.163.com/ubuntu/ maverick main universe restricted multiverse
+</span><span class='line'>  deb-src http://mirrors.163.com/ubuntu/ maverick main universe restricted multiverse
+</span><span class='line'>  deb http://mirrors.163.com/ubuntu/ maverick-security universe main multiverse restricted
+</span><span class='line'>  deb-src http://mirrors.163.com/ubuntu/ maverick-security universe main multiverse restricted
+</span><span class='line'>  deb http://mirrors.163.com/ubuntu/ maverick-updates universe main multiverse restricted
+</span><span class='line'>  deb http://mirrors.163.com/ubuntu/ maverick-proposed universe main multiverse restricted
+</span><span class='line'>  deb-src http://mirrors.163.com/ubuntu/ maverick-proposed universe main multiverse restricted
+</span><span class='line'>  deb http://mirrors.163.com/ubuntu/ maverick-backports universe main multiverse restricted
+</span><span class='line'>  deb-src http://mirrors.163.com/ubuntu/ maverick-backports universe main multiverse restricted
+</span><span class='line'>  deb-src http://mirrors.163.com/ubuntu/ maverick-updates universe main multiverse restricted&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<ul>
+<li><p>更新</p>
+
+<pre><code>  sudo apt-get update
+</code></pre></li>
+</ul>
+
+
+<hr />
+
+<h1>使用</h1>
+
+<ul>
+<li><p>浏览网页:直接在终端中输入命令即可</p>
+
+<pre><code>  lynx localhost/wordpress
+</code></pre></li>
+<li><p>浏览本地文件:直接在终端中输入本地目录,可以使用tab补全</p>
+
+<pre><code>  lynx /home
+</code></pre></li>
+</ul>
+
+
+<hr />
+
+<h1>基本操作</h1>
+
+<ul>
+<li><p>移动命令</p>
+
+<ul>
+<li>下方向键：页面上的下一个链接(用高亮度显示)。</li>
+<li>上方向键：页面上的前一个链接(用高亮度显示)。</li>
+<li>回车和右方向键：跳转到链接指向的地址。</li>
+<li>左方向键：回到上一个页面。</li>
+</ul>
+</li>
+<li><p>滚动命令：</p>
+
+<ul>
+<li>+,Page-Down,Space,Ctrl+f：向下翻页。</li>
+<li>-,Page-Up,b,Ctrl+b：向上翻页。</li>
+<li>Ctrl+a： 移动到当前页的最前面。</li>
+<li>Ctrl+e： 移动到当前页的最后面。</li>
+<li>Ctrl+n： 向下翻两行。</li>
+<li>Ctrl+p： 往回翻两行。</li>
+<li>)： 向下翻半页。</li>
+<li>(： 往回翻半页。</li>
+</ul>
+</li>
+<li><p>文件操作命令：</p>
+
+<ul>
+<li>c： 建立一个新文件。</li>
+<li>d： 下载选中的文件。</li>
+<li>E： 编辑选中的文件。</li>
+<li>f： 为当前文件显示一个选项菜单。</li>
+<li>m： 修改选中文件的名字或位置。</li>
+<li>r： 删除选中的文件。</li>
+<li>t： Tag highlighted file。</li>
+<li>u： 上载一个文件到当前目录。</li>
+</ul>
+</li>
+<li><p>其他命令：</p>
+
+<ul>
+<li>?,h： 帮助。</li>
+<li>a： 把当前链接加入到一个书签文件里。</li>
+<li>c： 向页面的拥有者发送意见或建议。</li>
+<li>d： 下载当前链接。</li>
+<li>e： 编辑当前文件。</li>
+<li>g： 跳转到一个用户指定的URL或文件。</li>
+<li>G： 编辑当前页的URL，并跳转到这个URL。</li>
+<li>i： 显示文档索引。</li>
+<li>j： 执行预先定义的“短”命令。</li>
+<li>k： 显示键盘命令列表。</li>
+<li>l： 列出当前页上所有链接的地址。</li>
+<li>m： 回到首页。</li>
+<li>o： 设置选项。</li>
+<li>p： 把当前页输出到文件，e-mail，打印机或其他地方。</li>
+<li>q： 退出。</li>
+<li>/： 在当前页内查找字符串。</li>
+<li>s： 在外部搜索输入的字符串。</li>
+<li>n： 搜索下一个。</li>
+<li>v： 查看一个书签文件。</li>
+<li>V： 跳转到访问过的地址。</li>
+<li>x： 不使用缓存。</li>
+<li>z： 停止当前传输。</li>
+<li>[backspace]：跳转到历史页(同 V 命令)。</li>
+<li>=： 显示当前页的信息。</li>
+<li>： 查看当前页的源代码。</li>
+<li>!： 回到shell提示符下。</li>
+<li>_： 清除当前任务的所有授权信息。</li>
+<li>： 图形链接模式的切换开关。</li>
+<li>@： 8位传输模式或CJK模式的切换开关。</li>
+<li>[： pseudo_inlines 模式的切换开关。</li>
+<li>]： 为当前页或当前链接发送一个“HEAD”请求。</li>
+<li>Ctrl+r： 重新装如当前页并且刷新屏幕。</li>
+<li>Ctrl+w： 刷新屏幕。</li>
+<li>）Ctrl+u： 删除输入的行。</li>
+<li>Ctrl+g： 取消输入或者传送。</li>
+<li>Ctrl+t： 跟踪模式的切换开关。</li>
+<li>;： 看 Lynx 对当前任务的跟踪记录。</li>
+<li>Ctrl+k： 调用 Cookie Jar 页。</li>
+<li>数字键： 到后面的第 n 个链接。</li>
+</ul>
+
+
+<hr />
+
+<p>  # Unix系统的终端真是可见一斑啊… <br/>
+  <img src="http://pic.yupoo.com/comflag/B6xMCJ5X/5EZqI.png" width="800" height="600"></p>
+
+<p>  <img src="http://pic.yupoo.com/comflag/B6xMyAss/jsKF2.png" width="800" height="600"></p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

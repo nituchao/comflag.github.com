@@ -1,0 +1,867 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[comflag]]></title>
+  <link href="http://www.comflag.com/atom.xml" rel="self"/>
+  <link href="http://www.comflag.com/"/>
+  <updated>2012-05-18T22:01:50+08:00</updated>
+  <id>http://www.comflag.com/</id>
+  <author>
+    <name><![CDATA[liang]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[grub2引导安装ubuntu11.04]]></title>
+    <link href="http://www.comflag.com/blog/2012/05/18/grub2yin-dao-an-zhuang-ubuntu11-dot-04/"/>
+    <updated>2012-05-18T21:02:00+08:00</updated>
+    <id>http://www.comflag.com/blog/2012/05/18/grub2yin-dao-an-zhuang-ubuntu11-dot-04</id>
+    <content type="html"><![CDATA[<p>写在前面:这篇文章早几天就想写了，因为方法早就想好了，今天在自己电脑上实践了一下，成功了，嘿嘿，这才决定写出来。很多人下载了ubuntu11.04的iso镜像后通常要不刻CD盘，要不刻录到u盘，刻CD盘费钱，刻u盘不一定能成功。</p>
+
+<!--more-->
+
+
+<p>其实，我们可以用ubuntu自带的引导器grub2来直接引导启动硬盘上的ISO镜像。整个过程只有简单的几个命令，启动速度非常快(毕竟ISO镜像是在硬盘上，光盘和u盘还是不能比的)，而且低碳环保，嘿嘿~~</p>
+
+<ul>
+<li><p>步骤一，要有gurb2的命令行环境，如果以前安装了ubutnu则开机就是gurb2(注:burg也是gurb2哦，一样的操作)，在选择菜单按’c’键自动进入命令行模式(按’ESC’退出命令行模式)，如果没有安装过ubuntu，可以将grub2安装到u盘，开机从u盘启动即可进入gurb2菜单，这个方法很多…</p></li>
+<li><p>步骤二，下载ubuntu的iso镜像，放在硬盘分区的根目录下，建议放在根目录下，这样在命令行下好找，不容易出问题，比如我的放在了D盘。</p></li>
+<li><p>步骤三，重启电脑，进入grub2的命令行模式，一步一步输入以下命令。</p></li>
+</ul>
+
+
+<figure class='code'><figcaption><span>grub</span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>grub&gt; <span class="nb">set </span><span class="nv">root</span><span class="o">=(</span>hd0,2<span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'>grub&gt; loopback loop <span class="o">(</span>hd0,2<span class="o">)</span>/ubuntu-11.04-desktop-i386.iso
+</span><span class='line'>
+</span><span class='line'>grub&gt; linux <span class="o">(</span>loop<span class="o">)</span>/casper/vmlinuz <span class="nv">boot</span><span class="o">=</span>casper iso-scan/filename<span class="o">=</span>/ubuntu-11.04-desktop-i386.iso
+</span><span class='line'>
+</span><span class='line'>grub&gt; initrd <span class="o">(</span>loop<span class="o">)</span>/casper/initrd.lz
+</span><span class='line'>
+</span><span class='line'>grub&gt; boot
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>步骤四，上一步的boot命令执行后计算机开始命令行的滚屏，爽，最后如果成功，会提示很多选项ok，然后ubuntu的iso镜像顺利引导，进入ubuntu11.04的live cd桌面，桌面上有install ubuntu的字样，和光盘启动时的样子一模一样，接下来的安装工作就简单了…</li>
+</ul>
+
+
+<h1>第三步中命令的解释：</h1>
+
+<ul>
+<li><p>set root=(hd0,2)，设置根目录为(hd0,2)，因为我的iso镜像放在D盘，我的D盘对应着gurb2硬盘目录的(hd0,2)，hd0表示第一块硬盘(硬盘以0开始计数),2表示第2个分区(分区从1开始计数)。</p></li>
+<li><p>loopback loop (hd0,2)/ubuntu-11.04-desktop-i386.iso，创建一个回放设备loop，回放设备可以加载iso镜像，这里将我D盘根目录下的ubuntu的iso镜像加载到loop中，从此loop就代表了这个iso镜像，就像是cd光驱一样，可以查看iso中文件和目录。</p></li>
+<li><p>linux (loop)/casper/vmlinuz boot=casper iso-scan/filename=/ubuntu-11.04-desktop-i386.iso，这一步很重要，我失败好几次都是在这里，注意，iso-scan/filename是设置iso镜像的绝对路径的意思，在第一步将(hd0,2)设置为根目录，这里直接用/ubuntu-11.04-desktop-i386.iso就表示根目录下的这个iso镜像，一定不能用./ubuntu…或者(hd0,2)/ubuntu…,我都试了，失败。casper是iso镜像里的一个目录，如果你用虚拟光驱打开了这个iso就可以看到casper这个目录，vmlinuz毫无疑问是/casper的文件，它和ubuntu的引导有关，boot=casper这也很重要，因为不同的linux版本是不一样的，ubuntu的标志是casper，red hat好像是live，请注意。</p></li>
+<li><p>initrd (loop)/casper/initrd.lz，这个也是和引导有关的，initrd.lz是iso镜像中casper目录下的initrd.lz文件，不要写错了。</p></li>
+<li><p>boot，这个命令是启动的意思，该命令执行后，系统就会从(hd0,2)启动并加载iso镜像了。</p></li>
+<li><p>启动后，接下来是命令行的滚屏，如果失败，会提示诸如ubuntu.xxx.iso镜像找不到的问题。这通常都是你的iso镜像路径设置的不对，要仔细检查。</p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[ubuntu下安装Apache+PHP+Mysysql]]></title>
+    <link href="http://www.comflag.com/blog/2012/05/18/ubuntuxia-an-zhuang-apache-plus-php-plus-mysysql/"/>
+    <updated>2012-05-18T20:54:00+08:00</updated>
+    <id>http://www.comflag.com/blog/2012/05/18/ubuntuxia-an-zhuang-apache-plus-php-plus-mysysql</id>
+    <content type="html"><![CDATA[<p>电影《社交网络》中，facebook创始人马克.扎克失恋后入侵哈佛大学宿舍楼服务器，窃取数据库资料，并在两个小时内完成了一个给校内女生评分的交互网站，该网站一天内点击数过10W，直接导致学校服务器崩溃。。。。。。</p>
+
+<!--more-->
+
+
+<p>其实，构建那样一个网站并不需要很多高深的技术，任何一个有一定网络编程基础的人都可以做到。马克构建网站所用的是Apache服务器和PHP服务器脚本语言，而facebook后台也是用Apache+PHP+Mysql写的，当然，现在facebooke服务器的吞吐能力已经大的惊人了。</p>
+
+<p>话说回来，很多人可能已经用上ubuntu了，大家可能花了大量时间在ubuntu的美化上，这无可厚非，但是，ubuntu应该给我们的工作和学习带来更多的便利和方便。ubuntu作为linux，为我们提供了强大的网络方面的功能，其中的服务器技术尤其强大，安全。如果不学习linux的网络技术，很难说自己掌握了linux。</p>
+
+<p>今天，我在ubuntu下配置了一个Apache服务器。通过Apache我们可以学习php网络编程，可以用它来部署自己本地的wordpress博客，从而进一步通过网络和朋友交流。从此，你将深刻体会到网络带个我们的神奇力量，至少我是这样觉得的…</p>
+
+<ul>
+<li><p>步骤一，安装apache2</p>
+
+<pre><code>  sudo apt-get install apache2
+</code></pre>
+
+<p>  安装完成。运行如下命令重启下：</p>
+
+<pre><code>  sudo /etc/init.d/apache2 restart
+</code></pre>
+
+<p>  在浏览器里输入http://localhost或者是http://127.0.0.1，如果看到了It works!，那就说明Apache就成功的安装了，Apache的默认安装，会在/var下建立一个名为www的目录，这个就是Web目录了，所有要能过浏览器访问的Web文件都要放到这个目录里。</p></li>
+<li><p>步骤二 ，安装php,在终端输入命令</p>
+
+<pre><code>  sudo apt-get install libapache2-mod-php5 php5
+</code></pre>
+
+<p>  此外，建议安装扩展php5-gd php5-mysql，安装方式同上. 安装完后，我们要重新启动Apache，让它加载PHP模块：</p>
+
+<pre><code>  sudo /etc/init.d/apache2 restart
+</code></pre>
+
+<p>  接下来，我们就在Web目录下面新建一个test.php文件来测试PHP是否能正常的运行，命令：</p>
+
+<pre><code>  sudo gedit /var/www/test.php
+</code></pre>
+
+<p>  然后输入:</p>
+
+<pre><code>  &lt;?php echo hello,world!! ?&gt;
+</code></pre>
+
+<p>  接着保存文件,在浏览器里输入http://127.0.0.1/test.php，如果在网页中显示hello,world!!，那就说明PHP已经正常运行了。</p></li>
+<li><p>步骤三,安装mysql数据库:</p>
+
+<p>  在终端输入命令</p>
+
+<pre><code>  sudo apt-get install mysql-server mysql-client
+</code></pre>
+
+<p>  apt-get程序会自动下载安装最新的mysql版本。在安装的最后，它会要求里输入root的密码，注意，这里的root密码可不是Ubuntu的root密码啊，是你要给MySQL设定的root密码。</p></li>
+<li><p>步骤四,安装phpmyadmin-Mysql数据库管理</p>
+
+<p>  在终端输入命令</p>
+
+<pre><code>  sudo apt-get install phpmyadmin
+</code></pre>
+
+<p>  phpmyadmin设置：在安装过程中会要求选择Web server：apache2或lighttpd，使用空格键选定apache2，按tab键然后确定。然后会要求输入设置的Mysql数据库密码连接密码Password of the database’s administrative user。</p>
+
+<p>  然后将phpmyadmin与apache2建立连接，以我的为例：www目录在/var/www，phpmyadmin在/usr/share /phpmyadmin目录，所以就用命令：</p>
+
+<pre><code>  sudo ln -s /usr/share/phpmyadmin /var/www
+</code></pre>
+
+<p>  建立链接。 phpmyadmin测试：在浏览器地址栏中打开http://localhost/phpmyadmin。</p></li>
+</ul>
+
+
+<h3>以上LAMP的基本组件就安装完毕了，下面我们再来看一些其他的设置：</h3>
+
+<ul>
+<li><p>步骤五，设置Ubuntu文件执行读写权限
+  LAMP组建安装好之后，PHP网络服务器根目录默认设置是在：/var/www。由于Linux系统的安全性原则，改目录下的文件读写权限是只允许root用户操作的，所以我们不能在www文件夹中新建php文件，也不能修改和删除，必须要先修改/var/www目录的读写权限。在界面管理器中通过右键属性不能修改文件权限，得执行root终端命令：</p>
+
+<pre><code>  sudo chmod 777 /var/www
+</code></pre>
+
+<p>  然后就可以写入html或php文件了。777是linux中的最高权限，表示可读，可写，可执行。</p></li>
+</ul>
+
+
+<h2>注:</h2>
+
+<p>1，Apache是世界使用排名第一的Web服务器软件。它可以运行在几乎所有广泛使用的计算机平台上，由于其跨平台和安全性被广泛使用，是最流行的Web服务器端软件之一。同时Apache音译为阿帕奇，是北美印第安人的一个部落，叫阿帕奇族，在美国的西南部，以勇敢和忍耐力著称。</p>
+
+<p>2，MySql是一个小型关系型数据库，目前MySQL被广泛地应用在Internet上的中小型网站中。由于其体积小、速度快、总体拥有成本低，尤其是开放源码这一特点，许多中小型网站为了降低网站总体拥有成本而选择了MySQL作为网站数据库。</p>
+
+<p>3，PHP，是英文超级文本预处理语言Hypertext Preprocessor的缩写。PHP 是一种 HTML 内嵌式的语言，是一种在服务器端执行的嵌入HTML文档的脚本语言，语言的风格有类似于C语言，被广泛的运用。</p>
+
+<p>PS: 这个黄金组合是我网络编程的开始，也是我最喜欢的工具…</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ubuntu在终端中使用lynx访问互联网]]></title>
+    <link href="http://www.comflag.com/blog/2012/05/18/ubuntuzai-zhong-duan-zhong-shi-yong-lynxfang-wen-hu-lian-wang/"/>
+    <updated>2012-05-18T20:42:00+08:00</updated>
+    <id>http://www.comflag.com/blog/2012/05/18/ubuntuzai-zhong-duan-zhong-shi-yong-lynxfang-wen-hu-lian-wang</id>
+    <content type="html"><![CDATA[<p>大家熟悉的Opera是一个灵巧的浏览器。它发布于1996年。但是在它诞生的前一年一个命令行下的全能的浏览器已经在众多志愿者的帮助一下悄然走进了我们的世界，这就是Lynx浏览器.</p>
+
+<!--more-->
+
+
+<p>Lynx 是一个字符界面下的全功能的WWW浏览器。Lynx 可以运行在很多种 操作系统下，如VMS, UNIX, Windows 95, Windows NT等，当然也包括Linux。 由于没有漂亮的图形界面，所以 Lynx 占用资源极少，而且速度很快。另外 Lynx 还是唯一能在字符终端下运行的 WWW 浏览器，相比较之前介绍的w3m是有过之而无不及啊。</p>
+
+<p>Lynx支持多种协议。可以以 lynx filename 和 lynx PROTOCOL: //HOST/PATH/FILENAME 的形式 运行 Lynx ，其中前一种用于浏览本地文件，后一种用于浏览 Internet。 协议 (PROTOCOL)，可以是 http, gopher, ftp 和 wais。***### 在ubuntu下可以在终端输入如下命令安装即可:</p>
+
+<pre><code>sudo apt-get install lynx
+</code></pre>
+
+<p>注意: 如果终端提示没有找到软件包，可以在添加如下源然后更新后在安装即可:</p>
+
+<ul>
+<li><p>打开源文件</p>
+
+<pre><code>  sudo gedit /etc/apt/sources.list
+</code></pre></li>
+<li><p>添加源</p></li>
+</ul>
+
+
+<figure class='code'><figcaption><span>添加源 </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>  deb http://mirrors.163.com/ubuntu/ maverick main universe restricted multiverse
+</span><span class='line'>  deb-src http://mirrors.163.com/ubuntu/ maverick main universe restricted multiverse
+</span><span class='line'>  deb http://mirrors.163.com/ubuntu/ maverick-security universe main multiverse restricted
+</span><span class='line'>  deb-src http://mirrors.163.com/ubuntu/ maverick-security universe main multiverse restricted
+</span><span class='line'>  deb http://mirrors.163.com/ubuntu/ maverick-updates universe main multiverse restricted
+</span><span class='line'>  deb http://mirrors.163.com/ubuntu/ maverick-proposed universe main multiverse restricted
+</span><span class='line'>  deb-src http://mirrors.163.com/ubuntu/ maverick-proposed universe main multiverse restricted
+</span><span class='line'>  deb http://mirrors.163.com/ubuntu/ maverick-backports universe main multiverse restricted
+</span><span class='line'>  deb-src http://mirrors.163.com/ubuntu/ maverick-backports universe main multiverse restricted
+</span><span class='line'>  deb-src http://mirrors.163.com/ubuntu/ maverick-updates universe main multiverse restricted
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><p>更新</p>
+
+<pre><code>  sudo apt-get update
+</code></pre></li>
+</ul>
+
+
+<hr />
+
+<h1>使用</h1>
+
+<ul>
+<li><p>浏览网页:直接在终端中输入命令即可</p>
+
+<pre><code>  lynx localhost/wordpress
+</code></pre></li>
+<li><p>浏览本地文件:直接在终端中输入本地目录,可以使用tab补全</p>
+
+<pre><code>  lynx /home
+</code></pre></li>
+</ul>
+
+
+<hr />
+
+<h1>基本操作</h1>
+
+<ul>
+<li><p>移动命令</p>
+
+<ul>
+<li>下方向键：页面上的下一个链接(用高亮度显示)。</li>
+<li>上方向键：页面上的前一个链接(用高亮度显示)。</li>
+<li>回车和右方向键：跳转到链接指向的地址。</li>
+<li>左方向键：回到上一个页面。</li>
+</ul>
+</li>
+<li><p>滚动命令：</p>
+
+<ul>
+<li>+,Page-Down,Space,Ctrl+f：向下翻页。</li>
+<li>-,Page-Up,b,Ctrl+b：向上翻页。</li>
+<li>Ctrl+a： 移动到当前页的最前面。</li>
+<li>Ctrl+e： 移动到当前页的最后面。</li>
+<li>Ctrl+n： 向下翻两行。</li>
+<li>Ctrl+p： 往回翻两行。</li>
+<li>)： 向下翻半页。</li>
+<li>(： 往回翻半页。</li>
+</ul>
+</li>
+<li><p>文件操作命令：</p>
+
+<ul>
+<li>c： 建立一个新文件。</li>
+<li>d： 下载选中的文件。</li>
+<li>E： 编辑选中的文件。</li>
+<li>f： 为当前文件显示一个选项菜单。</li>
+<li>m： 修改选中文件的名字或位置。</li>
+<li>r： 删除选中的文件。</li>
+<li>t： Tag highlighted file。</li>
+<li>u： 上载一个文件到当前目录。</li>
+</ul>
+</li>
+<li><p>其他命令：</p>
+
+<ul>
+<li>?,h： 帮助。</li>
+<li>a： 把当前链接加入到一个书签文件里。</li>
+<li>c： 向页面的拥有者发送意见或建议。</li>
+<li>d： 下载当前链接。</li>
+<li>e： 编辑当前文件。</li>
+<li>g： 跳转到一个用户指定的URL或文件。</li>
+<li>G： 编辑当前页的URL，并跳转到这个URL。</li>
+<li>i： 显示文档索引。</li>
+<li>j： 执行预先定义的“短”命令。</li>
+<li>k： 显示键盘命令列表。</li>
+<li>l： 列出当前页上所有链接的地址。</li>
+<li>m： 回到首页。</li>
+<li>o： 设置选项。</li>
+<li>p： 把当前页输出到文件，e-mail，打印机或其他地方。</li>
+<li>q： 退出。</li>
+<li>/： 在当前页内查找字符串。</li>
+<li>s： 在外部搜索输入的字符串。</li>
+<li>n： 搜索下一个。</li>
+<li>v： 查看一个书签文件。</li>
+<li>V： 跳转到访问过的地址。</li>
+<li>x： 不使用缓存。</li>
+<li>z： 停止当前传输。</li>
+<li>[backspace]：跳转到历史页(同 V 命令)。</li>
+<li>=： 显示当前页的信息。</li>
+<li>： 查看当前页的源代码。</li>
+<li>!： 回到shell提示符下。</li>
+<li>_： 清除当前任务的所有授权信息。</li>
+<li>： 图形链接模式的切换开关。</li>
+<li>@： 8位传输模式或CJK模式的切换开关。</li>
+<li>[： pseudo_inlines 模式的切换开关。</li>
+<li>]： 为当前页或当前链接发送一个“HEAD”请求。</li>
+<li>Ctrl+r： 重新装如当前页并且刷新屏幕。</li>
+<li>Ctrl+w： 刷新屏幕。</li>
+<li>）Ctrl+u： 删除输入的行。</li>
+<li>Ctrl+g： 取消输入或者传送。</li>
+<li>Ctrl+t： 跟踪模式的切换开关。</li>
+<li>;： 看 Lynx 对当前任务的跟踪记录。</li>
+<li>Ctrl+k： 调用 Cookie Jar 页。</li>
+<li>数字键： 到后面的第 n 个链接。</li>
+</ul>
+
+
+<hr />
+
+<p>  # Unix系统的终端真是可见一斑啊… <br/>
+  <img src="http://pic.yupoo.com/comflag/B6xMCJ5X/5EZqI.png" width="800" height="600"></p>
+
+<p>  <img src="http://pic.yupoo.com/comflag/B6xMyAss/jsKF2.png" width="800" height="600"></p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[让PPC成为web服务器与PC进行数据同步]]></title>
+    <link href="http://www.comflag.com/blog/2012/05/18/rang-ppccheng-wei-webfu-wu-qi-yu-pcjin-xing-shu-ju-tong-bu/"/>
+    <updated>2012-05-18T20:39:00+08:00</updated>
+    <id>http://www.comflag.com/blog/2012/05/18/rang-ppccheng-wei-webfu-wu-qi-yu-pcjin-xing-shu-ju-tong-bu</id>
+    <content type="html"><![CDATA[<p>为了让手机和电脑同步数据，我可是下了老力气了，继电脑共享硬盘和使用飞鸽传书之后，我又找到了第三种方法，使用一个软件叫romote-access的软件，这是个手机软件，大家可以在网上下载。</p>
+
+<!--more-->
+
+
+<p>首先是手机安装romote-access.cab这个软件，然后，打开这个软件，第一次使用会提示你输入密码，密码必须不小与4个字符，然后确定后进入界面。</p>
+
+<p><img class="left" src="http://pic.yupoo.com/comflag/BUCvfme4/jlIYC.png" width="100" height="100"></p>
+
+<p>然后，如果手机和电脑的无线网络链接后，界面会显示手机的IP地址，你查一下是否和电脑无线网卡在一个网段，如果在，点击Enable，界面的Enable图标变成绿色。最后，在电脑的浏览器里输入输入手机IP地址，回车后就会出现一个登录界面，输入刚才的密码，connect后你就可以看到手机上的内容了，有手机ROM里的数据，手机SD卡数据，甚至还有短信，对了，在这个管理界面里可以发送和接收短信啊。 更强大的是，如果你使用的是IE浏览器，就可一开启高级界面模式，一个非常华丽的资源管理器就会出现在你面前，太漂亮了～～到目前位置，romote-access是我最喜欢的手机和电脑无线同步工具，那叫一个华丽的界面，我太喜欢了～～</p>
+
+<p><img src="http://pic.yupoo.com/comflag/BUCvfLCo/8FbkJ.png" width="800" height="600"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[飞鸽传输PPC版实现PPC与PC的通信和文件交流]]></title>
+    <link href="http://www.comflag.com/blog/2012/05/18/fei-ge-chuan-shu-ppcban-shi-xian-ppcyu-pcde-tong-xin-he-wen-jian-jiao-liu/"/>
+    <updated>2012-05-18T20:38:00+08:00</updated>
+    <id>http://www.comflag.com/blog/2012/05/18/fei-ge-chuan-shu-ppcban-shi-xian-ppcyu-pcde-tong-xin-he-wen-jian-jiao-liu</id>
+    <content type="html"><![CDATA[<p>通过共享电脑硬盘可以使PPC访问电脑硬盘上的资料，但是，如何将电脑上的资料不通过USB数据线而放到PPC上呢，其实可以用飞鸽传书来实现。飞鸽传书有PC版的和PPC版的，下载的时候要注意。</p>
+
+<!--more-->
+
+
+<p>关于wifi的设置很简单，其中要注意的是用PPC的网卡IP地址一定要和电脑的无线网卡IP地址在一个网段，要不然相互发现不了，这一步可以在电脑的cmd命令行模式下ping 手机网卡IP来判断是否链接上。设置好以后，分别在PPC上和电脑上运行飞鸽传书，刷新后就能发现对方了，这是可以对话，聊天，还可以发送文件。我寒假在家由于没有数据线，就是这样子同步电脑和手机数据的，对于我的TOUCH VIVA现在虽然已经非常过时了，我觉得n多功能我还没开发出来，吼吼～～</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[iCloud提示已达到帐户数量限制的解决办法]]></title>
+    <link href="http://www.comflag.com/blog/2012/05/18/icloudti-shi-yi-da-dao-zhang-hu-shu-liang-xian-zhi-de-jie-jue-ban-fa/"/>
+    <updated>2012-05-18T20:31:00+08:00</updated>
+    <id>http://www.comflag.com/blog/2012/05/18/icloudti-shi-yi-da-dao-zhang-hu-shu-liang-xian-zhi-de-jie-jue-ban-fa</id>
+    <content type="html"><![CDATA[<p>自从安装了Mac OS X 10.7.3后，iClound就一直不能使用，输入Apple ID后一直提示”已达到账户数量限制”，英文提示”Account Limit Reached”，但自己明明只在这一个Mac OS下登陆过，并且App Store和iTunes都可以正常登陆和使用。后来用英文在google里才找到了解决办法。现在已经能正常登陆iClound了。</p>
+
+<!--more-->
+
+
+<h1>解决办法</h1>
+
+<ul>
+<li>使用Chameleon Wizard生成一个带有有效serial number的smbios.plist文件，并把这个文件放到系统盘Extra目录下，注意，这一步最总要的是那个serial number，比如我的是 “CK9377851G0”。</li>
+</ul>
+
+
+<p><img src="http://pic.yupoo.com/comflag/BUbbT9VO/yqEJU.png" width="800" height="600"></p>
+
+<ul>
+<li>确保你的以太网卡(有线网)在系统信息页面显示的是”en0”。</li>
+</ul>
+
+
+<p><img src="http://pic.yupoo.com/comflag/BUbbUUKC/F47sC.png" width="800" height="600"></p>
+
+<ul>
+<li>确保你的WI-FI网卡(无线网)在系统信息页面显示的是”en1”。</li>
+</ul>
+
+
+<p><img src="http://pic.yupoo.com/comflag/BUbbUzCB/snoL8.png" width="800" height="600"></p>
+
+<ul>
+<li><p>确保你的org.chameleon.Boot.plist中有下面两行代码，如果没有请手动添加</p>
+
+<pre><code>  &lt;key&gt;EthernetBuiltIn&lt;/key&gt;
+  &lt;string&gt;Yes&lt;/string&gt;
+</code></pre></li>
+<li><p>重启计算机</p></li>
+</ul>
+
+
+<h5>说明:用到的工具比如Chameleon Wizard 4.1可以在网上很容易找到~~</h5>
+
+<hr />
+
+<p>重启计算机后，在系统设置偏好里打开icloud，输入账号，密码就应该能登陆了。</p>
+
+<p><img src="http://pic.yupoo.com/comflag/BUbbUsV7/4rr16.png" width="800" height="600"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mac OS X安装过程常见问题总结]]></title>
+    <link href="http://www.comflag.com/blog/2012/05/18/mac-os-xan-zhuang-guo-cheng-chang-jian-cuo-wu-zong-jie/"/>
+    <updated>2012-05-18T20:27:00+08:00</updated>
+    <id>http://www.comflag.com/blog/2012/05/18/mac-os-xan-zhuang-guo-cheng-chang-jian-cuo-wu-zong-jie</id>
+    <content type="html"><![CDATA[<p>一直使用的是Mac OS 10.7，最近终于经受不住群里童鞋们的诱惑，准备安装10.7.3，于是下载了10.7.3原版dmg镜像，在Mac OS Lion下按照以前安装盘制作教程在硬盘上重新制作了一个10.7.3的安装盘，然后进行覆盖安装。这个安装盘位于我的硬盘的最后一个分区，大小8.0G。</p>
+
+<!--more-->
+
+
+<p>但是，在安装的过程中，出现了几个一起从来没有出现的问题。</p>
+
+<ul>
+<li>启动安装盘，风火轮后黑屏，除了电源灯和蓝牙灯亮外，计算机没有反应。使用-v -f命令查看，命令行字幕滚动完毕后，计算机也是黑屏，不响应。</li>
+<li>启动安装盘，风火轮后进入安装界面，选择语言后下一步，提示”此版本的Mac os Lion不能安装到您的计算机上”，然后，就没有然后了。</li>
+<li>启动安装盘，风火轮后进入安装界面，选择语言后下一步，计算机自动关机。</li>
+<li>安装万能声卡驱动VoodooHDA.pkg后，开机出现无限风火轮，需要在windows下删除S/L/E下的VoodooHDA.kext驱动后才能进系统，当然，此时声卡还是无法驱动。</li>
+</ul>
+
+
+<p>表示以上几个问题在安装Mac OS 10.7时从来没有出现过。但是经过几天的研究，终于一个个都解决了。</p>
+
+<hr />
+
+<h1>解决办法:</h1>
+
+<ul>
+<li><p>启动安装盘，风火轮后黑屏</p>
+
+<p>  这个应该是显卡未识别的问题，解决办法很简单也很传统–替换dsdt.aml文件即可。需要说明的是，我用的是之前10.7版本的dsdt.aml，如果你的计算机出现这种黑屏，请替换下面我提供的新的dsdt.aml，我现在在10.7.3下用的就是这个dsdt.aml。</p></li>
+<li><p>启动安装盘，选择语言后提示”此版本的Mac os Lion不能安装到您的计算机上”</p></li>
+<li><p>启动安装盘，风火轮后进入安装界面，选择语言后下一步，计算机自动关机</p>
+
+<p>  这两个问题，通过查看安装日志，应该是安装盘里的OSInstall和OSInstall.mpkg没有替换或者替换的版本不当造成的。可以替换成下面提供的新的OSInstall和OSInstall.mpkg文件。</p></li>
+<li><p>声卡驱动导致系统无限风火轮</p>
+
+<p>  这个问题的解决很简单，我出现这个问题是因为在系统盘的E/E目录下放置了一个Apple原版的声卡驱动AppleHDADisabler.kext，导致两个驱动冲突了，只需要把E/E目录下的那个AppleHDADisabler.kext驱动删除，系统就可以正常引导，并且正常驱动声卡了。</p></li>
+</ul>
+
+
+<hr />
+
+<p>适合于Dell D630的Mac OS X 10.7.3最新可用破解文件: 传送门</p>
+
+<ul>
+<li><p>dsdt.aml</p></li>
+<li><p>OSInstall和OSInstall.mpkg</p></li>
+<li><p>fakeSMC.kext</p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Eclipse里RMI插件的使用]]></title>
+    <link href="http://www.comflag.com/blog/2012/05/18/eclipseli-rmicha-jian-de-shi-yong/"/>
+    <updated>2012-05-18T20:22:00+08:00</updated>
+    <id>http://www.comflag.com/blog/2012/05/18/eclipseli-rmicha-jian-de-shi-yong</id>
+    <content type="html"><![CDATA[<p>在Eclipse下编写RMI程序现在有一个非常好的插件RMI-plug，现在的最新版本是2.1.6，支持Eclipse3.5.x，它的主页有非常详细的各个版本信息的说明，<a href="http://www.genady.net/rmi/v20/index.html">RMI-plugin主页</a>。</p>
+
+<!--more-->
+
+
+<h1>注意事项</h1>
+
+<p>如何你是第一次使用RMI，那么使用RMI有一些需要注意的地方。</p>
+
+<hr />
+
+<ul>
+<li>这是一个收费插件，但是它为进行个人学习，以及开发开源软件的程序员提供免费的个人序列号(personal licenec)。免费的个人序列号有效期4个月，开源软件开发者序列号有效期长达1年。如果你为改进RMI-plugin作出贡献，这个项目组还会付给你钱。在申请也很简单，填写基本信息和申请理由，一周之内就会收到回复邮件，我现在已经申请到了两个序列号。如果个人开发，还是不要想着去破解了，我试过，那个破解的经常出错。个人序列号申请</li>
+<li>插件版本选择很重要。在下载页面，你会看到各个版本的RMI插件，基本上每个版本后面都写着支持Eclipse版本，虽然你会感慨RMI插件开发并没有跟上Eclipse的更新速度，但是请严格使用匹配的RMI插件版本和对应的Eclipse版本，比如v2.1.6支持Eclipse 3.5.x，如果你非要在Eclipse 3.7版里装RMI-plug v2.1.6，那么，很大程度上说，RMI-plug是不会正常工作的。所以一定要严格匹配版本，不要耍小聪明。RMI-plugin下载页面</li>
+</ul>
+
+
+<hr />
+
+<h1>RMI插件带来的好处</h1>
+
+<ul>
+<li><p>RMI插件可以自动生成桩(stub)文件，这就省去了一直使用rmic命令的麻烦。在Eclipse项目里右键选择”RMI” –> “Enable Stubs Generationg”开启自动生成桩文件。</p></li>
+<li><p>RMI插件可以方便的配置codebase和策略文件。在菜单栏里(或工具栏)选择”运行” –> “运行配置”，选中你要配置的RMI程序，点击标签栏里的”RMI VM Properties”标签，前两项就分别是策略文件和codebase。</p></li>
+<li><p>RMI Registry视图可以显示当前绑定(bind)到指定端口号的Register上的远程接口信息，包括远程接口位置，提供的远程方法等。该视图在菜单栏的”窗口”–>”显示视图” –> “其他” –> “RMI Views”里可以打开。</p></li>
+<li><p>RMI Spy视图可以监视远程接口的调用情况，你在这里可以清楚地看到那些远程对象被调用了，是谁调用的，请求信息，以及返回值信息等。要想开启该功能，你需要在”运行配置”的”RMI Lunch”标签页勾选该选项。关于RMI Spy的运行机制，可以参考我翻译的插件官方提供的说明文档。该视图菜单栏的”窗口”–>”显示视图” –> “其他” –> “RMI Views”里可以打开。</p></li>
+</ul>
+
+
+<hr />
+
+<h1>RMI插件安装 – 安装帮助</h1>
+
+<ul>
+<li><p>下载离线安装包。在插件下载页面，下载对应版本的zip安装包。保存并关闭Eclipse。如果之前装过老版本的RMI插件，要先删除。然后吧安装文件解压缩，得到”plugins” 和 “features”文件夹，把里面的内容对应放大Eclipse根目录下的对应文件夹内。重新打开Eclipse就会发现RMI插件已经装好了。</p></li>
+<li><p>在线安装。以Eclipse3.5为例，依次选中菜单栏的”help” –> “Install New Software” 在”Work with”出点击”Add”，在弹出对话框输入下面的信息点击确定，然后根据提示即可安装:</p>
+
+<p>  Name: RMI-plug</p>
+
+<p>  Location: http://www.genady.net/rmi/v20/install_e35/</p></li>
+<li><p>安装完后，在菜单栏的“窗口“ –> “首选项“ –>”Java” –> “RMI”里输入注册码，完成注册。 建议使用在线安装方法，这样不容易出错。</p></li>
+</ul>
+
+
+<hr />
+
+<h1>RMI插件的使用</h1>
+
+<p>如果你上面的步骤没有错的话，使用RMI其实非常简单。</p>
+
+<p>1, 第一次运行某个程序，需要在”运行配置”里配置java策略文件和codebase。</p>
+
+<p>2，点击”运行”，运行方式选择”RMI Application”。</p>
+
+<hr />
+
+<p>希望上面的内容能为大家编写RMI程序提供一些帮助。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Java RMI出远程stub未找到异常]]></title>
+    <link href="http://www.comflag.com/blog/2012/05/18/java-rmichu-yuan-cheng-stubwei-zhao-dao-yi-chang/"/>
+    <updated>2012-05-18T20:18:00+08:00</updated>
+    <id>http://www.comflag.com/blog/2012/05/18/java-rmichu-yuan-cheng-stubwei-zhao-dao-yi-chang</id>
+    <content type="html"><![CDATA[<p>最近在做一个项目，题目是《基于Java的分布式计算系统》，这个题目要求使用Java RMI技术。</p>
+
+<p>这个分布式系统涉及到三个实体，分别是客户端，服务器，和工作站，因此我在Eclipse里分别创建了三个工程。每个工程维护自己的本地对象，并向其他的远程实体提供远程方法调用(RMI)接口。</p>
+
+<!--more-->
+
+
+<hr />
+
+<p>在Eclipse里编写RMI程序，我用到了一个Eclipse的RMI插件，它可以很方便的配置codebase和策略文件，并且能够自动生成桩(stub)文件。这里要说明的是，在JDK 1.6开发环境下，远程接口最后只生成stub文件，不再生成框架文件(skeleton)。 我按照文档上的格式，编写了本地类，远程接口类，及其实现类。</p>
+
+<p>编译运行，客户端调用服务器远程方法进行登陆，但是此时一直提示要用到的远程桩(stub)文件找不到，抛出类似java.lang.ClassNotFoundException的异常:</p>
+
+<figure class='code'><figcaption><span>java.lang.ClassNotFoundException  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">java</span><span class="o">.</span><span class="na">rmi</span><span class="o">.</span><span class="na">UnmarshalException</span><span class="o">:</span> <span class="n">error</span> <span class="n">unmarshalling</span> <span class="k">return</span><span class="o">;</span> <span class="n">nested</span> <span class="n">exception</span> <span class="nl">is:</span>
+</span><span class='line'>  <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">ClassNotFoundException</span><span class="o">:</span> <span class="n">server</span><span class="o">.</span><span class="na">serverrmi</span><span class="o">.</span><span class="na">RmiWorkerRegistry_Stub</span>
+</span><span class='line'>  <span class="n">at</span> <span class="n">sun</span><span class="o">.</span><span class="na">rmi</span><span class="o">.</span><span class="na">registry</span><span class="o">.</span><span class="na">RegistryImpl_Stub</span><span class="o">.</span><span class="na">lookup</span><span class="o">(</span><span class="n">Unknown</span> <span class="n">Source</span><span class="o">)</span>
+</span><span class='line'>  <span class="n">at</span> <span class="n">java</span><span class="o">.</span><span class="na">rmi</span><span class="o">.</span><span class="na">Naming</span><span class="o">.</span><span class="na">lookup</span><span class="o">(</span><span class="n">Naming</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">84</span><span class="o">)</span>
+</span><span class='line'>  <span class="n">at</span> <span class="n">worker</span><span class="o">.</span><span class="na">gui</span><span class="o">.</span><span class="na">WorkerGuiPrime</span><span class="o">.</span><span class="na">Login</span><span class="o">(</span><span class="n">WorkerGuiPrime</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">324</span><span class="o">)</span>
+</span><span class='line'>  <span class="n">at</span> <span class="n">worker</span><span class="o">.</span><span class="na">gui</span><span class="o">.</span><span class="na">WorkerGuiPrime</span><span class="o">.</span><span class="na">access</span><span class="n">$1</span><span class="o">(</span><span class="n">WorkerGuiPrime</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">305</span><span class="o">)</span>
+</span><span class='line'>  <span class="n">at</span> <span class="n">worker</span><span class="o">.</span><span class="na">gui</span><span class="o">.</span><span class="na">WorkerGuiPrime</span><span class="n">$2</span><span class="o">.</span><span class="na">actionPerformed</span><span class="o">(</span><span class="n">WorkerGuiPrime</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">184</span><span class="o">)</span>
+</span><span class='line'>  <span class="n">at</span> <span class="n">javax</span><span class="o">.</span><span class="na">swing</span><span class="o">.</span><span class="na">AbstractButton</span><span class="o">.</span><span class="na">fireActionPerformed</span><span class="o">(</span><span class="n">AbstractButton</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">1995</span><span class="o">)</span>
+</span><span class='line'>  <span class="n">at</span> <span class="n">javax</span><span class="o">.</span><span class="na">swing</span><span class="o">.</span><span class="na">AbstractButton</span><span class="n">$Handler</span><span class="o">.</span><span class="na">actionPerformed</span><span class="o">(</span><span class="n">AbstractButton</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">2318</span><span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>java.lang.ClassNotFoundException </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">Caused</span> <span class="nl">by:</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">ClassNotFoundException</span><span class="o">:</span> <span class="n">server</span><span class="o">.</span><span class="na">serverrmi</span><span class="o">.</span><span class="na">RmiWorkerRegistry_Stub</span>
+</span><span class='line'>  <span class="n">at</span> <span class="n">java</span><span class="o">.</span><span class="na">net</span><span class="o">.</span><span class="na">URLClassLoader</span><span class="n">$1</span><span class="o">.</span><span class="na">run</span><span class="o">(</span><span class="n">URLClassLoader</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">202</span><span class="o">)</span>
+</span><span class='line'>  <span class="n">at</span> <span class="n">java</span><span class="o">.</span><span class="na">security</span><span class="o">.</span><span class="na">AccessController</span><span class="o">.</span><span class="na">doPrivileged</span><span class="o">(</span><span class="n">Native</span> <span class="n">Method</span><span class="o">)</span>
+</span><span class='line'>  <span class="n">at</span> <span class="n">java</span><span class="o">.</span><span class="na">net</span><span class="o">.</span><span class="na">URLClassLoader</span><span class="o">.</span><span class="na">findClass</span><span class="o">(</span><span class="n">URLClassLoader</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">190</span><span class="o">)</span>
+</span><span class='line'>  <span class="n">at</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">ClassLoader</span><span class="o">.</span><span class="na">loadClass</span><span class="o">(</span><span class="n">ClassLoader</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">306</span><span class="o">)</span>
+</span><span class='line'>  <span class="n">at</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">ClassLoader</span><span class="o">.</span><span class="na">loadClass</span><span class="o">(</span><span class="n">ClassLoader</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">247</span><span class="o">)</span>
+</span><span class='line'>  <span class="n">at</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">Class</span><span class="o">.</span><span class="na">forName0</span><span class="o">(</span><span class="n">Native</span> <span class="n">Method</span><span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>按理说，客户端会自动下载服务器的远程桩文件，但是在客户端bin/目录下根本看不到需要的stub桩文件，抛出异常也是情理之中的事情。</p>
+
+<hr />
+
+<p>我尝试了至少下面三种办法都不行，比如:</p>
+
+<p>将服务器bin/目录配置为服务器的codebase。
+将服务器bin/目录打成jar包，并把它配置成服务器的codebase。
+开启Apache服务器，把服务器bin/打成jar包后放在Apache的www目录下，并配置服务器codebase。
+其中，将bin/目录打成的jar包放在Apache的www目录下，在另一台连通的计算机上可以直接在浏览器里输入url地址进行下载，但是客户端程序无论如何都无法自动下载。</p>
+
+<hr />
+
+<h1>解决办法</h1>
+
+<p>最后，我放弃了让客户端自动下载远程桩(stub)文件的想法，直接把服务器生成的桩(stub)文件复制到客户端bin/目录下的相应位置，这时候，客户端可以正常连接远程服务器了，再没有抛出异常。</p>
+
+<p>这里要说明的是，虽然是直接将stub文件复制到客户端程序目录下了，但是远程计算依旧是在服务器上执行的，stub只是起到中间数据中转的作用。</p>
+
+<p>问题暂时解决了，但是我依旧在寻找让客户端自动下载服务器桩(stub)的方法，希望有心人解决了之后能拿出来分享一下。</p>
+
+<hr />
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[使用substance美化Java Swing界面]]></title>
+    <link href="http://www.comflag.com/blog/2012/05/18/shi-yong-substancemei-hua-java-swingjie-mian/"/>
+    <updated>2012-05-18T20:07:00+08:00</updated>
+    <id>http://www.comflag.com/blog/2012/05/18/shi-yong-substancemei-hua-java-swingjie-mian</id>
+    <content type="html"><![CDATA[<p>Java的一个优势是它有非常非常多的开源项目，我们可以非常自由的使用这些开源项目为自己的程序提供便利。</p>
+
+<p>substance是一个开源的Java项目，它的目标是为Java Swing提供美化。</p>
+
+<!--more-->
+
+
+<p>现在我们谈到的substance是一个jar包，里面封装了20多种皮肤类，这些皮肤类毫无疑问的可以被用来美化Java Swing界面。</p>
+
+<p>另外，我们还可以用substance为程序添加水印图片，这些水印图片可以设置透明度0~1.0，从而显示出非常剔透的效果。</p>
+
+<hr />
+
+<p>我编写了一个非常简单易懂的样例程序，封装了11种substance皮肤，并为每种皮肤添加了水印图片，这些皮肤封装在类Skins中，以静态方法提供，可以直接用类名(Skins)调用，源码大家可以到我的github主页下载，在SubstanceDemo项目页面，点击左上方”Code”标签里的”ZIP”按钮即可下载源码:</p>
+
+<p><a href="https://github.com/comflag/SubstanceDemo">SubstanceDemo</a></p>
+
+<hr />
+
+<ul>
+<li>在eclipse中选中项目右键选择”构建路径”，将substance.jar添加到工程中。</li>
+<li>编写代码，设置相关主题，以及水印，比如，我在Skins.class下添加如下静态方法，设置Sahara主题</li>
+</ul>
+
+
+<figure class='code'><figcaption><span>设置相关主题  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">setThemeSahara</span><span class="o">()</span>
+</span><span class='line'><span class="o">{</span>
+</span><span class='line'>      <span class="n">JFrame</span><span class="o">.</span><span class="na">setDefaultLookAndFeelDecorated</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">JDialog</span><span class="o">.</span><span class="na">setDefaultLookAndFeelDecorated</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">try</span> <span class="o">{</span>
+</span><span class='line'>              <span class="c1">//为皮肤添加水印图片，引号里是图片的相对路径</span>
+</span><span class='line'>              <span class="n">SubstanceImageWatermark</span> <span class="n">watermark</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SubstanceImageWatermark</span><span class="o">(</span><span class="n">ServerGui</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getResourceAsStream</span><span class="o">(</span><span class="s">&quot;/common/picture/yellow_s.png&quot;</span><span class="o">));</span>
+</span><span class='line'>              <span class="n">watermark</span><span class="o">.</span><span class="na">setKind</span><span class="o">(</span><span class="n">ImageWatermarkKind</span><span class="o">.</span><span class="na">APP_ANCHOR</span><span class="o">);</span>
+</span><span class='line'>              <span class="c1">//设置水印透明度</span>
+</span><span class='line'>              <span class="n">watermark</span><span class="o">.</span><span class="na">setOpacity</span><span class="o">((</span><span class="kt">float</span><span class="o">)</span> <span class="mf">0.35</span><span class="o">);</span>
+</span><span class='line'>              <span class="n">UIManager</span><span class="o">.</span><span class="na">setLookAndFeel</span><span class="o">(</span><span class="k">new</span> <span class="n">SubstanceSaharaLookAndFeel</span><span class="o">());</span>
+</span><span class='line'>              <span class="n">SubstanceSkin</span> <span class="n">skin</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SaharaSkin</span><span class="o">().</span><span class="na">withWatermark</span><span class="o">(</span><span class="n">watermark</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>              <span class="n">SubstanceLookAndFeel</span><span class="o">.</span><span class="na">setSkin</span><span class="o">(</span><span class="n">skin</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">UnsupportedLookAndFeelException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>              <span class="n">ex</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span><span class='line'>          <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>在Main函数里调用上面的方法，即可完成皮肤修改。这里需要说明的是，在调用上面的方法之前，要加上下面两句代码。</li>
+</ul>
+
+
+<figure class='code'><figcaption><span>Main函数  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">JFrame</span><span class="o">.</span><span class="na">setDefaultLookAndFeelDecorated</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>  <span class="n">JDialog</span><span class="o">.</span><span class="na">setDefaultLookAndFeelDecorated</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>  <span class="n">Skins</span><span class="o">.</span><span class="na">setThemeNebula</span><span class="o">();</span>        <span class="c1">//setThemeSahara是类Skins的静态方法</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>另外，直接在Main函数里调用就行了，不用再开辟类似下面的线程</p>
+
+<figure class='code'><figcaption><span>GUI  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">EventQueue</span><span class="o">.</span><span class="na">invokeLater</span><span class="o">(</span><span class="k">new</span> <span class="n">Runnable</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>          <span class="c1">//do something</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'><span class="o">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://pic.yupoo.com/comflag/BTnpKNPC/9ihaO.png" width="800" height="600" title="Substance" alt="Substance"></p>
+
+<p><img src="http://pic.yupoo.com/comflag/BTnpL5Mv/iYDwh.png" width="800" height="600" title="Substance" alt="Substance"></p>
+
+<p><img src="http://pic.yupoo.com/comflag/BTjEUgJi/A9ttz.png" width="800" height="600" title="Substance" alt="Substance"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Dell D630安装Mac OS Lion]]></title>
+    <link href="http://www.comflag.com/blog/2012/05/18/dell-d630an-zhuang-mac-os-lion/"/>
+    <updated>2012-05-18T19:59:00+08:00</updated>
+    <id>http://www.comflag.com/blog/2012/05/18/dell-d630an-zhuang-mac-os-lion</id>
+    <content type="html"><![CDATA[<p>经过两天多的折腾总算是让Dell D630完美的运行起了Lion，相比较以前的破解版本，我发现原版的Lion和D630结合更加完美，现在除了键盘快捷键这个硬伤意外，Lion基本完美了。</p>
+
+<p>建个Dell D630的QQ群，群里基本上都已经体验上Mac OS X了。</p>
+
+<p>群号:190557497</p>
+
+<!--more-->
+
+
+<p>Dell D630的相关驱动已经上传到Dbank上了，<a href="http://www.dbank.com/">传送门</a></p>
+
+<pre><code>账户名:  d630driver@163.com
+密码: helloworld
+</code></pre>
+
+<p>电脑现状： 显卡驱动正常1024x800 无线网卡驱动正常 有线网卡驱动正常 蓝牙驱动正常 声卡驱动正常，可以视频聊QQ 关机/重启/睡眠正常使用</p>
+
+<ul>
+<li>电脑型号：  戴尔 Latitude D630</li>
+<li>操作系统：   Mac os X 10.7 Lion 原版<br/></li>
+<li>处理器：      特尔 酷睿2 双核 T8100 @ 2.10GHz 笔记本处理器</li>
+<li>主板：         戴尔 0WM416 (英特尔 PM965/GM965/GL960/GS965 - ICH8M 笔记本芯片组)</li>
+<li>内存：         2 GB ( 金士顿 DDR2 800MHz / 三星 DDR2 800MHz )</li>
+<li>主硬盘：      希捷 ST9160411ASG ( 160 GB / 7200 转/分 )</li>
+<li>显卡：         Nvidia Quadro NVS 135M ( 128 MB / 戴尔 )</li>
+<li>显示器：      三星 SEC3157 ( 14 英寸 )</li>
+<li>光驱：         日立-LG DVD+-RW GSA-T21N DVD刻录机<br/></li>
+<li>声卡：         矽玛特 Sigmatel @ 英特尔 82801H(ICH8) 高保真音频</li>
+<li>网卡：         博通 BCM5755M NetXtreme Gigabit Ethernet / 戴尔</li>
+<li>无线网卡:     Dell Wireless 1395 WLAN无线上网(ID:pci14e4,4315)</li>
+</ul>
+
+
+<p><img src="http://pic.yupoo.com/comflag/BhfQ2iBq/sAZbh.jpg" width="800" height="600" title="Mac OS X" alt="Mac OS X"></p>
+
+<p><img src="http://pic.yupoo.com/comflag/BnuwAL6A/medium.jpg" width="800" height="600" title="Mac OS X" alt="Mac OS X"></p>
+
+<p><img src="http://pic.yupoo.com/comflag/BhfQ2Upf/medium.jpg" width="800" height="600" title="Mac OS X" alt="Mac OS X"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[RMI Spy对程序运行产生的影响]]></title>
+    <link href="http://www.comflag.com/blog/2012/05/18/rmi-spydui-cheng-xu-yun-xing-chan-sheng-de-ying-xiang/"/>
+    <updated>2012-05-18T19:53:00+08:00</updated>
+    <id>http://www.comflag.com/blog/2012/05/18/rmi-spydui-cheng-xu-yun-xing-chan-sheng-de-ying-xiang</id>
+    <content type="html"><![CDATA[<p>本文档描述了使用RMI Spy会对你的应用程序的执行产生怎样的影响。</p>
+
+<p>在大多数情况下，你不会注意到我们程序执行时的任何不同。但是，如果你的程序没有按照你预期去执行，此时，你将会意识到RMI Spy能为你调试程序带来的方便了。这是一个技术文档，而不是一个RMI Spy帮助文档。</p>
+
+<!--more-->
+
+
+<p>1，RMI Spy是什么？ RMI Spy负责收集和显示你的应用程序运行时产生的和RMI相关的事件。具体的说，它监控所有的远程调用(包括你应用程序产生的外部调用和其他应用程序调用你的应用程序提供的远程服务)。它同时可以显示类加载事件，从而帮助你调试”类加载”问题，这些问题通常会出现在RMI系统开发的过程中。</p>
+
+<p>2，RMI Spy是如何工作的? i)介绍: RMI Spy的工作基于Logging API,这些Logging API被RMI接口使用。如果RMI Spy没有被开启，你可以手动开启”logging properties”(你可以在RMI运行配置的”RMI Launch”标签里勾选开启)以及用来监控输出的控制台窗口。 比如:打开”java.rmi.server.logCalls”属性，产生类似下面的输出(为显示清楚，添加了换行符):</p>
+
+<pre><code>    view plaincopy
+        20/05/2006 13:35:06 sun.rmi.server.UnicastServerRef logCall
+        FINER: RMI TCP Connection(2)-192.168.2.100: [192.168.2.100: \
+            demo.rmi.print.server.RemotePrinterImpl[1]: \
+            public abstract int demo.rmi.print.server.RemotePrinter.submitJob(\
+                java.lang.String) throws java.rmi.RemoteException]
+</code></pre>
+
+<p>这样的输出并不利于阅读，也没有提供任何有意义的信息。</p>
+
+<p>ii)RMI Spy接口 RMI Spy并不分析程序的输出(尽管理论上它能够分析)，因为这个方法并不可靠—程序的输出可能会干扰RMI日志。取而代之的是，它与RMI的日志系统衔接，并能在事件产生时及时捕获。RMI Spy运行组件(作为应用程序的一部分运行)使用日志API(Logging API)来注册它自己的代理从而收集RMI事件并将它们推送给RMI插件进行分析并显示在RMI Spy视图中。</p>
+
+<p>为了避免修改应用程序代码，RMI Spy使用了一个启动封装器(launch wrapper)。这意味着RMI Spy的运行组件是运行在你的程序内部的(当然，前提是RMI Spy被激活了)。当应用程序启动后，RMI Spy JAR会被添加到classpath，launch wrapper(类net.genady.rmi.logger.Runner)将被作为主类(main class)。应用程序的主类和参数会被当做参数传递到launch wrapper。</p>
+
+<p>launch wrapper 负责主持日志代理(logging handlers)，同RMI 插件建立一个TCP连接，并且经控制权传递给真正的应用程序。显而易见的是，在同一个VM进程中同时运行wrapper，这对于你的应用程序是有影响的。 下一节就会讨论这些影响的细节。</p>
+
+<p>iii)仪器的使用(The use of instrumentation) RMI插件使用字节码仪器(ASM库)来执行一些高级功能(比如时间测量)。它将不会对你的程序产生任何特别的影响，因为它只执行非常非常少的一些系统类。需要说明的是，RMI插件必须使用JDK1.5或者JDK1.6版本(如果使用的版本不对，插件将自动关闭)，这意味着如果你使用自己的仪器工具(-javaagent)的话，你就要多加小心了，当然，在大多数情况下，这个不是问题。</p>
+
+<p>RMI Spy会调用某些对象的一些方法，这些对象会在远程调用过程中作为值传递的参数或者返回值。在以下类中，它会选择调用toString()方法:所有的原始类型，封装类，RULs和URIs，InetAddress，枚举类型，字符序列( CharSequence)的实现和数字类(Number class)的子类。它同样会在集(Collection)的实现中调用size()方法。这些方法的调用会产生无法预期的副作用，比如获取锁/监视器，创建网络连接等等。</p>
+
+<p>3，运行模式和调试模式的不同 RMI Spy没有使用调试API，因此，在运行模式和调试模式下，RMI Spy的操作没有任何区别。</p>
+
+<p>4，支持的JDK/JVM提供商 RMI Spy依赖于Sun的内部API。但是，很多运行RMI的JDK提供者都是由Sun授权许可的，因此，大多数标准JVM都可以运行RMI Spy。要获取最新的兼容性列表，请访问website</p>
+
+<p>5，堆栈跟踪 RMI Spy使用一个简单的启动封装器来运行一些配置，然后通过reflection APIs将控制权交个你的主类(main class)。因此，所有由主线程中产生的堆栈追踪会有以下的几行提示(假设你的主类是:</p>
+
+<pre><code>demo.rmi.print.client.PrintClient):
+view plaincopy
+at demo.rmi.print.client.PrintClient.main(PrintClient.java:35)
+      at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+      at sun.reflect.NativeMethodAccessorImpl.invoke(
+                         NativeMethodAccessorImpl.java:39)
+      at sun.reflect.DelegatingMethodAccessorImpl.invoke(
+                         DelegatingMethodAccessorImpl.java:25)
+      at java.lang.reflect.Method.invoke(Method.java:324)
+      at net.genady.rmi.logger.Runner.main(Runner.java:138)
+</code></pre>
+
+<p>堆栈追踪在其他的线程里产生，并且不会产生影响。</p>
+
+<p>6，辅助线程 应用程序和RMI插件的通信时通过本地TCP连接进行的。尽管是本地连接，它仍旧有可能因为各种原因而被阻塞(比如本地防火墙)。因此，当有事件要传送给RMI插件是，运行组件会把那个事件放到事件队列中，专用守护线程会执行所有的通信工作。通过这种方法，应用程序线程永远不会被RMI插件阻塞，而对应用程序的影响将会降到最低。这个专用守护线程的名字是”RMI Plug-in for Eclipse Log Events Reporter”，大多数时候，它是空闲的。</p>
+
+<p>7，关闭钩子(A Shutdown hook) 一个应用程序调用方法System.exit()或者相似方法来结束执行的情况是常见的。在这种情况下，RMI Spy的运行组件必须确保所有被收集的事件都已经被传送给运行在eclipse中的RMI Spy部分了。为了达到这个目的，RMI插件使用了”shutdown hooks”功能。因此，这可能会花费较长的事件去关闭一个应用程序(直到所有的应用程序都被传送)。通常，这个过程花费几毫秒，但对于RMI密集型程序，这个过程会多用10到100毫秒直到程序终止。</p>
+
+<p>8，使用RMI的Logging属性(Logging properties) RMI Spy没有直接使用任何logging属性，因此，你可以开启他们来查看正常的基于控制台的日志。但是，设置某些属性，比如”sun.rmi.server.suppressStackTraces”会导致RMI Spy丢失某些信息。因此最好让RMI Spy来显示这些日志信息兵，要避免直接修改这些日志属性。</p>
+
+<p>9，使用日志API (这需要更多的技术和对Logging APIs的了解)RMI Spy把RMI loggers的logging level修改为”ALL”。你之所在控制台上看不到RMI的日志是因为RMI日志的控制者拥有更高的等级(默认是”SILENT”)。如果因为某些原因日志控制者等级被修改了，或者另一个控制者被注册到RMI日志，他们将获取他们本不会获取到的事件(如果RMI Spy没有被使用的话)。当然，如果你手动修改了RMI日志等级，你就可以影响RMI Spy的行为了。</p>
+
+<p>英语原文:<a href="http://www.genady.net/rmi/v20/docs/spy/spy_effects.html">传送门</a></p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 开源项目 | comflag]]></title>
+  <link href="http://www.comflag.com/blog/categories/开源项目/atom.xml" rel="self"/>
+  <link href="http://www.comflag.com/"/>
+  <updated>2012-05-18T22:01:50+08:00</updated>
+  <id>http://www.comflag.com/</id>
+  <author>
+    <name><![CDATA[liang]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[使用substance美化Java Swing界面]]></title>
+    <link href="http://www.comflag.com/blog/2012/05/18/shi-yong-substancemei-hua-java-swingjie-mian/"/>
+    <updated>2012-05-18T20:07:00+08:00</updated>
+    <id>http://www.comflag.com/blog/2012/05/18/shi-yong-substancemei-hua-java-swingjie-mian</id>
+    <content type="html"><![CDATA[<p>Java的一个优势是它有非常非常多的开源项目，我们可以非常自由的使用这些开源项目为自己的程序提供便利。</p>
+
+<p>substance是一个开源的Java项目，它的目标是为Java Swing提供美化。</p>
+
+<!--more-->
+
+
+<p>现在我们谈到的substance是一个jar包，里面封装了20多种皮肤类，这些皮肤类毫无疑问的可以被用来美化Java Swing界面。</p>
+
+<p>另外，我们还可以用substance为程序添加水印图片，这些水印图片可以设置透明度0~1.0，从而显示出非常剔透的效果。</p>
+
+<hr />
+
+<p>我编写了一个非常简单易懂的样例程序，封装了11种substance皮肤，并为每种皮肤添加了水印图片，这些皮肤封装在类Skins中，以静态方法提供，可以直接用类名(Skins)调用，源码大家可以到我的github主页下载，在SubstanceDemo项目页面，点击左上方”Code”标签里的”ZIP”按钮即可下载源码:</p>
+
+<p><a href="https://github.com/comflag/SubstanceDemo">SubstanceDemo</a></p>
+
+<hr />
+
+<ul>
+<li>在eclipse中选中项目右键选择”构建路径”，将substance.jar添加到工程中。</li>
+<li><p>编写代码，设置相关主题，以及水印，比如，我在Skins.class下添加如下静态方法，设置Sahara主题
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>设置相关主题  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">setThemeSahara</span><span class="o">()</span>
+</span><span class='line'><span class="o">{&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">JFrame</span><span class="o">.</span><span class="na">setDefaultLookAndFeelDecorated</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'><span class="n">JDialog</span><span class="o">.</span><span class="na">setDefaultLookAndFeelDecorated</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">try</span> <span class="o">{</span>
+</span><span class='line'>          <span class="c1">//为皮肤添加水印图片，引号里是图片的相对路径</span>
+</span><span class='line'>          <span class="n">SubstanceImageWatermark</span> <span class="n">watermark</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SubstanceImageWatermark</span><span class="o">(</span><span class="n">ServerGui</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getResourceAsStream</span><span class="o">(</span><span class="s">&quot;/common/picture/yellow_s.png&quot;</span><span class="o">));</span>
+</span><span class='line'>          <span class="n">watermark</span><span class="o">.</span><span class="na">setKind</span><span class="o">(</span><span class="n">ImageWatermarkKind</span><span class="o">.</span><span class="na">APP_ANCHOR</span><span class="o">);</span>
+</span><span class='line'>          <span class="c1">//设置水印透明度</span>
+</span><span class='line'>          <span class="n">watermark</span><span class="o">.</span><span class="na">setOpacity</span><span class="o">((</span><span class="kt">float</span><span class="o">)</span> <span class="mf">0.35</span><span class="o">);</span>
+</span><span class='line'>          <span class="n">UIManager</span><span class="o">.</span><span class="na">setLookAndFeel</span><span class="o">(</span><span class="k">new</span> <span class="n">SubstanceSaharaLookAndFeel</span><span class="o">());</span>
+</span><span class='line'>          <span class="n">SubstanceSkin</span> <span class="n">skin</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SaharaSkin</span><span class="o">().</span><span class="na">withWatermark</span><span class="o">(</span><span class="n">watermark</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="n">SubstanceLookAndFeel</span><span class="o">.</span><span class="na">setSkin</span><span class="o">(</span><span class="n">skin</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">UnsupportedLookAndFeelException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>          <span class="n">ex</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p></li>
+<li><p>在Main函数里调用上面的方法，即可完成皮肤修改。这里需要说明的是，在调用上面的方法之前，要加上下面两句代码。
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Main函数  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">JFrame</span><span class="o">.</span><span class="na">setDefaultLookAndFeelDecorated</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'><span class="n">JDialog</span><span class="o">.</span><span class="na">setDefaultLookAndFeelDecorated</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'><span class="n">Skins</span><span class="o">.</span><span class="na">setThemeNebula</span><span class="o">();</span>        <span class="c1">//setThemeSahara是类Skins的静态方法</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p></li>
+</ul>
+
+
+<p>另外，直接在Main函数里调用就行了，不用再开辟类似下面的线程</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>GUI  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">EventQueue</span><span class="o">.</span><span class="na">invokeLater</span><span class="o">(</span><span class="k">new</span> <span class="n">Runnable</span><span class="o">()</span> <span class="o">{&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span>  <span class="kd">public</span> <span class="kt">void</span> <span class="n">run</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="c1">//do something</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><img src="http://pic.yupoo.com/comflag/BTnpKNPC/9ihaO.png" width="800" height="600" title="Substance" alt="Substance"></p>
+
+<p><img src="http://pic.yupoo.com/comflag/BTnpL5Mv/iYDwh.png" width="800" height="600" title="Substance" alt="Substance"></p>
+
+<p><img src="http://pic.yupoo.com/comflag/BTjEUgJi/A9ttz.png" width="800" height="600" title="Substance" alt="Substance"></p>
+]]></content>
+  </entry>
+  
+</feed>

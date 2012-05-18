@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: JAVA | comflag]]></title>
+  <link href="http://www.comflag.com/blog/categories/java/atom.xml" rel="self"/>
+  <link href="http://www.comflag.com/"/>
+  <updated>2012-05-18T22:01:50+08:00</updated>
+  <id>http://www.comflag.com/</id>
+  <author>
+    <name><![CDATA[liang]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Mac OS X安装过程常见问题总结]]></title>
+    <link href="http://www.comflag.com/blog/2012/05/18/mac-os-xan-zhuang-guo-cheng-chang-jian-cuo-wu-zong-jie/"/>
+    <updated>2012-05-18T20:27:00+08:00</updated>
+    <id>http://www.comflag.com/blog/2012/05/18/mac-os-xan-zhuang-guo-cheng-chang-jian-cuo-wu-zong-jie</id>
+    <content type="html"><![CDATA[<p>一直使用的是Mac OS 10.7，最近终于经受不住群里童鞋们的诱惑，准备安装10.7.3，于是下载了10.7.3原版dmg镜像，在Mac OS Lion下按照以前安装盘制作教程在硬盘上重新制作了一个10.7.3的安装盘，然后进行覆盖安装。这个安装盘位于我的硬盘的最后一个分区，大小8.0G。</p>
+
+<!--more-->
+
+
+<p>但是，在安装的过程中，出现了几个一起从来没有出现的问题。</p>
+
+<ul>
+<li>启动安装盘，风火轮后黑屏，除了电源灯和蓝牙灯亮外，计算机没有反应。使用-v -f命令查看，命令行字幕滚动完毕后，计算机也是黑屏，不响应。</li>
+<li>启动安装盘，风火轮后进入安装界面，选择语言后下一步，提示”此版本的Mac os Lion不能安装到您的计算机上”，然后，就没有然后了。</li>
+<li>启动安装盘，风火轮后进入安装界面，选择语言后下一步，计算机自动关机。</li>
+<li>安装万能声卡驱动VoodooHDA.pkg后，开机出现无限风火轮，需要在windows下删除S/L/E下的VoodooHDA.kext驱动后才能进系统，当然，此时声卡还是无法驱动。</li>
+</ul>
+
+
+<p>表示以上几个问题在安装Mac OS 10.7时从来没有出现过。但是经过几天的研究，终于一个个都解决了。</p>
+
+<hr />
+
+<h1>解决办法:</h1>
+
+<ul>
+<li><p>启动安装盘，风火轮后黑屏</p>
+
+<p>  这个应该是显卡未识别的问题，解决办法很简单也很传统–替换dsdt.aml文件即可。需要说明的是，我用的是之前10.7版本的dsdt.aml，如果你的计算机出现这种黑屏，请替换下面我提供的新的dsdt.aml，我现在在10.7.3下用的就是这个dsdt.aml。</p></li>
+<li><p>启动安装盘，选择语言后提示”此版本的Mac os Lion不能安装到您的计算机上”</p></li>
+<li><p>启动安装盘，风火轮后进入安装界面，选择语言后下一步，计算机自动关机</p>
+
+<p>  这两个问题，通过查看安装日志，应该是安装盘里的OSInstall和OSInstall.mpkg没有替换或者替换的版本不当造成的。可以替换成下面提供的新的OSInstall和OSInstall.mpkg文件。</p></li>
+<li><p>声卡驱动导致系统无限风火轮</p>
+
+<p>  这个问题的解决很简单，我出现这个问题是因为在系统盘的E/E目录下放置了一个Apple原版的声卡驱动AppleHDADisabler.kext，导致两个驱动冲突了，只需要把E/E目录下的那个AppleHDADisabler.kext驱动删除，系统就可以正常引导，并且正常驱动声卡了。</p></li>
+</ul>
+
+
+<hr />
+
+<p>适合于Dell D630的Mac OS X 10.7.3最新可用破解文件: 传送门</p>
+
+<ul>
+<li><p>dsdt.aml</p></li>
+<li><p>OSInstall和OSInstall.mpkg</p></li>
+<li><p>fakeSMC.kext</p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Eclipse里RMI插件的使用]]></title>
+    <link href="http://www.comflag.com/blog/2012/05/18/eclipseli-rmicha-jian-de-shi-yong/"/>
+    <updated>2012-05-18T20:22:00+08:00</updated>
+    <id>http://www.comflag.com/blog/2012/05/18/eclipseli-rmicha-jian-de-shi-yong</id>
+    <content type="html"><![CDATA[<p>在Eclipse下编写RMI程序现在有一个非常好的插件RMI-plug，现在的最新版本是2.1.6，支持Eclipse3.5.x，它的主页有非常详细的各个版本信息的说明，<a href="http://www.genady.net/rmi/v20/index.html">RMI-plugin主页</a>。</p>
+
+<!--more-->
+
+
+<h1>注意事项</h1>
+
+<p>如何你是第一次使用RMI，那么使用RMI有一些需要注意的地方。</p>
+
+<hr />
+
+<ul>
+<li>这是一个收费插件，但是它为进行个人学习，以及开发开源软件的程序员提供免费的个人序列号(personal licenec)。免费的个人序列号有效期4个月，开源软件开发者序列号有效期长达1年。如果你为改进RMI-plugin作出贡献，这个项目组还会付给你钱。在申请也很简单，填写基本信息和申请理由，一周之内就会收到回复邮件，我现在已经申请到了两个序列号。如果个人开发，还是不要想着去破解了，我试过，那个破解的经常出错。个人序列号申请</li>
+<li>插件版本选择很重要。在下载页面，你会看到各个版本的RMI插件，基本上每个版本后面都写着支持Eclipse版本，虽然你会感慨RMI插件开发并没有跟上Eclipse的更新速度，但是请严格使用匹配的RMI插件版本和对应的Eclipse版本，比如v2.1.6支持Eclipse 3.5.x，如果你非要在Eclipse 3.7版里装RMI-plug v2.1.6，那么，很大程度上说，RMI-plug是不会正常工作的。所以一定要严格匹配版本，不要耍小聪明。RMI-plugin下载页面</li>
+</ul>
+
+
+<hr />
+
+<h1>RMI插件带来的好处</h1>
+
+<ul>
+<li><p>RMI插件可以自动生成桩(stub)文件，这就省去了一直使用rmic命令的麻烦。在Eclipse项目里右键选择”RMI” –> “Enable Stubs Generationg”开启自动生成桩文件。</p></li>
+<li><p>RMI插件可以方便的配置codebase和策略文件。在菜单栏里(或工具栏)选择”运行” –> “运行配置”，选中你要配置的RMI程序，点击标签栏里的”RMI VM Properties”标签，前两项就分别是策略文件和codebase。</p></li>
+<li><p>RMI Registry视图可以显示当前绑定(bind)到指定端口号的Register上的远程接口信息，包括远程接口位置，提供的远程方法等。该视图在菜单栏的”窗口”–>”显示视图” –> “其他” –> “RMI Views”里可以打开。</p></li>
+<li><p>RMI Spy视图可以监视远程接口的调用情况，你在这里可以清楚地看到那些远程对象被调用了，是谁调用的，请求信息，以及返回值信息等。要想开启该功能，你需要在”运行配置”的”RMI Lunch”标签页勾选该选项。关于RMI Spy的运行机制，可以参考我翻译的插件官方提供的说明文档。该视图菜单栏的”窗口”–>”显示视图” –> “其他” –> “RMI Views”里可以打开。</p></li>
+</ul>
+
+
+<hr />
+
+<h1>RMI插件安装 – 安装帮助</h1>
+
+<ul>
+<li><p>下载离线安装包。在插件下载页面，下载对应版本的zip安装包。保存并关闭Eclipse。如果之前装过老版本的RMI插件，要先删除。然后吧安装文件解压缩，得到”plugins” 和 “features”文件夹，把里面的内容对应放大Eclipse根目录下的对应文件夹内。重新打开Eclipse就会发现RMI插件已经装好了。</p></li>
+<li><p>在线安装。以Eclipse3.5为例，依次选中菜单栏的”help” –> “Install New Software” 在”Work with”出点击”Add”，在弹出对话框输入下面的信息点击确定，然后根据提示即可安装:</p>
+
+<p>  Name: RMI-plug</p>
+
+<p>  Location: http://www.genady.net/rmi/v20/install_e35/</p></li>
+<li><p>安装完后，在菜单栏的“窗口“ –> “首选项“ –>”Java” –> “RMI”里输入注册码，完成注册。 建议使用在线安装方法，这样不容易出错。</p></li>
+</ul>
+
+
+<hr />
+
+<h1>RMI插件的使用</h1>
+
+<p>如果你上面的步骤没有错的话，使用RMI其实非常简单。</p>
+
+<p>1, 第一次运行某个程序，需要在”运行配置”里配置java策略文件和codebase。</p>
+
+<p>2，点击”运行”，运行方式选择”RMI Application”。</p>
+
+<hr />
+
+<p>希望上面的内容能为大家编写RMI程序提供一些帮助。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Java RMI出远程stub未找到异常]]></title>
+    <link href="http://www.comflag.com/blog/2012/05/18/java-rmichu-yuan-cheng-stubwei-zhao-dao-yi-chang/"/>
+    <updated>2012-05-18T20:18:00+08:00</updated>
+    <id>http://www.comflag.com/blog/2012/05/18/java-rmichu-yuan-cheng-stubwei-zhao-dao-yi-chang</id>
+    <content type="html"><![CDATA[<p>最近在做一个项目，题目是《基于Java的分布式计算系统》，这个题目要求使用Java RMI技术。</p>
+
+<p>这个分布式系统涉及到三个实体，分别是客户端，服务器，和工作站，因此我在Eclipse里分别创建了三个工程。每个工程维护自己的本地对象，并向其他的远程实体提供远程方法调用(RMI)接口。</p>
+
+<!--more-->
+
+
+<hr />
+
+<p>在Eclipse里编写RMI程序，我用到了一个Eclipse的RMI插件，它可以很方便的配置codebase和策略文件，并且能够自动生成桩(stub)文件。这里要说明的是，在JDK 1.6开发环境下，远程接口最后只生成stub文件，不再生成框架文件(skeleton)。 我按照文档上的格式，编写了本地类，远程接口类，及其实现类。</p>
+
+<p>编译运行，客户端调用服务器远程方法进行登陆，但是此时一直提示要用到的远程桩(stub)文件找不到，抛出类似java.lang.ClassNotFoundException的异常:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>java.lang.ClassNotFoundException  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">java</span><span class="o">.</span><span class="na">rmi</span><span class="o">.</span><span class="na">UnmarshalException</span><span class="o">:</span> <span class="n">error</span> <span class="n">unmarshalling</span> <span class="k">return</span><span class="o">;</span> <span class="n">nested</span> <span class="n">exception</span> <span class="nl">is:</span>
+</span><span class='line'>  <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">ClassNotFoundException</span><span class="o">:</span> <span class="n">server</span><span class="o">.</span><span class="na">serverrmi</span><span class="o">.</span><span class="na">RmiWorkerRegistry_Stub</span>
+</span><span class='line'>  <span class="n">at</span> <span class="n">sun</span><span class="o">.</span><span class="na">rmi</span><span class="o">.</span><span class="na">registry</span><span class="o">.</span><span class="na">RegistryImpl_Stub</span><span class="o">.</span><span class="na">lookup</span><span class="o">(</span><span class="n">Unknown</span> <span class="n">Source</span><span class="o">)</span>
+</span><span class='line'>  <span class="n">at</span> <span class="n">java</span><span class="o">.</span><span class="na">rmi</span><span class="o">.</span><span class="na">Naming</span><span class="o">.</span><span class="na">lookup</span><span class="o">(</span><span class="n">Naming</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">84</span><span class="o">)</span>
+</span><span class='line'>  <span class="n">at</span> <span class="n">worker</span><span class="o">.</span><span class="na">gui</span><span class="o">.</span><span class="na">WorkerGuiPrime</span><span class="o">.</span><span class="na">Login</span><span class="o">(</span><span class="n">WorkerGuiPrime</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">324</span><span class="o">)</span>
+</span><span class='line'>  <span class="n">at</span> <span class="n">worker</span><span class="o">.</span><span class="na">gui</span><span class="o">.</span><span class="na">WorkerGuiPrime</span><span class="o">.</span><span class="na">access</span><span class="n">$1</span><span class="o">(</span><span class="n">WorkerGuiPrime</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">305</span><span class="o">)</span>
+</span><span class='line'>  <span class="n">at</span> <span class="n">worker</span><span class="o">.</span><span class="na">gui</span><span class="o">.</span><span class="na">WorkerGuiPrime</span><span class="n">$2</span><span class="o">.</span><span class="na">actionPerformed</span><span class="o">(</span><span class="n">WorkerGuiPrime</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">184</span><span class="o">)</span>
+</span><span class='line'>  <span class="n">at</span> <span class="n">javax</span><span class="o">.</span><span class="na">swing</span><span class="o">.</span><span class="na">AbstractButton</span><span class="o">.</span><span class="na">fireActionPerformed</span><span class="o">(</span><span class="n">AbstractButton</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">1995</span><span class="o">)</span>
+</span><span class='line'>  <span class="n">at</span> <span class="n">javax</span><span class="o">.</span><span class="na">swing</span><span class="o">.</span><span class="na">AbstractButton</span><span class="n">$Handler</span><span class="o">.</span><span class="na">actionPerformed</span><span class="o">(</span><span class="n">AbstractButton</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">2318</span><span class="o">)&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>java.lang.ClassNotFoundException </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">Caused</span> <span class="nl">by:</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">ClassNotFoundException</span><span class="o">:</span> <span class="n">server</span><span class="o">.</span><span class="na">serverrmi</span><span class="o">.</span><span class="na">RmiWorkerRegistry_Stub</span>
+</span><span class='line'>  <span class="n">at</span> <span class="n">java</span><span class="o">.</span><span class="na">net</span><span class="o">.</span><span class="na">URLClassLoader</span><span class="n">$1</span><span class="o">.</span><span class="na">run</span><span class="o">(</span><span class="n">URLClassLoader</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">202</span><span class="o">)</span>
+</span><span class='line'>  <span class="n">at</span> <span class="n">java</span><span class="o">.</span><span class="na">security</span><span class="o">.</span><span class="na">AccessController</span><span class="o">.</span><span class="na">doPrivileged</span><span class="o">(</span><span class="n">Native</span> <span class="n">Method</span><span class="o">)</span>
+</span><span class='line'>  <span class="n">at</span> <span class="n">java</span><span class="o">.</span><span class="na">net</span><span class="o">.</span><span class="na">URLClassLoader</span><span class="o">.</span><span class="na">findClass</span><span class="o">(</span><span class="n">URLClassLoader</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">190</span><span class="o">)</span>
+</span><span class='line'>  <span class="n">at</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">ClassLoader</span><span class="o">.</span><span class="na">loadClass</span><span class="o">(</span><span class="n">ClassLoader</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">306</span><span class="o">)</span>
+</span><span class='line'>  <span class="n">at</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">ClassLoader</span><span class="o">.</span><span class="na">loadClass</span><span class="o">(</span><span class="n">ClassLoader</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">247</span><span class="o">)</span>
+</span><span class='line'>  <span class="n">at</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">Class</span><span class="o">.</span><span class="na">forName0</span><span class="o">(</span><span class="n">Native</span> <span class="n">Method</span><span class="o">)&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>按理说，客户端会自动下载服务器的远程桩文件，但是在客户端bin/目录下根本看不到需要的stub桩文件，抛出异常也是情理之中的事情。</p>
+
+<hr />
+
+<p>我尝试了至少下面三种办法都不行，比如:</p>
+
+<p>将服务器bin/目录配置为服务器的codebase。
+将服务器bin/目录打成jar包，并把它配置成服务器的codebase。
+开启Apache服务器，把服务器bin/打成jar包后放在Apache的www目录下，并配置服务器codebase。
+其中，将bin/目录打成的jar包放在Apache的www目录下，在另一台连通的计算机上可以直接在浏览器里输入url地址进行下载，但是客户端程序无论如何都无法自动下载。</p>
+
+<hr />
+
+<h1>解决办法</h1>
+
+<p>最后，我放弃了让客户端自动下载远程桩(stub)文件的想法，直接把服务器生成的桩(stub)文件复制到客户端bin/目录下的相应位置，这时候，客户端可以正常连接远程服务器了，再没有抛出异常。</p>
+
+<p>这里要说明的是，虽然是直接将stub文件复制到客户端程序目录下了，但是远程计算依旧是在服务器上执行的，stub只是起到中间数据中转的作用。</p>
+
+<p>问题暂时解决了，但是我依旧在寻找让客户端自动下载服务器桩(stub)的方法，希望有心人解决了之后能拿出来分享一下。</p>
+
+<hr />
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[使用substance美化Java Swing界面]]></title>
+    <link href="http://www.comflag.com/blog/2012/05/18/shi-yong-substancemei-hua-java-swingjie-mian/"/>
+    <updated>2012-05-18T20:07:00+08:00</updated>
+    <id>http://www.comflag.com/blog/2012/05/18/shi-yong-substancemei-hua-java-swingjie-mian</id>
+    <content type="html"><![CDATA[<p>Java的一个优势是它有非常非常多的开源项目，我们可以非常自由的使用这些开源项目为自己的程序提供便利。</p>
+
+<p>substance是一个开源的Java项目，它的目标是为Java Swing提供美化。</p>
+
+<!--more-->
+
+
+<p>现在我们谈到的substance是一个jar包，里面封装了20多种皮肤类，这些皮肤类毫无疑问的可以被用来美化Java Swing界面。</p>
+
+<p>另外，我们还可以用substance为程序添加水印图片，这些水印图片可以设置透明度0~1.0，从而显示出非常剔透的效果。</p>
+
+<hr />
+
+<p>我编写了一个非常简单易懂的样例程序，封装了11种substance皮肤，并为每种皮肤添加了水印图片，这些皮肤封装在类Skins中，以静态方法提供，可以直接用类名(Skins)调用，源码大家可以到我的github主页下载，在SubstanceDemo项目页面，点击左上方”Code”标签里的”ZIP”按钮即可下载源码:</p>
+
+<p><a href="https://github.com/comflag/SubstanceDemo">SubstanceDemo</a></p>
+
+<hr />
+
+<ul>
+<li>在eclipse中选中项目右键选择”构建路径”，将substance.jar添加到工程中。</li>
+<li><p>编写代码，设置相关主题，以及水印，比如，我在Skins.class下添加如下静态方法，设置Sahara主题
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>设置相关主题  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">setThemeSahara</span><span class="o">()</span>
+</span><span class='line'><span class="o">{&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">JFrame</span><span class="o">.</span><span class="na">setDefaultLookAndFeelDecorated</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'><span class="n">JDialog</span><span class="o">.</span><span class="na">setDefaultLookAndFeelDecorated</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">try</span> <span class="o">{</span>
+</span><span class='line'>          <span class="c1">//为皮肤添加水印图片，引号里是图片的相对路径</span>
+</span><span class='line'>          <span class="n">SubstanceImageWatermark</span> <span class="n">watermark</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SubstanceImageWatermark</span><span class="o">(</span><span class="n">ServerGui</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getResourceAsStream</span><span class="o">(</span><span class="s">&quot;/common/picture/yellow_s.png&quot;</span><span class="o">));</span>
+</span><span class='line'>          <span class="n">watermark</span><span class="o">.</span><span class="na">setKind</span><span class="o">(</span><span class="n">ImageWatermarkKind</span><span class="o">.</span><span class="na">APP_ANCHOR</span><span class="o">);</span>
+</span><span class='line'>          <span class="c1">//设置水印透明度</span>
+</span><span class='line'>          <span class="n">watermark</span><span class="o">.</span><span class="na">setOpacity</span><span class="o">((</span><span class="kt">float</span><span class="o">)</span> <span class="mf">0.35</span><span class="o">);</span>
+</span><span class='line'>          <span class="n">UIManager</span><span class="o">.</span><span class="na">setLookAndFeel</span><span class="o">(</span><span class="k">new</span> <span class="n">SubstanceSaharaLookAndFeel</span><span class="o">());</span>
+</span><span class='line'>          <span class="n">SubstanceSkin</span> <span class="n">skin</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SaharaSkin</span><span class="o">().</span><span class="na">withWatermark</span><span class="o">(</span><span class="n">watermark</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="n">SubstanceLookAndFeel</span><span class="o">.</span><span class="na">setSkin</span><span class="o">(</span><span class="n">skin</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">UnsupportedLookAndFeelException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>          <span class="n">ex</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p></li>
+<li><p>在Main函数里调用上面的方法，即可完成皮肤修改。这里需要说明的是，在调用上面的方法之前，要加上下面两句代码。
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Main函数  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">JFrame</span><span class="o">.</span><span class="na">setDefaultLookAndFeelDecorated</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'><span class="n">JDialog</span><span class="o">.</span><span class="na">setDefaultLookAndFeelDecorated</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'><span class="n">Skins</span><span class="o">.</span><span class="na">setThemeNebula</span><span class="o">();</span>        <span class="c1">//setThemeSahara是类Skins的静态方法</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p></li>
+</ul>
+
+
+<p>另外，直接在Main函数里调用就行了，不用再开辟类似下面的线程</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>GUI  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">EventQueue</span><span class="o">.</span><span class="na">invokeLater</span><span class="o">(</span><span class="k">new</span> <span class="n">Runnable</span><span class="o">()</span> <span class="o">{&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span>  <span class="kd">public</span> <span class="kt">void</span> <span class="n">run</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="c1">//do something</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><img src="http://pic.yupoo.com/comflag/BTnpKNPC/9ihaO.png" width="800" height="600" title="Substance" alt="Substance"></p>
+
+<p><img src="http://pic.yupoo.com/comflag/BTnpL5Mv/iYDwh.png" width="800" height="600" title="Substance" alt="Substance"></p>
+
+<p><img src="http://pic.yupoo.com/comflag/BTjEUgJi/A9ttz.png" width="800" height="600" title="Substance" alt="Substance"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[RMI Spy对程序运行产生的影响]]></title>
+    <link href="http://www.comflag.com/blog/2012/05/18/rmi-spydui-cheng-xu-yun-xing-chan-sheng-de-ying-xiang/"/>
+    <updated>2012-05-18T19:53:00+08:00</updated>
+    <id>http://www.comflag.com/blog/2012/05/18/rmi-spydui-cheng-xu-yun-xing-chan-sheng-de-ying-xiang</id>
+    <content type="html"><![CDATA[<p>本文档描述了使用RMI Spy会对你的应用程序的执行产生怎样的影响。</p>
+
+<p>在大多数情况下，你不会注意到我们程序执行时的任何不同。但是，如果你的程序没有按照你预期去执行，此时，你将会意识到RMI Spy能为你调试程序带来的方便了。这是一个技术文档，而不是一个RMI Spy帮助文档。</p>
+
+<!--more-->
+
+
+<p>1，RMI Spy是什么？ RMI Spy负责收集和显示你的应用程序运行时产生的和RMI相关的事件。具体的说，它监控所有的远程调用(包括你应用程序产生的外部调用和其他应用程序调用你的应用程序提供的远程服务)。它同时可以显示类加载事件，从而帮助你调试”类加载”问题，这些问题通常会出现在RMI系统开发的过程中。</p>
+
+<p>2，RMI Spy是如何工作的? i)介绍: RMI Spy的工作基于Logging API,这些Logging API被RMI接口使用。如果RMI Spy没有被开启，你可以手动开启”logging properties”(你可以在RMI运行配置的”RMI Launch”标签里勾选开启)以及用来监控输出的控制台窗口。 比如:打开”java.rmi.server.logCalls”属性，产生类似下面的输出(为显示清楚，添加了换行符):</p>
+
+<pre><code>    view plaincopy
+        20/05/2006 13:35:06 sun.rmi.server.UnicastServerRef logCall
+        FINER: RMI TCP Connection(2)-192.168.2.100: [192.168.2.100: \
+            demo.rmi.print.server.RemotePrinterImpl[1]: \
+            public abstract int demo.rmi.print.server.RemotePrinter.submitJob(\
+                java.lang.String) throws java.rmi.RemoteException]
+</code></pre>
+
+<p>这样的输出并不利于阅读，也没有提供任何有意义的信息。</p>
+
+<p>ii)RMI Spy接口 RMI Spy并不分析程序的输出(尽管理论上它能够分析)，因为这个方法并不可靠—程序的输出可能会干扰RMI日志。取而代之的是，它与RMI的日志系统衔接，并能在事件产生时及时捕获。RMI Spy运行组件(作为应用程序的一部分运行)使用日志API(Logging API)来注册它自己的代理从而收集RMI事件并将它们推送给RMI插件进行分析并显示在RMI Spy视图中。</p>
+
+<p>为了避免修改应用程序代码，RMI Spy使用了一个启动封装器(launch wrapper)。这意味着RMI Spy的运行组件是运行在你的程序内部的(当然，前提是RMI Spy被激活了)。当应用程序启动后，RMI Spy JAR会被添加到classpath，launch wrapper(类net.genady.rmi.logger.Runner)将被作为主类(main class)。应用程序的主类和参数会被当做参数传递到launch wrapper。</p>
+
+<p>launch wrapper 负责主持日志代理(logging handlers)，同RMI 插件建立一个TCP连接，并且经控制权传递给真正的应用程序。显而易见的是，在同一个VM进程中同时运行wrapper，这对于你的应用程序是有影响的。 下一节就会讨论这些影响的细节。</p>
+
+<p>iii)仪器的使用(The use of instrumentation) RMI插件使用字节码仪器(ASM库)来执行一些高级功能(比如时间测量)。它将不会对你的程序产生任何特别的影响，因为它只执行非常非常少的一些系统类。需要说明的是，RMI插件必须使用JDK1.5或者JDK1.6版本(如果使用的版本不对，插件将自动关闭)，这意味着如果你使用自己的仪器工具(-javaagent)的话，你就要多加小心了，当然，在大多数情况下，这个不是问题。</p>
+
+<p>RMI Spy会调用某些对象的一些方法，这些对象会在远程调用过程中作为值传递的参数或者返回值。在以下类中，它会选择调用toString()方法:所有的原始类型，封装类，RULs和URIs，InetAddress，枚举类型，字符序列( CharSequence)的实现和数字类(Number class)的子类。它同样会在集(Collection)的实现中调用size()方法。这些方法的调用会产生无法预期的副作用，比如获取锁/监视器，创建网络连接等等。</p>
+
+<p>3，运行模式和调试模式的不同 RMI Spy没有使用调试API，因此，在运行模式和调试模式下，RMI Spy的操作没有任何区别。</p>
+
+<p>4，支持的JDK/JVM提供商 RMI Spy依赖于Sun的内部API。但是，很多运行RMI的JDK提供者都是由Sun授权许可的，因此，大多数标准JVM都可以运行RMI Spy。要获取最新的兼容性列表，请访问website</p>
+
+<p>5，堆栈跟踪 RMI Spy使用一个简单的启动封装器来运行一些配置，然后通过reflection APIs将控制权交个你的主类(main class)。因此，所有由主线程中产生的堆栈追踪会有以下的几行提示(假设你的主类是:</p>
+
+<pre><code>demo.rmi.print.client.PrintClient):
+view plaincopy
+at demo.rmi.print.client.PrintClient.main(PrintClient.java:35)
+      at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+      at sun.reflect.NativeMethodAccessorImpl.invoke(
+                         NativeMethodAccessorImpl.java:39)
+      at sun.reflect.DelegatingMethodAccessorImpl.invoke(
+                         DelegatingMethodAccessorImpl.java:25)
+      at java.lang.reflect.Method.invoke(Method.java:324)
+      at net.genady.rmi.logger.Runner.main(Runner.java:138)
+</code></pre>
+
+<p>堆栈追踪在其他的线程里产生，并且不会产生影响。</p>
+
+<p>6，辅助线程 应用程序和RMI插件的通信时通过本地TCP连接进行的。尽管是本地连接，它仍旧有可能因为各种原因而被阻塞(比如本地防火墙)。因此，当有事件要传送给RMI插件是，运行组件会把那个事件放到事件队列中，专用守护线程会执行所有的通信工作。通过这种方法，应用程序线程永远不会被RMI插件阻塞，而对应用程序的影响将会降到最低。这个专用守护线程的名字是”RMI Plug-in for Eclipse Log Events Reporter”，大多数时候，它是空闲的。</p>
+
+<p>7，关闭钩子(A Shutdown hook) 一个应用程序调用方法System.exit()或者相似方法来结束执行的情况是常见的。在这种情况下，RMI Spy的运行组件必须确保所有被收集的事件都已经被传送给运行在eclipse中的RMI Spy部分了。为了达到这个目的，RMI插件使用了”shutdown hooks”功能。因此，这可能会花费较长的事件去关闭一个应用程序(直到所有的应用程序都被传送)。通常，这个过程花费几毫秒，但对于RMI密集型程序，这个过程会多用10到100毫秒直到程序终止。</p>
+
+<p>8，使用RMI的Logging属性(Logging properties) RMI Spy没有直接使用任何logging属性，因此，你可以开启他们来查看正常的基于控制台的日志。但是，设置某些属性，比如”sun.rmi.server.suppressStackTraces”会导致RMI Spy丢失某些信息。因此最好让RMI Spy来显示这些日志信息兵，要避免直接修改这些日志属性。</p>
+
+<p>9，使用日志API (这需要更多的技术和对Logging APIs的了解)RMI Spy把RMI loggers的logging level修改为”ALL”。你之所在控制台上看不到RMI的日志是因为RMI日志的控制者拥有更高的等级(默认是”SILENT”)。如果因为某些原因日志控制者等级被修改了，或者另一个控制者被注册到RMI日志，他们将获取他们本不会获取到的事件(如果RMI Spy没有被使用的话)。当然，如果你手动修改了RMI日志等级，你就可以影响RMI Spy的行为了。</p>
+
+<p>英语原文:<a href="http://www.genady.net/rmi/v20/docs/spy/spy_effects.html">传送门</a></p>
+]]></content>
+  </entry>
+  
+</feed>
