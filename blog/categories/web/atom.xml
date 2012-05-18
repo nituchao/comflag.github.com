@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Web | comflag]]></title>
-  <link href="http://www.comflag.com/blog/categories/web/atom.xml" rel="self"/>
-  <link href="http://www.comflag.com/"/>
-  <updated>2012-05-18T22:01:50+08:00</updated>
-  <id>http://www.comflag.com/</id>
+  <link href="http://comflag.github.com/blog/categories/web/atom.xml" rel="self"/>
+  <link href="http://comflag.github.com/"/>
+  <updated>2012-05-18T22:10:52+08:00</updated>
+  <id>http://comflag.github.com/</id>
   <author>
     <name><![CDATA[liang]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[ubuntu下安装Apache+PHP+Mysysql]]></title>
-    <link href="http://www.comflag.com/blog/2012/05/18/ubuntuxia-an-zhuang-apache-plus-php-plus-mysysql/"/>
+    <link href="http://comflag.github.com/blog/2012/05/18/ubuntuxia-an-zhuang-apache-plus-php-plus-mysysql/"/>
     <updated>2012-05-18T20:54:00+08:00</updated>
-    <id>http://www.comflag.com/blog/2012/05/18/ubuntuxia-an-zhuang-apache-plus-php-plus-mysysql</id>
+    <id>http://comflag.github.com/blog/2012/05/18/ubuntuxia-an-zhuang-apache-plus-php-plus-mysysql</id>
     <content type="html"><![CDATA[<p>电影《社交网络》中，facebook创始人马克.扎克失恋后入侵哈佛大学宿舍楼服务器，窃取数据库资料，并在两个小时内完成了一个给校内女生评分的交互网站，该网站一天内点击数过10W，直接导致学校服务器崩溃。。。。。。</p>
 
 <!--more-->

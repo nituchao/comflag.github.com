@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Ubuntu | comflag]]></title>
-  <link href="http://www.comflag.com/blog/categories/ubuntu/atom.xml" rel="self"/>
-  <link href="http://www.comflag.com/"/>
-  <updated>2012-05-18T22:01:50+08:00</updated>
-  <id>http://www.comflag.com/</id>
+  <link href="http://comflag.github.com/blog/categories/ubuntu/atom.xml" rel="self"/>
+  <link href="http://comflag.github.com/"/>
+  <updated>2012-05-18T22:10:52+08:00</updated>
+  <id>http://comflag.github.com/</id>
   <author>
     <name><![CDATA[liang]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[grub2引导安装ubuntu11.04]]></title>
-    <link href="http://www.comflag.com/blog/2012/05/18/grub2yin-dao-an-zhuang-ubuntu11-dot-04/"/>
+    <link href="http://comflag.github.com/blog/2012/05/18/grub2yin-dao-an-zhuang-ubuntu11-dot-04/"/>
     <updated>2012-05-18T21:02:00+08:00</updated>
-    <id>http://www.comflag.com/blog/2012/05/18/grub2yin-dao-an-zhuang-ubuntu11-dot-04</id>
+    <id>http://comflag.github.com/blog/2012/05/18/grub2yin-dao-an-zhuang-ubuntu11-dot-04</id>
     <content type="html"><![CDATA[<p>写在前面:这篇文章早几天就想写了，因为方法早就想好了，今天在自己电脑上实践了一下，成功了，嘿嘿，这才决定写出来。很多人下载了ubuntu11.04的iso镜像后通常要不刻CD盘，要不刻录到u盘，刻CD盘费钱，刻u盘不一定能成功。</p>
 
 <!--more-->
@@ -82,9 +82,9 @@
   
   <entry>
     <title type="html"><![CDATA[ubuntu下安装Apache+PHP+Mysysql]]></title>
-    <link href="http://www.comflag.com/blog/2012/05/18/ubuntuxia-an-zhuang-apache-plus-php-plus-mysysql/"/>
+    <link href="http://comflag.github.com/blog/2012/05/18/ubuntuxia-an-zhuang-apache-plus-php-plus-mysysql/"/>
     <updated>2012-05-18T20:54:00+08:00</updated>
-    <id>http://www.comflag.com/blog/2012/05/18/ubuntuxia-an-zhuang-apache-plus-php-plus-mysysql</id>
+    <id>http://comflag.github.com/blog/2012/05/18/ubuntuxia-an-zhuang-apache-plus-php-plus-mysysql</id>
     <content type="html"><![CDATA[<p>电影《社交网络》中，facebook创始人马克.扎克失恋后入侵哈佛大学宿舍楼服务器，窃取数据库资料，并在两个小时内完成了一个给校内女生评分的交互网站，该网站一天内点击数过10W，直接导致学校服务器崩溃。。。。。。</p>
 
 <!--more-->
@@ -182,9 +182,9 @@
   
   <entry>
     <title type="html"><![CDATA[Ubuntu在终端中使用lynx访问互联网]]></title>
-    <link href="http://www.comflag.com/blog/2012/05/18/ubuntuzai-zhong-duan-zhong-shi-yong-lynxfang-wen-hu-lian-wang/"/>
+    <link href="http://comflag.github.com/blog/2012/05/18/ubuntuzai-zhong-duan-zhong-shi-yong-lynxfang-wen-hu-lian-wang/"/>
     <updated>2012-05-18T20:42:00+08:00</updated>
-    <id>http://www.comflag.com/blog/2012/05/18/ubuntuzai-zhong-duan-zhong-shi-yong-lynxfang-wen-hu-lian-wang</id>
+    <id>http://comflag.github.com/blog/2012/05/18/ubuntuzai-zhong-duan-zhong-shi-yong-lynxfang-wen-hu-lian-wang</id>
     <content type="html"><![CDATA[<p>大家熟悉的Opera是一个灵巧的浏览器。它发布于1996年。但是在它诞生的前一年一个命令行下的全能的浏览器已经在众多志愿者的帮助一下悄然走进了我们的世界，这就是Lynx浏览器.</p>
 
 <!--more-->

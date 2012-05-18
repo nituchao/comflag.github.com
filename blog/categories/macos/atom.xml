@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: MacOS | comflag]]></title>
-  <link href="http://www.comflag.com/blog/categories/macos/atom.xml" rel="self"/>
-  <link href="http://www.comflag.com/"/>
-  <updated>2012-05-18T22:01:50+08:00</updated>
-  <id>http://www.comflag.com/</id>
+  <link href="http://comflag.github.com/blog/categories/macos/atom.xml" rel="self"/>
+  <link href="http://comflag.github.com/"/>
+  <updated>2012-05-18T22:10:52+08:00</updated>
+  <id>http://comflag.github.com/</id>
   <author>
     <name><![CDATA[liang]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[iCloud提示已达到帐户数量限制的解决办法]]></title>
-    <link href="http://www.comflag.com/blog/2012/05/18/icloudti-shi-yi-da-dao-zhang-hu-shu-liang-xian-zhi-de-jie-jue-ban-fa/"/>
+    <link href="http://comflag.github.com/blog/2012/05/18/icloudti-shi-yi-da-dao-zhang-hu-shu-liang-xian-zhi-de-jie-jue-ban-fa/"/>
     <updated>2012-05-18T20:31:00+08:00</updated>
-    <id>http://www.comflag.com/blog/2012/05/18/icloudti-shi-yi-da-dao-zhang-hu-shu-liang-xian-zhi-de-jie-jue-ban-fa</id>
+    <id>http://comflag.github.com/blog/2012/05/18/icloudti-shi-yi-da-dao-zhang-hu-shu-liang-xian-zhi-de-jie-jue-ban-fa</id>
     <content type="html"><![CDATA[<p>自从安装了Mac OS X 10.7.3后，iClound就一直不能使用，输入Apple ID后一直提示”已达到账户数量限制”，英文提示”Account Limit Reached”，但自己明明只在这一个Mac OS下登陆过，并且App Store和iTunes都可以正常登陆和使用。后来用英文在google里才找到了解决办法。现在已经能正常登陆iClound了。</p>
 
 <!--more-->
@@ -68,9 +68,9 @@
   
   <entry>
     <title type="html"><![CDATA[Dell D630安装Mac OS Lion]]></title>
-    <link href="http://www.comflag.com/blog/2012/05/18/dell-d630an-zhuang-mac-os-lion/"/>
+    <link href="http://comflag.github.com/blog/2012/05/18/dell-d630an-zhuang-mac-os-lion/"/>
     <updated>2012-05-18T19:59:00+08:00</updated>
-    <id>http://www.comflag.com/blog/2012/05/18/dell-d630an-zhuang-mac-os-lion</id>
+    <id>http://comflag.github.com/blog/2012/05/18/dell-d630an-zhuang-mac-os-lion</id>
     <content type="html"><![CDATA[<p>经过两天多的折腾总算是让Dell D630完美的运行起了Lion，相比较以前的破解版本，我发现原版的Lion和D630结合更加完美，现在除了键盘快捷键这个硬伤意外，Lion基本完美了。</p>
 
 <p>建个Dell D630的QQ群，群里基本上都已经体验上Mac OS X了。</p>

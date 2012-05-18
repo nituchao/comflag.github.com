@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: 开源项目 | comflag]]></title>
-  <link href="http://www.comflag.com/blog/categories/开源项目/atom.xml" rel="self"/>
-  <link href="http://www.comflag.com/"/>
-  <updated>2012-05-18T22:01:50+08:00</updated>
-  <id>http://www.comflag.com/</id>
+  <link href="http://comflag.github.com/blog/categories/开源项目/atom.xml" rel="self"/>
+  <link href="http://comflag.github.com/"/>
+  <updated>2012-05-18T22:10:52+08:00</updated>
+  <id>http://comflag.github.com/</id>
   <author>
     <name><![CDATA[liang]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[使用substance美化Java Swing界面]]></title>
-    <link href="http://www.comflag.com/blog/2012/05/18/shi-yong-substancemei-hua-java-swingjie-mian/"/>
+    <link href="http://comflag.github.com/blog/2012/05/18/shi-yong-substancemei-hua-java-swingjie-mian/"/>
     <updated>2012-05-18T20:07:00+08:00</updated>
-    <id>http://www.comflag.com/blog/2012/05/18/shi-yong-substancemei-hua-java-swingjie-mian</id>
+    <id>http://comflag.github.com/blog/2012/05/18/shi-yong-substancemei-hua-java-swingjie-mian</id>
     <content type="html"><![CDATA[<p>Java的一个优势是它有非常非常多的开源项目，我们可以非常自由的使用这些开源项目为自己的程序提供便利。</p>
 
 <p>substance是一个开源的Java项目，它的目标是为Java Swing提供美化。</p>

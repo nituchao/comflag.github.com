@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[comflag]]></title>
-  <link href="http://www.comflag.com/atom.xml" rel="self"/>
-  <link href="http://www.comflag.com/"/>
-  <updated>2012-05-18T22:01:50+08:00</updated>
-  <id>http://www.comflag.com/</id>
+  <link href="http://comflag.github.com/atom.xml" rel="self"/>
+  <link href="http://comflag.github.com/"/>
+  <updated>2012-05-18T22:10:52+08:00</updated>
+  <id>http://comflag.github.com/</id>
   <author>
     <name><![CDATA[liang]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[grub2引导安装ubuntu11.04]]></title>
-    <link href="http://www.comflag.com/blog/2012/05/18/grub2yin-dao-an-zhuang-ubuntu11-dot-04/"/>
+    <link href="http://comflag.github.com/blog/2012/05/18/grub2yin-dao-an-zhuang-ubuntu11-dot-04/"/>
     <updated>2012-05-18T21:02:00+08:00</updated>
-    <id>http://www.comflag.com/blog/2012/05/18/grub2yin-dao-an-zhuang-ubuntu11-dot-04</id>
+    <id>http://comflag.github.com/blog/2012/05/18/grub2yin-dao-an-zhuang-ubuntu11-dot-04</id>
     <content type="html"><![CDATA[<p>写在前面:这篇文章早几天就想写了，因为方法早就想好了，今天在自己电脑上实践了一下，成功了，嘿嘿，这才决定写出来。很多人下载了ubuntu11.04的iso镜像后通常要不刻CD盘，要不刻录到u盘，刻CD盘费钱，刻u盘不一定能成功。</p>
 
 <!--more-->
@@ -75,9 +75,9 @@
   
   <entry>
     <title type="html"><![CDATA[ubuntu下安装Apache+PHP+Mysysql]]></title>
-    <link href="http://www.comflag.com/blog/2012/05/18/ubuntuxia-an-zhuang-apache-plus-php-plus-mysysql/"/>
+    <link href="http://comflag.github.com/blog/2012/05/18/ubuntuxia-an-zhuang-apache-plus-php-plus-mysysql/"/>
     <updated>2012-05-18T20:54:00+08:00</updated>
-    <id>http://www.comflag.com/blog/2012/05/18/ubuntuxia-an-zhuang-apache-plus-php-plus-mysysql</id>
+    <id>http://comflag.github.com/blog/2012/05/18/ubuntuxia-an-zhuang-apache-plus-php-plus-mysysql</id>
     <content type="html"><![CDATA[<p>电影《社交网络》中，facebook创始人马克.扎克失恋后入侵哈佛大学宿舍楼服务器，窃取数据库资料，并在两个小时内完成了一个给校内女生评分的交互网站，该网站一天内点击数过10W，直接导致学校服务器崩溃。。。。。。</p>
 
 <!--more-->
@@ -175,9 +175,9 @@
   
   <entry>
     <title type="html"><![CDATA[Ubuntu在终端中使用lynx访问互联网]]></title>
-    <link href="http://www.comflag.com/blog/2012/05/18/ubuntuzai-zhong-duan-zhong-shi-yong-lynxfang-wen-hu-lian-wang/"/>
+    <link href="http://comflag.github.com/blog/2012/05/18/ubuntuzai-zhong-duan-zhong-shi-yong-lynxfang-wen-hu-lian-wang/"/>
     <updated>2012-05-18T20:42:00+08:00</updated>
-    <id>http://www.comflag.com/blog/2012/05/18/ubuntuzai-zhong-duan-zhong-shi-yong-lynxfang-wen-hu-lian-wang</id>
+    <id>http://comflag.github.com/blog/2012/05/18/ubuntuzai-zhong-duan-zhong-shi-yong-lynxfang-wen-hu-lian-wang</id>
     <content type="html"><![CDATA[<p>大家熟悉的Opera是一个灵巧的浏览器。它发布于1996年。但是在它诞生的前一年一个命令行下的全能的浏览器已经在众多志愿者的帮助一下悄然走进了我们的世界，这就是Lynx浏览器.</p>
 
 <!--more-->
@@ -349,9 +349,9 @@
   
   <entry>
     <title type="html"><![CDATA[让PPC成为web服务器与PC进行数据同步]]></title>
-    <link href="http://www.comflag.com/blog/2012/05/18/rang-ppccheng-wei-webfu-wu-qi-yu-pcjin-xing-shu-ju-tong-bu/"/>
+    <link href="http://comflag.github.com/blog/2012/05/18/rang-ppccheng-wei-webfu-wu-qi-yu-pcjin-xing-shu-ju-tong-bu/"/>
     <updated>2012-05-18T20:39:00+08:00</updated>
-    <id>http://www.comflag.com/blog/2012/05/18/rang-ppccheng-wei-webfu-wu-qi-yu-pcjin-xing-shu-ju-tong-bu</id>
+    <id>http://comflag.github.com/blog/2012/05/18/rang-ppccheng-wei-webfu-wu-qi-yu-pcjin-xing-shu-ju-tong-bu</id>
     <content type="html"><![CDATA[<p>为了让手机和电脑同步数据，我可是下了老力气了，继电脑共享硬盘和使用飞鸽传书之后，我又找到了第三种方法，使用一个软件叫romote-access的软件，这是个手机软件，大家可以在网上下载。</p>
 
 <!--more-->
@@ -369,9 +369,9 @@
   
   <entry>
     <title type="html"><![CDATA[飞鸽传输PPC版实现PPC与PC的通信和文件交流]]></title>
-    <link href="http://www.comflag.com/blog/2012/05/18/fei-ge-chuan-shu-ppcban-shi-xian-ppcyu-pcde-tong-xin-he-wen-jian-jiao-liu/"/>
+    <link href="http://comflag.github.com/blog/2012/05/18/fei-ge-chuan-shu-ppcban-shi-xian-ppcyu-pcde-tong-xin-he-wen-jian-jiao-liu/"/>
     <updated>2012-05-18T20:38:00+08:00</updated>
-    <id>http://www.comflag.com/blog/2012/05/18/fei-ge-chuan-shu-ppcban-shi-xian-ppcyu-pcde-tong-xin-he-wen-jian-jiao-liu</id>
+    <id>http://comflag.github.com/blog/2012/05/18/fei-ge-chuan-shu-ppcban-shi-xian-ppcyu-pcde-tong-xin-he-wen-jian-jiao-liu</id>
     <content type="html"><![CDATA[<p>通过共享电脑硬盘可以使PPC访问电脑硬盘上的资料，但是，如何将电脑上的资料不通过USB数据线而放到PPC上呢，其实可以用飞鸽传书来实现。飞鸽传书有PC版的和PPC版的，下载的时候要注意。</p>
 
 <!--more-->
@@ -383,9 +383,9 @@
   
   <entry>
     <title type="html"><![CDATA[iCloud提示已达到帐户数量限制的解决办法]]></title>
-    <link href="http://www.comflag.com/blog/2012/05/18/icloudti-shi-yi-da-dao-zhang-hu-shu-liang-xian-zhi-de-jie-jue-ban-fa/"/>
+    <link href="http://comflag.github.com/blog/2012/05/18/icloudti-shi-yi-da-dao-zhang-hu-shu-liang-xian-zhi-de-jie-jue-ban-fa/"/>
     <updated>2012-05-18T20:31:00+08:00</updated>
-    <id>http://www.comflag.com/blog/2012/05/18/icloudti-shi-yi-da-dao-zhang-hu-shu-liang-xian-zhi-de-jie-jue-ban-fa</id>
+    <id>http://comflag.github.com/blog/2012/05/18/icloudti-shi-yi-da-dao-zhang-hu-shu-liang-xian-zhi-de-jie-jue-ban-fa</id>
     <content type="html"><![CDATA[<p>自从安装了Mac OS X 10.7.3后，iClound就一直不能使用，输入Apple ID后一直提示”已达到账户数量限制”，英文提示”Account Limit Reached”，但自己明明只在这一个Mac OS下登陆过，并且App Store和iTunes都可以正常登陆和使用。后来用英文在google里才找到了解决办法。现在已经能正常登陆iClound了。</p>
 
 <!--more-->
@@ -436,9 +436,9 @@
   
   <entry>
     <title type="html"><![CDATA[Mac OS X安装过程常见问题总结]]></title>
-    <link href="http://www.comflag.com/blog/2012/05/18/mac-os-xan-zhuang-guo-cheng-chang-jian-cuo-wu-zong-jie/"/>
+    <link href="http://comflag.github.com/blog/2012/05/18/mac-os-xan-zhuang-guo-cheng-chang-jian-cuo-wu-zong-jie/"/>
     <updated>2012-05-18T20:27:00+08:00</updated>
-    <id>http://www.comflag.com/blog/2012/05/18/mac-os-xan-zhuang-guo-cheng-chang-jian-cuo-wu-zong-jie</id>
+    <id>http://comflag.github.com/blog/2012/05/18/mac-os-xan-zhuang-guo-cheng-chang-jian-cuo-wu-zong-jie</id>
     <content type="html"><![CDATA[<p>一直使用的是Mac OS 10.7，最近终于经受不住群里童鞋们的诱惑，准备安装10.7.3，于是下载了10.7.3原版dmg镜像，在Mac OS Lion下按照以前安装盘制作教程在硬盘上重新制作了一个10.7.3的安装盘，然后进行覆盖安装。这个安装盘位于我的硬盘的最后一个分区，大小8.0G。</p>
 
 <!--more-->
@@ -489,9 +489,9 @@
   
   <entry>
     <title type="html"><![CDATA[Eclipse里RMI插件的使用]]></title>
-    <link href="http://www.comflag.com/blog/2012/05/18/eclipseli-rmicha-jian-de-shi-yong/"/>
+    <link href="http://comflag.github.com/blog/2012/05/18/eclipseli-rmicha-jian-de-shi-yong/"/>
     <updated>2012-05-18T20:22:00+08:00</updated>
-    <id>http://www.comflag.com/blog/2012/05/18/eclipseli-rmicha-jian-de-shi-yong</id>
+    <id>http://comflag.github.com/blog/2012/05/18/eclipseli-rmicha-jian-de-shi-yong</id>
     <content type="html"><![CDATA[<p>在Eclipse下编写RMI程序现在有一个非常好的插件RMI-plug，现在的最新版本是2.1.6，支持Eclipse3.5.x，它的主页有非常详细的各个版本信息的说明，<a href="http://www.genady.net/rmi/v20/index.html">RMI-plugin主页</a>。</p>
 
 <!--more-->
@@ -554,9 +554,9 @@
   
   <entry>
     <title type="html"><![CDATA[Java RMI出远程stub未找到异常]]></title>
-    <link href="http://www.comflag.com/blog/2012/05/18/java-rmichu-yuan-cheng-stubwei-zhao-dao-yi-chang/"/>
+    <link href="http://comflag.github.com/blog/2012/05/18/java-rmichu-yuan-cheng-stubwei-zhao-dao-yi-chang/"/>
     <updated>2012-05-18T20:18:00+08:00</updated>
-    <id>http://www.comflag.com/blog/2012/05/18/java-rmichu-yuan-cheng-stubwei-zhao-dao-yi-chang</id>
+    <id>http://comflag.github.com/blog/2012/05/18/java-rmichu-yuan-cheng-stubwei-zhao-dao-yi-chang</id>
     <content type="html"><![CDATA[<p>最近在做一个项目，题目是《基于Java的分布式计算系统》，这个题目要求使用Java RMI技术。</p>
 
 <p>这个分布式系统涉及到三个实体，分别是客户端，服务器，和工作站，因此我在Eclipse里分别创建了三个工程。每个工程维护自己的本地对象，并向其他的远程实体提供远程方法调用(RMI)接口。</p>
@@ -639,9 +639,9 @@
   
   <entry>
     <title type="html"><![CDATA[使用substance美化Java Swing界面]]></title>
-    <link href="http://www.comflag.com/blog/2012/05/18/shi-yong-substancemei-hua-java-swingjie-mian/"/>
+    <link href="http://comflag.github.com/blog/2012/05/18/shi-yong-substancemei-hua-java-swingjie-mian/"/>
     <updated>2012-05-18T20:07:00+08:00</updated>
-    <id>http://www.comflag.com/blog/2012/05/18/shi-yong-substancemei-hua-java-swingjie-mian</id>
+    <id>http://comflag.github.com/blog/2012/05/18/shi-yong-substancemei-hua-java-swingjie-mian</id>
     <content type="html"><![CDATA[<p>Java的一个优势是它有非常非常多的开源项目，我们可以非常自由的使用这些开源项目为自己的程序提供便利。</p>
 
 <p>substance是一个开源的Java项目，它的目标是为Java Swing提供美化。</p>
@@ -752,9 +752,9 @@
   
   <entry>
     <title type="html"><![CDATA[Dell D630安装Mac OS Lion]]></title>
-    <link href="http://www.comflag.com/blog/2012/05/18/dell-d630an-zhuang-mac-os-lion/"/>
+    <link href="http://comflag.github.com/blog/2012/05/18/dell-d630an-zhuang-mac-os-lion/"/>
     <updated>2012-05-18T19:59:00+08:00</updated>
-    <id>http://www.comflag.com/blog/2012/05/18/dell-d630an-zhuang-mac-os-lion</id>
+    <id>http://comflag.github.com/blog/2012/05/18/dell-d630an-zhuang-mac-os-lion</id>
     <content type="html"><![CDATA[<p>经过两天多的折腾总算是让Dell D630完美的运行起了Lion，相比较以前的破解版本，我发现原版的Lion和D630结合更加完美，现在除了键盘快捷键这个硬伤意外，Lion基本完美了。</p>
 
 <p>建个Dell D630的QQ群，群里基本上都已经体验上Mac OS X了。</p>
@@ -798,9 +798,9 @@
   
   <entry>
     <title type="html"><![CDATA[RMI Spy对程序运行产生的影响]]></title>
-    <link href="http://www.comflag.com/blog/2012/05/18/rmi-spydui-cheng-xu-yun-xing-chan-sheng-de-ying-xiang/"/>
+    <link href="http://comflag.github.com/blog/2012/05/18/rmi-spydui-cheng-xu-yun-xing-chan-sheng-de-ying-xiang/"/>
     <updated>2012-05-18T19:53:00+08:00</updated>
-    <id>http://www.comflag.com/blog/2012/05/18/rmi-spydui-cheng-xu-yun-xing-chan-sheng-de-ying-xiang</id>
+    <id>http://comflag.github.com/blog/2012/05/18/rmi-spydui-cheng-xu-yun-xing-chan-sheng-de-ying-xiang</id>
     <content type="html"><![CDATA[<p>本文档描述了使用RMI Spy会对你的应用程序的执行产生怎样的影响。</p>
 
 <p>在大多数情况下，你不会注意到我们程序执行时的任何不同。但是，如果你的程序没有按照你预期去执行，此时，你将会意识到RMI Spy能为你调试程序带来的方便了。这是一个技术文档，而不是一个RMI Spy帮助文档。</p>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: 翻译 | comflag]]></title>
-  <link href="http://www.comflag.com/blog/categories/翻译/atom.xml" rel="self"/>
-  <link href="http://www.comflag.com/"/>
-  <updated>2012-05-18T22:01:50+08:00</updated>
-  <id>http://www.comflag.com/</id>
+  <link href="http://comflag.github.com/blog/categories/翻译/atom.xml" rel="self"/>
+  <link href="http://comflag.github.com/"/>
+  <updated>2012-05-18T22:10:52+08:00</updated>
+  <id>http://comflag.github.com/</id>
   <author>
     <name><![CDATA[liang]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[RMI Spy对程序运行产生的影响]]></title>
-    <link href="http://www.comflag.com/blog/2012/05/18/rmi-spydui-cheng-xu-yun-xing-chan-sheng-de-ying-xiang/"/>
+    <link href="http://comflag.github.com/blog/2012/05/18/rmi-spydui-cheng-xu-yun-xing-chan-sheng-de-ying-xiang/"/>
     <updated>2012-05-18T19:53:00+08:00</updated>
-    <id>http://www.comflag.com/blog/2012/05/18/rmi-spydui-cheng-xu-yun-xing-chan-sheng-de-ying-xiang</id>
+    <id>http://comflag.github.com/blog/2012/05/18/rmi-spydui-cheng-xu-yun-xing-chan-sheng-de-ying-xiang</id>
     <content type="html"><![CDATA[<p>本文档描述了使用RMI Spy会对你的应用程序的执行产生怎样的影响。</p>
 
 <p>在大多数情况下，你不会注意到我们程序执行时的任何不同。但是，如果你的程序没有按照你预期去执行，此时，你将会意识到RMI Spy能为你调试程序带来的方便了。这是一个技术文档，而不是一个RMI Spy帮助文档。</p>
