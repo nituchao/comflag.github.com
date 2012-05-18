@@ -2,6 +2,12 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>
+            http://comflag.github.com/blog/2012/04/20/icloudti-shi-yi-da-dao-zhang-hu-shu-liang-xian-zhi-de-jie-jue-ban-fa/
+        </loc>
+        <lastmod>2012-05-18T22:17:33+08:00</lastmod>
+    </url>
+    <url>
+        <loc>
             http://comflag.github.com/blog/2012/05/18/rmi-spydui-cheng-xu-yun-xing-chan-sheng-de-ying-xiang/
         </loc>
         <lastmod>2012-05-18T21:06:50+08:00</lastmod>
@@ -31,12 +37,6 @@
             http://comflag.github.com/blog/2012/05/18/mac-os-xan-zhuang-guo-cheng-chang-jian-cuo-wu-zong-jie/
         </loc>
         <lastmod>2012-05-18T20:31:19+08:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://comflag.github.com/blog/2012/05/18/icloudti-shi-yi-da-dao-zhang-hu-shu-liang-xian-zhi-de-jie-jue-ban-fa/
-        </loc>
-        <lastmod>2012-05-18T21:06:14+08:00</lastmod>
     </url>
     <url>
         <loc>
@@ -70,10 +70,10 @@
     </url>
     <url>
         <loc>http://comflag.github.com/blog/archives/</loc>
-        <lastmod>2012-05-18T21:27:31+08:00</lastmod>
+        <lastmod>2012-05-18T22:17:33+08:00</lastmod>
     </url>
     <url>
         <loc>http://comflag.github.com/</loc>
-        <lastmod>2012-05-18T21:27:31+08:00</lastmod>
+        <lastmod>2012-05-18T22:17:33+08:00</lastmod>
     </url>
 </urlset>

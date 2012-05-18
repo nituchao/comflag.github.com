@@ -4,7 +4,7 @@
   <title><![CDATA[comflag]]></title>
   <link href="http://comflag.github.com/atom.xml" rel="self"/>
   <link href="http://comflag.github.com/"/>
-  <updated>2012-05-18T22:10:52+08:00</updated>
+  <updated>2012-05-18T22:17:51+08:00</updated>
   <id>http://comflag.github.com/</id>
   <author>
     <name><![CDATA[liang]]></name>
@@ -378,59 +378,6 @@
 
 
 <p>关于wifi的设置很简单，其中要注意的是用PPC的网卡IP地址一定要和电脑的无线网卡IP地址在一个网段，要不然相互发现不了，这一步可以在电脑的cmd命令行模式下ping 手机网卡IP来判断是否链接上。设置好以后，分别在PPC上和电脑上运行飞鸽传书，刷新后就能发现对方了，这是可以对话，聊天，还可以发送文件。我寒假在家由于没有数据线，就是这样子同步电脑和手机数据的，对于我的TOUCH VIVA现在虽然已经非常过时了，我觉得n多功能我还没开发出来，吼吼～～</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iCloud提示已达到帐户数量限制的解决办法]]></title>
-    <link href="http://comflag.github.com/blog/2012/05/18/icloudti-shi-yi-da-dao-zhang-hu-shu-liang-xian-zhi-de-jie-jue-ban-fa/"/>
-    <updated>2012-05-18T20:31:00+08:00</updated>
-    <id>http://comflag.github.com/blog/2012/05/18/icloudti-shi-yi-da-dao-zhang-hu-shu-liang-xian-zhi-de-jie-jue-ban-fa</id>
-    <content type="html"><![CDATA[<p>自从安装了Mac OS X 10.7.3后，iClound就一直不能使用，输入Apple ID后一直提示”已达到账户数量限制”，英文提示”Account Limit Reached”，但自己明明只在这一个Mac OS下登陆过，并且App Store和iTunes都可以正常登陆和使用。后来用英文在google里才找到了解决办法。现在已经能正常登陆iClound了。</p>
-
-<!--more-->
-
-
-<h1>解决办法</h1>
-
-<ul>
-<li>使用Chameleon Wizard生成一个带有有效serial number的smbios.plist文件，并把这个文件放到系统盘Extra目录下，注意，这一步最总要的是那个serial number，比如我的是 “CK9377851G0”。</li>
-</ul>
-
-
-<p><img src="http://pic.yupoo.com/comflag/BUbbT9VO/yqEJU.png" width="800" height="600"></p>
-
-<ul>
-<li>确保你的以太网卡(有线网)在系统信息页面显示的是”en0”。</li>
-</ul>
-
-
-<p><img src="http://pic.yupoo.com/comflag/BUbbUUKC/F47sC.png" width="800" height="600"></p>
-
-<ul>
-<li>确保你的WI-FI网卡(无线网)在系统信息页面显示的是”en1”。</li>
-</ul>
-
-
-<p><img src="http://pic.yupoo.com/comflag/BUbbUzCB/snoL8.png" width="800" height="600"></p>
-
-<ul>
-<li><p>确保你的org.chameleon.Boot.plist中有下面两行代码，如果没有请手动添加</p>
-
-<pre><code>  &lt;key&gt;EthernetBuiltIn&lt;/key&gt;
-  &lt;string&gt;Yes&lt;/string&gt;
-</code></pre></li>
-<li><p>重启计算机</p></li>
-</ul>
-
-
-<h5>说明:用到的工具比如Chameleon Wizard 4.1可以在网上很容易找到~~</h5>
-
-<hr />
-
-<p>重启计算机后，在系统设置偏好里打开icloud，输入账号，密码就应该能登陆了。</p>
-
-<p><img src="http://pic.yupoo.com/comflag/BUbbUsV7/4rr16.png" width="800" height="600"></p>
 ]]></content>
   </entry>
   
@@ -861,6 +808,59 @@ at demo.rmi.print.client.PrintClient.main(PrintClient.java:35)
 <p>9，使用日志API (这需要更多的技术和对Logging APIs的了解)RMI Spy把RMI loggers的logging level修改为”ALL”。你之所在控制台上看不到RMI的日志是因为RMI日志的控制者拥有更高的等级(默认是”SILENT”)。如果因为某些原因日志控制者等级被修改了，或者另一个控制者被注册到RMI日志，他们将获取他们本不会获取到的事件(如果RMI Spy没有被使用的话)。当然，如果你手动修改了RMI日志等级，你就可以影响RMI Spy的行为了。</p>
 
 <p>英语原文:<a href="http://www.genady.net/rmi/v20/docs/spy/spy_effects.html">传送门</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[iCloud提示已达到帐户数量限制的解决办法]]></title>
+    <link href="http://comflag.github.com/blog/2012/04/20/icloudti-shi-yi-da-dao-zhang-hu-shu-liang-xian-zhi-de-jie-jue-ban-fa/"/>
+    <updated>2012-04-20T20:31:00+08:00</updated>
+    <id>http://comflag.github.com/blog/2012/04/20/icloudti-shi-yi-da-dao-zhang-hu-shu-liang-xian-zhi-de-jie-jue-ban-fa</id>
+    <content type="html"><![CDATA[<p>自从安装了Mac OS X 10.7.3后，iClound就一直不能使用，输入Apple ID后一直提示”已达到账户数量限制”，英文提示”Account Limit Reached”，但自己明明只在这一个Mac OS下登陆过，并且App Store和iTunes都可以正常登陆和使用。后来用英文在google里才找到了解决办法。现在已经能正常登陆iClound了。</p>
+
+<!--more-->
+
+
+<h1>解决办法</h1>
+
+<ul>
+<li>使用Chameleon Wizard生成一个带有有效serial number的smbios.plist文件，并把这个文件放到系统盘Extra目录下，注意，这一步最总要的是那个serial number，比如我的是 “CK9377851G0”。</li>
+</ul>
+
+
+<p><img src="http://pic.yupoo.com/comflag/BUbbT9VO/yqEJU.png" width="800" height="600"></p>
+
+<ul>
+<li>确保你的以太网卡(有线网)在系统信息页面显示的是”en0”。</li>
+</ul>
+
+
+<p><img src="http://pic.yupoo.com/comflag/BUbbUUKC/F47sC.png" width="800" height="600"></p>
+
+<ul>
+<li>确保你的WI-FI网卡(无线网)在系统信息页面显示的是”en1”。</li>
+</ul>
+
+
+<p><img src="http://pic.yupoo.com/comflag/BUbbUzCB/snoL8.png" width="800" height="600"></p>
+
+<ul>
+<li><p>确保你的org.chameleon.Boot.plist中有下面两行代码，如果没有请手动添加</p>
+
+<pre><code>  &lt;key&gt;EthernetBuiltIn&lt;/key&gt;
+  &lt;string&gt;Yes&lt;/string&gt;
+</code></pre></li>
+<li><p>重启计算机</p></li>
+</ul>
+
+
+<h5>说明:用到的工具比如Chameleon Wizard 4.1可以在网上很容易找到~~</h5>
+
+<hr />
+
+<p>重启计算机后，在系统设置偏好里打开icloud，输入账号，密码就应该能登陆了。</p>
+
+<p><img src="http://pic.yupoo.com/comflag/BUbbUsV7/4rr16.png" width="800" height="600"></p>
 ]]></content>
   </entry>
   
