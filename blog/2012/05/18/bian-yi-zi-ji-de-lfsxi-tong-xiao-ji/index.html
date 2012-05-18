@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: JAVA - comflag</title>
+  <title>编译自己的LFS系统小记 - comflag</title>
   <meta name="author" content="liang">
 
   
-  <meta name="description" content="Category: JAVA">
+  <meta name="description" content="LFS，全称是Linux from Scratch，是一个教科书项目的名称，由 Gerard Beekmans 所发展并维护。这个项目旨在教人们完全从零开始编译自己的linux系统，所有的软件都是通过源码包安装，每个人都可以按照自己的需要定制自己的linux，这样可以做出来最小， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://comflag.github.comblog/categories/java">
+  <link rel="canonical" href="http://comflag.github.com/blog/2012/05/18/bian-yi-zi-ji-de-lfsxi-tong-xiao-ji">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -76,92 +76,114 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: JAVA</h1>
+    
+      <h1 class="entry-title">编译自己的LFS系统小记</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-18T22:43:00+08:00" pubdate data-updated="true">May 18<span>th</span>, 2012</time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p>LFS，全称是Linux from Scratch，是一个教科书项目的名称，由 Gerard Beekmans 所发展并维护。这个项目旨在教人们完全从零开始编译自己的linux系统，所有的软件都是通过源码包安装，每个人都可以按照自己的需要定制自己的linux，这样可以做出来最小，最快也最满足自己需要的linux。</p>
 
-  
-  <h2>2012</h2>
+<p><a href="http://www.linuxfromscratch.org/lfs/">LFS官网</a></p>
 
-<article>
-  
-<h1><a href="/blog/2012/05/18/mac-os-xan-zhuang-guo-cheng-chang-jian-cuo-wu-zong-jie/">Mac OS X安装过程常见问题总结</a></h1>
-<time datetime="2012-05-18T20:27:00+08:00" pubdate><span class='month'>May</span> <span class='day'>18</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/java/'>JAVA</a></span>
-</footer>
+<!--more-->
 
 
-</article>
+<p>在高中时我就想过将来有机会一定要做一个自己的操作系统出来，后来发现这并不是一件容易的事情，当然，也不是完全不可能，三年前接触了linux后，我就在构思如何能编译一个linux出来。后来，在研究破解无线网的过程中我接触到Beini Linux(奶瓶操作系统)，只有不到60M(ps:据说这个系统的作者是为了庆祝自己女儿的出生写下的这个操作系统),这让我觉得linux是完全可以自己定制并做的很小很小。</p>
 
+<p>言归正传，我第一次接触LFS是在一年前，当时对linux的底层原理和库依赖关系等还是非常不清楚，对整个LFS的过程云里雾里的，所以就搁浅了。</p>
 
+<p>最近又拿起来LFS，细细读了读，发现很多东西已经理解很透了，于是就在着手在自己的笔记本上构建LFS系统，说实话这个过程很费精力，我前后总共用了四天时间，几乎每天醒着的时间都在搞这个系统，当然，最后做出来后，很是自豪，这个系统我称之为&#8221;Egg Boiler 1.0&#8221;，吼吼~~。</p>
 
-<article>
-  
-<h1><a href="/blog/2012/05/18/eclipseli-rmicha-jian-de-shi-yong/">Eclipse里RMI插件的使用</a></h1>
-<time datetime="2012-05-18T20:22:00+08:00" pubdate><span class='month'>May</span> <span class='day'>18</span> <span class='year'>2012</span></time>
+<p>基本的LFS系统构建好以后，开机只要3s左右就到登陆界面了，真是快的一塌糊涂，爽啊。之后，我又在这个系统上安装了DHCP和pppoe，使得他可以自动获取IP地址，由于没有GUI界面，我安装了lynx浏览器，这样就可以通过文本方式访问互联网。</p>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/java/'>JAVA</a></span>
-</footer>
+<p>由于是第一次编译linux系统，下面说说自己遇到的困难:</p>
 
+<p>首先是宿主系统的选择，最初用的是Fadero 16，因为他是基于Rad hat的，应该会很稳定，结果它搭载的Gnome3.4界面在root用户登陆的情况下总是崩溃，而且崩溃之后就进不了系统，在这种情况下重装了好几次，最后还是决定放弃Fadero。之后试用了Arch Linux也不是很顺利，最后还是决定用ubuntu 10.10，ubuntu也不负众望，基本没出什么问题知道新系统的诞生…</p>
 
-</article>
+<p>其次是宿主系统环境的要求，LFS对GCC，Glib的环境的要求非常苛刻，刚开始不清楚，有些就没有按照官方给的配置设置环境，结果编译到一半，尤其是GCC的编译，总是出错，几近崩溃了都，最后还是老老实实按照官方给的要求重新配置了ubuntu的软件环境，总算是一步一步进行下去了…</p>
 
+<p>再者是LFS版本的选择。早一点的LFS版本有中文翻译，我最早就是用的LFS 6.3，因为文档又中文，但是在编译GCC时总是出错，看了论坛上前人的经验才最后决定用LFS 6.8，虽然文档全是英文，但是基本上都能看懂能理解，结果LFS 6.8在我的ubuntu上果然一路顺利。可见，LFS的版本还是很重要的，一定要选对LFS版本，并严格按照文档来才能成功。</p>
 
-
-<article>
-  
-<h1><a href="/blog/2012/05/18/java-rmichu-yuan-cheng-stubwei-zhao-dao-yi-chang/">Java RMI出远程stub未找到异常</a></h1>
-<time datetime="2012-05-18T20:18:00+08:00" pubdate><span class='month'>May</span> <span class='day'>18</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/java/'>JAVA</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2012/05/18/shi-yong-substancemei-hua-java-swingjie-mian/">使用substance美化Java Swing界面</a></h1>
-<time datetime="2012-05-18T20:07:00+08:00" pubdate><span class='month'>May</span> <span class='day'>18</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/java/'>JAVA</a>, <a class='category' href='/blog/categories/开源项目/'>开源项目</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2012/05/18/rmi-spydui-cheng-xu-yun-xing-chan-sheng-de-ying-xiang/">RMI Spy对程序运行产生的影响</a></h1>
-<time datetime="2012-05-18T19:53:00+08:00" pubdate><span class='month'>May</span> <span class='day'>18</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/java/'>JAVA</a>, <a class='category' href='/blog/categories/翻译/'>翻译</a></span>
-</footer>
-
-
-</article>
-
+<p>我还没有想好我做的这个系统究竟用来做什么，不过有了这个基础，将来根据需要把它改成服务器系统或嵌入式系统就很轻松了。</p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">liang</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-18T22:43:00+08:00" pubdate data-updated="true">May 18<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/linux/'>Linux</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://comflag.github.com/blog/2012/05/18/bian-yi-zi-ji-de-lfsxi-tong-xiao-ji/" data-via="" data-counturl="http://comflag.github.com/blog/2012/05/18/bian-yi-zi-ji-de-lfsxi-tong-xiao-ji/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/05/18/grub2yin-dao-an-zhuang-ubuntu11-dot-04/" title="Previous Post: grub2引导安装ubuntu11.04">&laquo; grub2引导安装ubuntu11.04</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -355,7 +377,10 @@ http://bandj.us/jo/blog/blog/2011/12/03/adding-google-plus-sidebar-to-octopress/
       var disqus_shortname = 'comflagblog';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://comflag.github.com/blog/2012/05/18/bian-yi-zi-ji-de-lfsxi-tong-xiao-ji/';
+        var disqus_url = 'http://comflag.github.com/blog/2012/05/18/bian-yi-zi-ji-de-lfsxi-tong-xiao-ji/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
