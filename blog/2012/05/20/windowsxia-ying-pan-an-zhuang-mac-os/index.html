@@ -9,7 +9,7 @@
   <meta name="author" content="liang">
 
   
-  <meta name="description" content="此日志讨论的是在Windows系统下通过原版Mac OS X 10.7的dmg镜像来安装Mac OS系统的方法。 理论上说，该方法也可以用来在Windows系统下制作U盘系统安装盘。 经过一年多的尝试，建议大家安装Mac OS X 10.7原版，这个版本的Mac OS 系统对硬件的兼容性非常好， &hellip;">
+  <meta name="description" content="经过一年多的尝试，建议大家安装Mac OS X 10.7原版，这个版本的Mac OS 系统对硬件的兼容性非常好，安装出现的问题也最少。建议大家驱动都自己手动安装，这样子才能更清楚自己装了哪些驱动，将来遇见诸如&#8221;五国&#8221;，&#8221;无限风火轮&#8221; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -103,14 +103,18 @@
   </header>
 
 
-<div class="entry-content"><p>此日志讨论的是在Windows系统下通过原版Mac OS X 10.7的dmg镜像来安装Mac OS系统的方法。</p>
+<div class="entry-content"><p>经过一年多的尝试，建议大家安装Mac OS X 10.7原版，这个版本的Mac OS 系统对硬件的兼容性非常好，安装出现的问题也最少。建议大家驱动都自己手动安装，这样子才能更清楚自己装了哪些驱动，将来遇见诸如&#8221;五国&#8221;，&#8221;无限风火轮&#8221;的问题时才能更容易找到问题的原因。</p>
+
+<p>此日志讨论的是在Windows系统下通过原版Mac OS X 10.7的dmg镜像来安装Mac OS系统的方法。</p>
 
 <p>理论上说，该方法也可以用来在Windows系统下制作U盘系统安装盘。</p>
 
-<p>经过一年多的尝试，建议大家安装Mac OS X 10.7原版，这个版本的Mac OS 系统对硬件的兼容性非常好，安装出现的问题也最少。建议大家驱动都自己手动安装，这样子才能更清楚自己装了哪些驱动，将来遇见诸如&#8221;五国&#8221;，&#8221;无限风火轮&#8221;的问题时才能更容易找到问题的原因。</p>
+<p>文章有点长，请耐心看完~~</p>
 
 <!--more-->
 
+
+<hr />
 
 <h1>准备工作</h1>
 
@@ -126,7 +130,7 @@
 
 <ul>
 <li>适合自己机型的dsdt.aml</li>
-<li>修改过的适合10.7的OSInstall和OSInstall.mpkg</li>
+<li>修改过的适合10.7的OSInstall和OSInstall.mpkg，有需要的可以下载我准备好的<a href="http://dl.dbank.com/c0kgbxqhgu">传送门</a></li>
 <li>FakeSMC.kext                  破解补丁，用于破解Mac OS内核，必须</li>
 <li>AppleACPIPS2Nub.kext</li>
 <li>ApplePS2Controller.kext</li>
@@ -135,6 +139,8 @@
 </li>
 </ul>
 
+
+<p><strong><em> 说明:以上的文件，除了dsdt.aml是要适合自己机型的外，其他的文件都是通用的，都可以在远景论坛上找到，想吃黑苹果，趴贴的精神和毅力必须是有的~~ </em></strong></p>
 
 <hr />
 
@@ -191,7 +197,7 @@
 
 <p>  <img src="http://pic.yupoo.com/comflag/BYHMJ3I6/pZBmF.png" title="800" alt="600"></p>
 
-<p>  最终有用的文件是：</p>
+<p>  <strong><em> 最终有用的文件是：</em></strong></p>
 
 <ul>
 <li>BaseSystem_Eable.dmg</li>
