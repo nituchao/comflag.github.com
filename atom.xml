@@ -4,7 +4,7 @@
   <title><![CDATA[comflag]]></title>
   <link href="http://comflag.github.com/atom.xml" rel="self"/>
   <link href="http://comflag.github.com/"/>
-  <updated>2012-05-20T12:23:27+08:00</updated>
+  <updated>2012-05-20T12:53:38+08:00</updated>
   <id>http://comflag.github.com/</id>
   <author>
     <name><![CDATA[liang]]></name>
@@ -22,11 +22,15 @@
 
 <p>此日志讨论的是在Windows系统下通过原版Mac OS X 10.7的dmg镜像来安装Mac OS系统的方法。</p>
 
-<p>理论上说，该方法也可以用来在Windows系统下制作U盘系统安装盘。</p>
-
 <p>文章有点长，请耐心看完~~</p>
 
 <!--more-->
+
+
+<ul>
+<li>理论上说，该方法也可以用来在Windows系统下制作U盘系统安装盘。</li>
+<li>理论上说，该方法也可以用来在Windows系统下安装10.7.1,10.7.2,10.7.3,10.7.4甚至是10.8的原版镜像</li>
+</ul>
 
 
 <hr />
