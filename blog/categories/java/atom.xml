@@ -4,7 +4,7 @@
   <title><![CDATA[Category: JAVA | comflag]]></title>
   <link href="http://comflag.github.com/blog/categories/java/atom.xml" rel="self"/>
   <link href="http://comflag.github.com/"/>
-  <updated>2012-05-19T07:41:47+08:00</updated>
+  <updated>2012-05-20T10:24:46+08:00</updated>
   <id>http://comflag.github.com/</id>
   <author>
     <name><![CDATA[liang]]></name>
@@ -51,8 +51,9 @@
 <li><p>声卡驱动导致系统无限风火轮</p>
 
 <p>  这个问题的解决很简单，我出现这个问题是因为在系统盘的E/E目录下放置了一个Apple原版的声卡驱动AppleHDADisabler.kext，导致两个驱动冲突了，只需要把E/E目录下的那个AppleHDADisabler.kext驱动删除，系统就可以正常引导，并且正常驱动声卡了。</p></li>
-<li><p>Mac OS X不能从这个磁盘启动
-  安装Mac OS系统出现这个问题，是由于OSInstall和OSInstall.mpkg没有替换造成的，用修改好的对应版本的文件替换后这个问题就解决了。网上很多人说要把整个分区格式化，然后将分区表类型改为GUID，不建议这么做，因为我的Windows还在硬盘上，我的文档，照片还在硬盘上，甚至我的安装盘都在硬盘上，重建分区表之后这些都没有啦~~</p></li>
+<li><p>Mac OS X不能从这个磁盘启动</p>
+
+<p>  安装Mac OS系统出现这个问题，是由于OSInstall和OSInstall.mpkg没有替换造成的，用修改好的对应版本的文件替换后这个问题就解决了。网上很多人说要把整个分区格式化，然后将分区表类型改为GUID，不建议这么做，因为我的Windows还在硬盘上，我的文档，照片还在硬盘上，甚至我的安装盘都在硬盘上，重建分区表之后这些都没有啦~~</p></li>
 </ul>
 
 

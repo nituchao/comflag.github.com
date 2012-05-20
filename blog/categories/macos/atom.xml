@@ -4,7 +4,7 @@
   <title><![CDATA[Category: MacOS | comflag]]></title>
   <link href="http://comflag.github.com/blog/categories/macos/atom.xml" rel="self"/>
   <link href="http://comflag.github.com/"/>
-  <updated>2012-05-19T07:41:47+08:00</updated>
+  <updated>2012-05-20T10:24:46+08:00</updated>
   <id>http://comflag.github.com/</id>
   <author>
     <name><![CDATA[liang]]></name>
@@ -12,6 +12,142 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[windows下硬盘安装Mac OS]]></title>
+    <link href="http://comflag.github.com/blog/2012/05/20/windowsxia-ying-pan-an-zhuang-mac-os/"/>
+    <updated>2012-05-20T08:28:00+08:00</updated>
+    <id>http://comflag.github.com/blog/2012/05/20/windowsxia-ying-pan-an-zhuang-mac-os</id>
+    <content type="html"><![CDATA[<p>此日志讨论的是在Windows系统下通过原版Mac OS X 10.7的dmg镜像来安装Mac OS系统的方法。</p>
+
+<p>经过一年多的尝试，建议大家安装Mac OS X 10.7原版，这个版本的Mac OS 系统对硬件的兼容性非常好，安装出现的问题也最少。建议大家驱动都自己手动安装，这样子才能更清楚自己装了哪些驱动，将来遇见诸如"五国"，"无限风火轮"的问题时才能更容易找到问题的原因。</p>
+
+<!--more-->
+
+
+<h1>准备工作</h1>
+
+<ul>
+<li>系统:Windows 7，Windows XP</li>
+<li>Mac OS X 10.7原版dmg镜像</li>
+<li>dmg镜像浏览工具HFSExplorer-0.21版</li>
+<li>磁盘分区工具Paragon Partition Manager 11版</li>
+<li>硬盘安装助手HD Install Helper v0.3版</li>
+<li>Mac Driver 8版</li>
+<li>Windows版变色龙</li>
+<li>必要的驱动和破解文件
+
+<ul>
+<li>适合自己机型的dsdt.aml</li>
+<li>修改过的适合10.7的OSInstall和OSInstall.mpkg</li>
+<li>FakeSMC.kext                  破解补丁，用于破解Mac OS内核，必须</li>
+<li>AppleACPIPS2Nub.kext</li>
+<li>ApplePS2Controller.kext</li>
+<li>NullCPUPowerManagement.kext   禁用电源管理功能，解决HPET错误</li>
+</ul>
+</li>
+</ul>
+
+
+<hr />
+
+<h1>制作安装盘</h1>
+
+<ul>
+<li><p>安装Mac Driver 8备用，安装完后需要重启。</p></li>
+<li><p>留出3个分区</p>
+
+<ul>
+<li>系统盘，20G,主分区，Mac OS X系统要安装在这个分区。建议该分区尽量大一点，因为装上Mac OS后我们还要装很多软件，比如我分了42G给该分区</li>
+<li>安装盘，至少2G,主分区(或逻辑分区)，Mac OS X的安装盘要安装在这个分区。</li>
+<li><p>备用盘，至少3G,不创建分区，该分区的目的是为了扩充安装盘分区，因为Mac OS X的镜像写入到安装盘分区后，安装盘分区只剩下300M左右，不能进行接下来的操作，这时候需要把这3G空白分区合进安装盘分区。</p>
+
+<p>  <img src="http://pic.yupoo.com/comflag/BYHMIudg/v8TRO.png" title="800" alt="600"></p></li>
+<li><p>修改分区ID = AF。这一步很重要，ID = AF表示这是一个Apple HFS+分区，Mac OS只能安装在HFS+分区上。</p>
+
+<p>  <img src="http://pic.yupoo.com/comflag/BYHMIpes/yRIIO.png" title="800" alt="600"></p>
+
+<p>  <strong> 强烈建议: </strong> 用下面的命令来修改系统盘和安装盘的分区ID，因为经过实践发现，用磁盘分区工具来修改ID失败的概率很大，通过命令行来修改通常不会出错，运行cmd打开命令行窗口后，一次执行下面的命令,看到success就ok了，这个时候在资源管理器里就看不到这个分区了。</p></li>
+</ul>
+
+
+<p>  <div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>"修改分区ID" </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>diskpart
+</span><span class='line'><span class="k">select </span>disk 0
+</span><span class='line'>list partition      <span class="c">#列出所有分区，找到放硬盘镜象的partition</span>
+</span><span class='line'><span class="k">select </span>partition 0  <span class="c">#选择硬盘镜象所在的分区，这里的“0”换成你上面显示的硬盘镜象所在分区的编号</span>
+</span><span class='line'><span class="nb">set </span><span class="nv">id</span><span class="o">=</span>af&lt;br/&gt;
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p></li>
+<li><p>从原dmg镜像中提取BaseSystem.dmg，mach_kernel和Packages文件夹</p>
+
+<p>  需要说明的是，直接下载的dmg镜像中提取的BaseSystem.dmg文件不能被硬盘安装助手识别，这个dmg镜像比如用HFSExplorer导出一次后才能被硬盘安装助手识别。因此这一步的操作有两个</p>
+
+<ul>
+<li>用HFSExplor加载下载的Mac OS X Install ESD.dmg镜像。然后导出BaseSystem.dmg，mach_kernel和Packages文件夹备用</li>
+<li>用HFSExplor加载导出的BaseSystem.dmg文件，然后点击"Tools"->"Create disk image"，将BaseSystem.dmg重新导出成硬盘安装助手可以识别的dmg镜像，可以把导出的文件命名为BaseSystem_Eable.dmg。</li>
+</ul>
+
+
+<p>  <img src="http://pic.yupoo.com/comflag/BYHMIWKq/q3mjP.png" title="800" alt="600"></p>
+
+<p>  <img src="http://pic.yupoo.com/comflag/BYHMJ3I6/pZBmF.png" title="800" alt="600"></p>
+
+<p>  最终有用的文件是：</p>
+
+<ul>
+<li>BaseSystem_Eable.dmg</li>
+<li>mach_kernel</li>
+<li>Packages文件夹</li>
+</ul>
+</li>
+<li><p>用硬盘安装助手HD_Install_Heper_v0.3写入BaseSystem_Eable.dmg镜像到安装盘分区，几分钟后，提示"All Done, have fun!"即表示写入成功。</p></li>
+<li><p>扩充安装盘</p>
+
+<p>  镜像写入后，如果安装了Mac Driver 8，你就可以在资源管理器里看到，安装盘只剩下300M左右，这点空间是不足以进行接下来的工作的。这就需要尽心安装盘分区扩展。</p>
+
+<p>  操作:打开Paragon Partition Manager磁盘分区工具，选中安装盘，右键选择"移动调整分区大小",然后把剩下的那个空白分区合并进安装盘分区，然后点击左上角的"应用"按钮。</p></li>
+<li><p>将提取的mach_kernel文件放到安装盘根目录下</p></li>
+<li>删除/System/Installtion目录下原来的Packages链接文件，并将提取的Packages文件夹放到安装盘的/System/Installtion/目录下。</li>
+<li><p>安装文件替换</p>
+
+<ul>
+<li>将修改过的OSInstall.mpkg文件替换掉/System/Installtion/Packages/OSInstall.mpkg文件。</li>
+<li>将修改过的OSInstall  文件替换掉/System/Library/PrivateFrameworks/Install.framework/Frameworks/OSInstall.framework/Versions/A/OSInstall文件。</li>
+</ul>
+</li>
+<li><p>在安装盘根目录下建立Extra文件夹在该文件夹下放入以下文件</p>
+
+<ul>
+<li>dsdt.aml，该文件是用于Mac OS X系统识别主板和硬件的，一定要是适合自己机型的才有用，没有这个文件或这不适合自己机型会导致绝大多数情况的"五国"问题</li>
+<li>建立Exentsion文件夹，放入下面四个驱动
+
+<ul>
+<li>FakeSMC.kext                  破解补丁，用于破解Mac OS内核，必须</li>
+<li>AppleACPIPS2Nub.kext</li>
+<li>ApplePS2Controller.kext</li>
+<li>NullCPUPowerManagement.kext   禁用电源管理功能，解决HPET错误</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>安装windows版变色龙</p></li>
+</ul>
+
+
+<p>到这里，Mac OS X的安装盘就做好了。重启计算机，选择变色龙引导，然后选择引导刚刚做好的Mac OS X安装盘分区，稍稍等一下就可以进入安装界面了，如果提示你找不到键盘，只要插上外接的USB键盘就可以了。之后用磁盘分区工具对准备好的系统分区进行"抹盘"，然后按照提示一路下一步安装即可。</p>
+
+<hr />
+
+<p>安装完成后，进入Windows系统，把安装盘里刚刚建立的Extra文件夹(包括里面的文件)复制到Mac OS X的系统盘，如果没有这个Extra文件夹，安装好的Mac OS系统是进不去的，会提示五国。复制完后，重启计算机，用Windows版版色龙就可以引导进入新安装好的Mac OS X系统了。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Dell D630安装Mac OS Lion]]></title>
