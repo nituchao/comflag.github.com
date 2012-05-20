@@ -4,7 +4,7 @@
   <title><![CDATA[Category: MacOS | comflag]]></title>
   <link href="http://comflag.github.com/blog/categories/macos/atom.xml" rel="self"/>
   <link href="http://comflag.github.com/"/>
-  <updated>2012-05-20T12:12:02+08:00</updated>
+  <updated>2012-05-20T12:14:18+08:00</updated>
   <id>http://comflag.github.com/</id>
   <author>
     <name><![CDATA[liang]]></name>
@@ -154,6 +154,63 @@
 <hr />
 
 <p>安装完成后，进入Windows系统，把安装盘里刚刚建立的Extra文件夹(包括里面的文件)复制到Mac OS X的系统盘，如果没有这个Extra文件夹，安装好的Mac OS系统是进不去的，会提示五国。复制完后，重启计算机，用Windows版版色龙就可以引导进入新安装好的Mac OS X系统了。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mac OS X安装过程常见问题总结]]></title>
+    <link href="http://comflag.github.com/blog/2012/05/18/mac-os-xan-zhuang-guo-cheng-chang-jian-cuo-wu-zong-jie/"/>
+    <updated>2012-05-18T20:27:00+08:00</updated>
+    <id>http://comflag.github.com/blog/2012/05/18/mac-os-xan-zhuang-guo-cheng-chang-jian-cuo-wu-zong-jie</id>
+    <content type="html"><![CDATA[<p>一直使用的是Mac OS 10.7，最近终于经受不住群里童鞋们的诱惑，准备安装10.7.3，于是下载了10.7.3原版dmg镜像，在Mac OS Lion下按照以前安装盘制作教程在硬盘上重新制作了一个10.7.3的安装盘，然后进行覆盖安装。这个安装盘位于我的硬盘的最后一个分区，大小8.0G。</p>
+
+<!--more-->
+
+
+<p>但是，在安装的过程中，出现了几个一起从来没有出现的问题。</p>
+
+<ul>
+<li>启动安装盘，风火轮后黑屏，除了电源灯和蓝牙灯亮外，计算机没有反应。使用-v -f命令查看，命令行字幕滚动完毕后，计算机也是黑屏，不响应。</li>
+<li>启动安装盘，风火轮后进入安装界面，选择语言后下一步，提示”此版本的Mac os Lion不能安装到您的计算机上”，然后，就没有然后了。</li>
+<li>启动安装盘，风火轮后进入安装界面，选择语言后下一步，计算机自动关机。</li>
+<li>安装万能声卡驱动VoodooHDA.pkg后，开机出现无限风火轮，需要在windows下删除S/L/E下的VoodooHDA.kext驱动后才能进系统，当然，此时声卡还是无法驱动。</li>
+<li>进入安装界面，选择分区时提示"Mac OS X 不能从这个磁盘启动"。</li>
+</ul>
+
+
+<p>表示以上几个问题在安装Mac OS 10.7时从来没有出现过。但是经过几天的研究，终于一个个都解决了。</p>
+
+<hr />
+
+<h1>解决办法:</h1>
+
+<ul>
+<li><p>启动安装盘，风火轮后黑屏</p>
+
+<p>  这个应该是显卡未识别的问题，解决办法很简单也很传统–替换dsdt.aml文件即可。需要说明的是，我用的是之前10.7版本的dsdt.aml，如果你的计算机出现这种黑屏，请替换下面我提供的新的dsdt.aml，我现在在10.7.3下用的就是这个dsdt.aml。</p></li>
+<li><p>启动安装盘，选择语言后提示”此版本的Mac os Lion不能安装到您的计算机上”</p></li>
+<li><p>启动安装盘，风火轮后进入安装界面，选择语言后下一步，计算机自动关机</p>
+
+<p>  这两个问题，通过查看安装日志，应该是安装盘里的OSInstall和OSInstall.mpkg没有替换或者替换的版本不当造成的。可以替换成下面提供的新的OSInstall和OSInstall.mpkg文件。</p></li>
+<li><p>声卡驱动导致系统无限风火轮</p>
+
+<p>  这个问题的解决很简单，我出现这个问题是因为在系统盘的E/E目录下放置了一个Apple原版的声卡驱动AppleHDADisabler.kext，导致两个驱动冲突了，只需要把E/E目录下的那个AppleHDADisabler.kext驱动删除，系统就可以正常引导，并且正常驱动声卡了。</p></li>
+<li><p>Mac OS X不能从这个磁盘启动</p>
+
+<p>  安装Mac OS系统出现这个问题，是由于OSInstall和OSInstall.mpkg没有替换造成的，用修改好的对应版本的文件替换后这个问题就解决了。网上很多人说要把整个分区格式化，然后将分区表类型改为GUID，不建议这么做，因为我的Windows还在硬盘上，我的文档，照片还在硬盘上，甚至我的安装盘都在硬盘上，重建分区表之后这些都没有啦~~</p></li>
+</ul>
+
+
+<hr />
+
+<p>适合于Dell D630的Mac OS X 10.7.3最新可用破解文件: 传送门</p>
+
+<ul>
+<li><p>dsdt.aml</p></li>
+<li><p>OSInstall和OSInstall.mpkg</p></li>
+<li><p>fakeSMC.kext</p></li>
+</ul>
+
 ]]></content>
   </entry>
   
