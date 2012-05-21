@@ -4,7 +4,7 @@
   <title><![CDATA[comflag]]></title>
   <link href="http://comflag.github.com/atom.xml" rel="self"/>
   <link href="http://comflag.github.com/"/>
-  <updated>2012-05-21T19:43:25+08:00</updated>
+  <updated>2012-05-21T20:51:09+08:00</updated>
   <id>http://comflag.github.com/</id>
   <author>
     <name><![CDATA[liang]]></name>
@@ -18,7 +18,7 @@
     <link href="http://comflag.github.com/blog/2012/05/21/xiu-gai-hostswen-jian-fan-qiang/"/>
     <updated>2012-05-21T19:07:00+08:00</updated>
     <id>http://comflag.github.com/blog/2012/05/21/xiu-gai-hostswen-jian-fan-qiang</id>
-    <content type="html"><![CDATA[<p>在网上找到的一个自动修改hosts的项目，现在翻墙出去上google+和facebook都是用这个修改houts，在这里mark下。</p>
+    <content type="html"><![CDATA[<p>在网上找到的一个自动修改hosts的项目，现在翻墙出去上google+和facebook都是用这个修改hosts，因为google和facebook的服务器IP地址经常会变化，所以这个项目提供的hosts文件内容也是不断更新的，如果发现无法登陆G+,可以到项目主页下载最新的版本，非常方便，我在这里mark下。</p>
 
 <p><a href="http://sourceforge.net/projects/huhamhirehosts/">huhamhire hosts 项目主页</a></p>
 
