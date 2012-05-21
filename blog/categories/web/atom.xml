@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Web | comflag]]></title>
+  <title><![CDATA[Category: web | comflag]]></title>
   <link href="http://comflag.github.com/blog/categories/web/atom.xml" rel="self"/>
   <link href="http://comflag.github.com/"/>
-  <updated>2012-05-21T17:12:43+08:00</updated>
+  <updated>2012-05-21T19:43:25+08:00</updated>
   <id>http://comflag.github.com/</id>
   <author>
     <name><![CDATA[liang]]></name>
@@ -14,102 +14,24 @@
 
   
   <entry>
-    <title type="html"><![CDATA[ubuntu下安装Apache+PHP+Mysysql]]></title>
-    <link href="http://comflag.github.com/blog/2012/05/18/ubuntuxia-an-zhuang-apache-plus-php-plus-mysysql/"/>
-    <updated>2012-05-18T20:54:00+08:00</updated>
-    <id>http://comflag.github.com/blog/2012/05/18/ubuntuxia-an-zhuang-apache-plus-php-plus-mysysql</id>
-    <content type="html"><![CDATA[<p>电影《社交网络》中，facebook创始人马克.扎克失恋后入侵哈佛大学宿舍楼服务器，窃取数据库资料，并在两个小时内完成了一个给校内女生评分的交互网站，该网站一天内点击数过10W，直接导致学校服务器崩溃。。。。。。</p>
+    <title type="html"><![CDATA[修改hosts文件翻墙]]></title>
+    <link href="http://comflag.github.com/blog/2012/05/21/xiu-gai-hostswen-jian-fan-qiang/"/>
+    <updated>2012-05-21T19:07:00+08:00</updated>
+    <id>http://comflag.github.com/blog/2012/05/21/xiu-gai-hostswen-jian-fan-qiang</id>
+    <content type="html"><![CDATA[<p>在网上找到的一个自动修改hosts的项目，现在翻墙出去上google+和facebook都是用这个修改houts，在这里mark下。</p>
+
+<p><a href="http://sourceforge.net/projects/huhamhirehosts/">huhamhire hosts 项目主页</a></p>
 
 <!--more-->
 
 
-<p>其实，构建那样一个网站并不需要很多高深的技术，任何一个有一定网络编程基础的人都可以做到。马克构建网站所用的是Apache服务器和PHP服务器脚本语言，而facebook后台也是用Apache+PHP+Mysql写的，当然，现在facebooke服务器的吞吐能力已经大的惊人了。</p>
+<p>这个项目支持Windows,Mac OS X和Linux等系统，项目主页里不光提供了二进制安装包，也提供了单独的hosts文件可以直接拿过来替换本地文件。</p>
 
-<p>话说回来，很多人可能已经用上ubuntu了，大家可能花了大量时间在ubuntu的美化上，这无可厚非，但是，ubuntu应该给我们的工作和学习带来更多的便利和方便。ubuntu作为linux，为我们提供了强大的网络方面的功能，其中的服务器技术尤其强大，安全。如果不学习linux的网络技术，很难说自己掌握了linux。</p>
+<p><img src="http://pic.yupoo.com/comflag/BYUZ9WOq/YlYhu.jpg" width="800" height="600" title="windows下安装" ></p>
 
-<p>今天，我在ubuntu下配置了一个Apache服务器。通过Apache我们可以学习php网络编程，可以用它来部署自己本地的wordpress博客，从而进一步通过网络和朋友交流。从此，你将深刻体会到网络带个我们的神奇力量，至少我是这样觉得的…</p>
+<p><img src="http://pic.yupoo.com/comflag/BYUZaAF7/SQIRo.jpg" width="800" height="600" title="Mac OS下安装" ></p>
 
-<ul>
-<li><p>步骤一，安装apache2</p>
-
-<pre><code>  sudo apt-get install apache2
-</code></pre>
-
-<p>  安装完成。运行如下命令重启下：</p>
-
-<pre><code>  sudo /etc/init.d/apache2 restart
-</code></pre>
-
-<p>  在浏览器里输入http://localhost或者是http://127.0.0.1，如果看到了It works!，那就说明Apache就成功的安装了，Apache的默认安装，会在/var下建立一个名为www的目录，这个就是Web目录了，所有要能过浏览器访问的Web文件都要放到这个目录里。</p></li>
-<li><p>步骤二 ，安装php,在终端输入命令</p>
-
-<pre><code>  sudo apt-get install libapache2-mod-php5 php5
-</code></pre>
-
-<p>  此外，建议安装扩展php5-gd php5-mysql，安装方式同上. 安装完后，我们要重新启动Apache，让它加载PHP模块：</p>
-
-<pre><code>  sudo /etc/init.d/apache2 restart
-</code></pre>
-
-<p>  接下来，我们就在Web目录下面新建一个test.php文件来测试PHP是否能正常的运行，命令：</p>
-
-<pre><code>  sudo gedit /var/www/test.php
-</code></pre>
-
-<p>  然后输入:</p>
-
-<pre><code>  &lt;?php echo hello,world!! ?&gt;
-</code></pre>
-
-<p>  接着保存文件,在浏览器里输入http://127.0.0.1/test.php，如果在网页中显示hello,world!!，那就说明PHP已经正常运行了。</p></li>
-<li><p>步骤三,安装mysql数据库:</p>
-
-<p>  在终端输入命令</p>
-
-<pre><code>  sudo apt-get install mysql-server mysql-client
-</code></pre>
-
-<p>  apt-get程序会自动下载安装最新的mysql版本。在安装的最后，它会要求里输入root的密码，注意，这里的root密码可不是Ubuntu的root密码啊，是你要给MySQL设定的root密码。</p></li>
-<li><p>步骤四,安装phpmyadmin-Mysql数据库管理</p>
-
-<p>  在终端输入命令</p>
-
-<pre><code>  sudo apt-get install phpmyadmin
-</code></pre>
-
-<p>  phpmyadmin设置：在安装过程中会要求选择Web server：apache2或lighttpd，使用空格键选定apache2，按tab键然后确定。然后会要求输入设置的Mysql数据库密码连接密码Password of the database’s administrative user。</p>
-
-<p>  然后将phpmyadmin与apache2建立连接，以我的为例：www目录在/var/www，phpmyadmin在/usr/share /phpmyadmin目录，所以就用命令：</p>
-
-<pre><code>  sudo ln -s /usr/share/phpmyadmin /var/www
-</code></pre>
-
-<p>  建立链接。 phpmyadmin测试：在浏览器地址栏中打开http://localhost/phpmyadmin。</p></li>
-</ul>
-
-
-<h3>以上LAMP的基本组件就安装完毕了，下面我们再来看一些其他的设置：</h3>
-
-<ul>
-<li><p>步骤五，设置Ubuntu文件执行读写权限
-  LAMP组建安装好之后，PHP网络服务器根目录默认设置是在：/var/www。由于Linux系统的安全性原则，改目录下的文件读写权限是只允许root用户操作的，所以我们不能在www文件夹中新建php文件，也不能修改和删除，必须要先修改/var/www目录的读写权限。在界面管理器中通过右键属性不能修改文件权限，得执行root终端命令：</p>
-
-<pre><code>  sudo chmod 777 /var/www
-</code></pre>
-
-<p>  然后就可以写入html或php文件了。777是linux中的最高权限，表示可读，可写，可执行。</p></li>
-</ul>
-
-
-<h2>注:</h2>
-
-<p>1，Apache是世界使用排名第一的Web服务器软件。它可以运行在几乎所有广泛使用的计算机平台上，由于其跨平台和安全性被广泛使用，是最流行的Web服务器端软件之一。同时Apache音译为阿帕奇，是北美印第安人的一个部落，叫阿帕奇族，在美国的西南部，以勇敢和忍耐力著称。</p>
-
-<p>2，MySql是一个小型关系型数据库，目前MySQL被广泛地应用在Internet上的中小型网站中。由于其体积小、速度快、总体拥有成本低，尤其是开放源码这一特点，许多中小型网站为了降低网站总体拥有成本而选择了MySQL作为网站数据库。</p>
-
-<p>3，PHP，是英文超级文本预处理语言Hypertext Preprocessor的缩写。PHP 是一种 HTML 内嵌式的语言，是一种在服务器端执行的嵌入HTML文档的脚本语言，语言的风格有类似于C语言，被广泛的运用。</p>
-
-<p>PS: 这个黄金组合是我网络编程的开始，也是我最喜欢的工具…</p>
+<p><img src="http://pic.yupoo.com/comflag/BYUZaHut/ECzxE.jpg" width="800" height="600" title="在线安装" ></p>
 ]]></content>
   </entry>
   

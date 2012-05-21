@@ -4,7 +4,7 @@
   <title><![CDATA[comflag]]></title>
   <link href="http://comflag.github.com/atom.xml" rel="self"/>
   <link href="http://comflag.github.com/"/>
-  <updated>2012-05-21T17:12:43+08:00</updated>
+  <updated>2012-05-21T19:43:25+08:00</updated>
   <id>http://comflag.github.com/</id>
   <author>
     <name><![CDATA[liang]]></name>
@@ -12,6 +12,28 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[修改hosts文件翻墙]]></title>
+    <link href="http://comflag.github.com/blog/2012/05/21/xiu-gai-hostswen-jian-fan-qiang/"/>
+    <updated>2012-05-21T19:07:00+08:00</updated>
+    <id>http://comflag.github.com/blog/2012/05/21/xiu-gai-hostswen-jian-fan-qiang</id>
+    <content type="html"><![CDATA[<p>在网上找到的一个自动修改hosts的项目，现在翻墙出去上google+和facebook都是用这个修改houts，在这里mark下。</p>
+
+<p><a href="http://sourceforge.net/projects/huhamhirehosts/">huhamhire hosts 项目主页</a></p>
+
+<!--more-->
+
+
+<p>这个项目支持Windows,Mac OS X和Linux等系统，项目主页里不光提供了二进制安装包，也提供了单独的hosts文件可以直接拿过来替换本地文件。</p>
+
+<p><img src="http://pic.yupoo.com/comflag/BYUZ9WOq/YlYhu.jpg" width="800" height="600" title="windows下安装" ></p>
+
+<p><img src="http://pic.yupoo.com/comflag/BYUZaAF7/SQIRo.jpg" width="800" height="600" title="Mac OS下安装" ></p>
+
+<p><img src="http://pic.yupoo.com/comflag/BYUZaHut/ECzxE.jpg" width="800" height="600" title="在线安装" ></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[windows下硬盘安装Mac OS]]></title>
