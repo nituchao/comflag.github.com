@@ -4,7 +4,7 @@
   <title><![CDATA[Category: MacOS | comflag]]></title>
   <link href="http://comflag.github.com/blog/categories/macos/atom.xml" rel="self"/>
   <link href="http://comflag.github.com/"/>
-  <updated>2012-05-22T20:10:10+08:00</updated>
+  <updated>2012-05-23T13:49:32+08:00</updated>
   <id>http://comflag.github.com/</id>
   <author>
     <name><![CDATA[liang]]></name>
@@ -12,6 +12,123 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Mac OS X 资源整理]]></title>
+    <link href="http://comflag.github.com/blog/2012/05/23/macoszi-yuan-zheng-li/"/>
+    <updated>2012-05-23T11:23:00+08:00</updated>
+    <id>http://comflag.github.com/blog/2012/05/23/macoszi-yuan-zheng-li</id>
+    <content type="html"><![CDATA[<p>这篇日志主要记载了我接触Mac OS X 以来积累的相关资源，有些资源在网上不好找，有些则非常混乱。今天整理了一下，以后再做Mac OS X 系统时就可以直接拿来参考，不至于每次都到网上漫天乱找。</p>
+
+<!--more-->
+
+
+<hr />
+
+<h3>Mac OS X 原版镜像BT资源:</h3>
+
+<ul>
+<li>Mac OS X 10.7 &nbsp;&nbsp;原版dmg镜像:<a href="http://dl.dbank.com/c0xajtv0zc">传送门</a></li>
+<li>Mac OS X 10.7.2原版dmg镜像:<a href="http://dl.dbank.com/c0ogi1at5a">传送门</a></li>
+<li>Mac OS X 10.7.3原版dmg镜像:<a href="http://dl.dbank.com/c0xm9dshy6">传送门</a></li>
+<li>Mac OS X 10.7.4原版dmg镜像:<a href="http://dl.dbank.com/c0daxupbjz">传送门</a></li>
+</ul>
+
+
+<p>注:从10.7.2开始，Mac OS X内置了iCloud</p>
+
+<hr />
+
+<h3>变色龙引导 (Chameleon)</h3>
+
+<ul>
+<li>Windows版 r1820: <a href="http://dl.dbank.com/c0hflpoqm0">传送门</a></li>
+<li>Mac OS 版 r1971: <a href="http://dl.dbank.com/c0zt7vbn3l">传送门</a></li>
+<li>Chameleon Wizard v4.1.0: <a href="http://dl.dbank.com/c047veixar">传送门</a></li>
+</ul>
+
+
+<p>注:Mac OS下的 r1971 版支持 iCloud</p>
+
+<hr />
+
+<h3>OSInstall 和 OSInstall.mpkg破解文件</h3>
+
+<ul>
+<li>Mac OS X 10.7 可用:&nbsp;&nbsp;<a href="http://dl.dbank.com/c01cn2nrwb">传送门</a></li>
+<li>Mac OS X 10.7.2可用:<a href="http://dl.dbank.com/c00k8srcsv">传送门</a></li>
+<li>Mac OS X 10.7.3可用:<a href="http://dl.dbank.com/c01frza7j7">传送门</a></li>
+<li>Mac OS X 10.7.4可用:暂时没有尝试，有需要的使用10.7.3的试试</li>
+</ul>
+
+
+<hr />
+
+<h3>fakeSMC.kext文件</h3>
+
+<ul>
+<li>Mac OS X 10.7 可用:<a href="http://dl.dbank.com/c0l50qvp3e">传送门</a></li>
+<li>Mac OS X 10.7.3可用:<a href="http://dl.dbank.com/c09araq94s">传送门</a></li>
+</ul>
+
+
+<p>该文件用来破解内核的，必须</p>
+
+<hr />
+
+<h3>DSDT</h3>
+
+<p>查看DSDT的集合贴，这里的dsdt.aml还是挺全的，<a href="http://bbs.pcbeta.com/viewthread-933544-1-1.html">传送门</a></p>
+
+<p>PS:建议有能力的童鞋还是自己做个dsdt，要是能放出来给大家用就更好了</p>
+
+<hr />
+
+<h3>常用驱动/补丁</h3>
+
+<ul>
+<li>开关机补丁:<a href="http://dl.dbank.com/c0lrqjoys0">传送门</a></li>
+<li>CPU自动降频:<a href="http://dl.dbank.com/c0vq3a1iku">传送门</a></li>
+<li>时间同步补丁: <a href="http://dl.dbank.com/c0ca2nbwpp">传送门</a></li>
+<li>显示电池电量补丁:<a href="http://dl.dbank.com/c0a89eg00k">传送门</a></li>
+<li>防止BIOS重置补丁:<a href="http://dl.dbank.com/c0facwn2sv">传送门</a></li>
+<li>VoodooHDA-2.7.2声卡驱动:<a href="http://dl.dbank.com/c06d7hd7tp">传送门</a></li>
+</ul>
+
+
+<hr />
+
+<h3>常用工具</h3>
+
+<ul>
+<li>iDSDT: <a href="http://dl.dbank.com/c00go95sop">传送门</a></li>
+<li>EDP 2.2: <a href="http://dl.dbank.com/c002f7vgzh">传送门</a></li>
+<li>TransMac:<a href="http://dl.dbank.com/c0zaj746gd">传送门</a></li>
+<li>Kext Wizard:<a href="http://dl.dbank.com/c090lpx06m">传送门</a></li>
+<li>Kext Helper b7:<a href="http://dl.dbank.com/c0bb7872ip">传送门</a></li>
+<li>DSDTSE1.43中文版:<a href="http://dl.dbank.com/c0q25b4jt6">传送门</a></li>
+<li>DSDT_Auto-Patcher:<a href="http://dl.dbank.com/c0glvh4cp0">传送门</a></li>
+</ul>
+
+
+<hr />
+
+<h3>变色龙主题</h3>
+
+<ul>
+<li>LoginToMac主题:<a href="http://dl.dbank.com/c08nqxu7af">传送门</a></li>
+</ul>
+
+
+<p><img src="http://pic.yupoo.com/comflag/BZbxrr3n/10vfgW.png" width="800" height="600" title="LoginToMac主题" ></p>
+
+<hr />
+
+<p>以上资源均来自互联网，基本上都经过了试验。</p>
+
+<p>如果哪位童鞋有更好的资源，可以联系我:     zhangliang605@gmail.com</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Windows下硬盘安装Mac OS]]></title>

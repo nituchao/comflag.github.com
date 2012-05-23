@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>编译自己的Linux系统 -- Egg Boiler 1.0 诞生记 - comflag</title>
+  <title>Mac OS X 资源整理 - comflag</title>
   <meta name="author" content="liang">
 
   
-  <meta name="description" content="LFS，全称是Linux from Scratch，是一个教科书项目的名称，由 Gerard Beekmans 所发展并维护。这个项目旨在教人们完全从零开始编译自己的linux系统，所有的软件都是通过源码包安装，每个人都可以按照自己的需要定制自己的linux，这样可以做出来最小， &hellip;">
+  <meta name="description" content="这篇日志主要记载了我接触Mac OS X 以来积累的相关资源，有些资源在网上不好找，有些则非常混乱。今天整理了一下，以后再做Mac OS X 系统时就可以直接拿来参考，不至于每次都到网上漫天乱找。 Mac OS X 原版镜像BT资源: Mac OS X 10.7 &nbsp;&nbsp; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://comflag.github.com/blog/2012/05/18/bian-yi-zi-ji-de-lfsxi-tong-xiao-ji">
+  <link rel="canonical" href="http://comflag.github.com/blog/2012/05/23/macoszi-yuan-zheng-li">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -81,7 +81,7 @@
   
   <header>
     
-      <h1 class="entry-title">编译自己的Linux系统 -- Egg Boiler 1.0 诞生记</h1>
+      <h1 class="entry-title">Mac OS X 资源整理</h1>
     
     
       <p class="meta">
@@ -97,37 +97,122 @@
   
 
 
-<time datetime="2012-05-18T22:43:00+08:00" pubdate data-updated="true">May 18<span>th</span>, 2012</time>
+<time datetime="2012-05-23T11:23:00+08:00" pubdate data-updated="true">May 23<span>rd</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>LFS，全称是Linux from Scratch，是一个教科书项目的名称，由 Gerard Beekmans 所发展并维护。这个项目旨在教人们完全从零开始编译自己的linux系统，所有的软件都是通过源码包安装，每个人都可以按照自己的需要定制自己的linux，这样可以做出来最小，最快也最满足自己需要的linux，我的这个linux就是按照LFS的思想来编译构建的。</p>
-
-<p><a href="http://www.linuxfromscratch.org/lfs/">LFS官网</a></p>
+<div class="entry-content"><p>这篇日志主要记载了我接触Mac OS X 以来积累的相关资源，有些资源在网上不好找，有些则非常混乱。今天整理了一下，以后再做Mac OS X 系统时就可以直接拿来参考，不至于每次都到网上漫天乱找。</p>
 
 <!--more-->
 
 
-<p>在高中时我就想过将来有机会一定要做一个自己的操作系统出来，后来发现这并不是一件容易的事情，当然，也不是完全不可能，三年前接触了linux后，我就在构思如何能编译一个linux出来。后来，在研究破解无线网的过程中我接触到Beini Linux(奶瓶操作系统)，只有不到60M(ps:据说这个系统的作者是为了庆祝自己女儿的出生写下的这个操作系统),这让我觉得linux是完全可以自己定制并做的很小很小。</p>
+<hr />
 
-<p>言归正传，我第一次接触LFS是在一年前，当时对linux的底层原理和库依赖关系等还是非常不清楚，对整个LFS的过程云里雾里的，所以就搁浅了。</p>
+<h3>Mac OS X 原版镜像BT资源:</h3>
 
-<p>最近又拿起来LFS，细细读了读，发现很多东西已经理解很透了，于是就在着手在自己的笔记本上构建LFS系统，说实话这个过程很费精力，我前后总共用了四天时间，几乎每天醒着的时间都在搞这个系统，当然，最后做出来后，很是自豪，这个系统我称之为&#8221;<font color="green">Egg Boiler 1.0</font>&#8220;，吼吼~~。</p>
+<ul>
+<li>Mac OS X 10.7 &nbsp;&nbsp;原版dmg镜像:<a href="http://dl.dbank.com/c0xajtv0zc">传送门</a></li>
+<li>Mac OS X 10.7.2原版dmg镜像:<a href="http://dl.dbank.com/c0ogi1at5a">传送门</a></li>
+<li>Mac OS X 10.7.3原版dmg镜像:<a href="http://dl.dbank.com/c0xm9dshy6">传送门</a></li>
+<li>Mac OS X 10.7.4原版dmg镜像:<a href="http://dl.dbank.com/c0daxupbjz">传送门</a></li>
+</ul>
 
-<p>基本的LFS系统构建好以后，开机只要3s左右就到登陆界面了，真是快的一塌糊涂，爽啊。之后，我又在这个系统上安装了DHCP和pppoe，使得他可以自动获取IP地址，由于没有GUI界面，我安装了lynx浏览器，这样就可以通过文本方式访问互联网。</p>
 
-<p>由于是第一次编译linux系统，下面说说自己遇到的困难:</p>
+<p>注:从10.7.2开始，Mac OS X内置了iCloud</p>
 
-<p>首先是宿主系统的选择，最初用的是Fadero 16，因为他是基于Rad hat的，应该会很稳定，结果它搭载的Gnome3.4界面在root用户登陆的情况下总是崩溃，而且崩溃之后就进不了系统，在这种情况下重装了好几次，最后还是决定放弃Fadero。之后试用了Arch Linux也不是很顺利，最后还是决定用ubuntu 10.10，ubuntu果然不负众望，基本没出什么问题直到新系统的诞生…</p>
+<hr />
 
-<p>其次是宿主系统环境的设置，LFS对GCC，Glib的环境的要求非常苛刻，刚开始不清楚，有些就没有按照官方给的配置设置环境，结果编译到一半，尤其是GCC的编译，总是出错，几近崩溃了都，最后还是老老实实按照官方给的要求重新配置了ubuntu的软件环境，总算是一步一步进行下去了…</p>
+<h3>变色龙引导 (Chameleon)</h3>
 
-<p>再者是LFS版本的选择。早一点的LFS版本有中文翻译，我最早就是用的LFS 6.3，因为文档又中文，但是在编译GCC时总是出错，看了论坛上前人的经验才最后决定用LFS 6.8，虽然文档全是英文，但是基本上都能看懂能理解，结果LFS 6.8在我的ubuntu上果然一路顺利。可见，LFS的版本还是很重要的，一定要选对LFS版本，并严格按照文档来才能成功。</p>
+<ul>
+<li>Windows版 r1820: <a href="http://dl.dbank.com/c0hflpoqm0">传送门</a></li>
+<li>Mac OS 版 r1971: <a href="http://dl.dbank.com/c0zt7vbn3l">传送门</a></li>
+<li>Chameleon Wizard v4.1.0: <a href="http://dl.dbank.com/c047veixar">传送门</a></li>
+</ul>
 
-<p>我还没有想好我做的这个系统究竟用来做什么，不过有了这个基础，将来根据需要把它改成服务器系统或嵌入式系统就很轻松了。</p>
+
+<p>注:Mac OS下的 r1971 版支持 iCloud</p>
+
+<hr />
+
+<h3>OSInstall 和 OSInstall.mpkg破解文件</h3>
+
+<ul>
+<li>Mac OS X 10.7 可用:&nbsp;&nbsp;<a href="http://dl.dbank.com/c01cn2nrwb">传送门</a></li>
+<li>Mac OS X 10.7.2可用:<a href="http://dl.dbank.com/c00k8srcsv">传送门</a></li>
+<li>Mac OS X 10.7.3可用:<a href="http://dl.dbank.com/c01frza7j7">传送门</a></li>
+<li>Mac OS X 10.7.4可用:暂时没有尝试，有需要的使用10.7.3的试试</li>
+</ul>
+
+
+<hr />
+
+<h3>fakeSMC.kext文件</h3>
+
+<ul>
+<li>Mac OS X 10.7 可用:<a href="http://dl.dbank.com/c0l50qvp3e">传送门</a></li>
+<li>Mac OS X 10.7.3可用:<a href="http://dl.dbank.com/c09araq94s">传送门</a></li>
+</ul>
+
+
+<p>该文件用来破解内核的，必须</p>
+
+<hr />
+
+<h3>DSDT</h3>
+
+<p>查看DSDT的集合贴，这里的dsdt.aml还是挺全的，<a href="http://bbs.pcbeta.com/viewthread-933544-1-1.html">传送门</a></p>
+
+<p>PS:建议有能力的童鞋还是自己做个dsdt，要是能放出来给大家用就更好了</p>
+
+<hr />
+
+<h3>常用驱动/补丁</h3>
+
+<ul>
+<li>开关机补丁:<a href="http://dl.dbank.com/c0lrqjoys0">传送门</a></li>
+<li>CPU自动降频:<a href="http://dl.dbank.com/c0vq3a1iku">传送门</a></li>
+<li>时间同步补丁: <a href="http://dl.dbank.com/c0ca2nbwpp">传送门</a></li>
+<li>显示电池电量补丁:<a href="http://dl.dbank.com/c0a89eg00k">传送门</a></li>
+<li>防止BIOS重置补丁:<a href="http://dl.dbank.com/c0facwn2sv">传送门</a></li>
+<li>VoodooHDA-2.7.2声卡驱动:<a href="http://dl.dbank.com/c06d7hd7tp">传送门</a></li>
+</ul>
+
+
+<hr />
+
+<h3>常用工具</h3>
+
+<ul>
+<li>iDSDT: <a href="http://dl.dbank.com/c00go95sop">传送门</a></li>
+<li>EDP 2.2: <a href="http://dl.dbank.com/c002f7vgzh">传送门</a></li>
+<li>TransMac:<a href="http://dl.dbank.com/c0zaj746gd">传送门</a></li>
+<li>Kext Wizard:<a href="http://dl.dbank.com/c090lpx06m">传送门</a></li>
+<li>Kext Helper b7:<a href="http://dl.dbank.com/c0bb7872ip">传送门</a></li>
+<li>DSDTSE1.43中文版:<a href="http://dl.dbank.com/c0q25b4jt6">传送门</a></li>
+<li>DSDT_Auto-Patcher:<a href="http://dl.dbank.com/c0glvh4cp0">传送门</a></li>
+</ul>
+
+
+<hr />
+
+<h3>变色龙主题</h3>
+
+<ul>
+<li>LoginToMac主题:<a href="http://dl.dbank.com/c08nqxu7af">传送门</a></li>
+</ul>
+
+
+<p><img src="http://pic.yupoo.com/comflag/BZbxrr3n/10vfgW.png" width="800" height="600" title="LoginToMac主题" ></p>
+
+<hr />
+
+<p>以上资源均来自互联网，基本上都经过了试验。</p>
+
+<p>如果哪位童鞋有更好的资源，可以联系我:     zhangliang605@gmail.com</p>
 </div>
 
 
@@ -150,12 +235,12 @@
   
 
 
-<time datetime="2012-05-18T22:43:00+08:00" pubdate data-updated="true">May 18<span>th</span>, 2012</time>
+<time datetime="2012-05-23T11:23:00+08:00" pubdate data-updated="true">May 23<span>rd</span>, 2012</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/linux/'>Linux</a>
+    <a class='category' href='/blog/categories/macos/'>MacOS</a>
   
 </span>
 
@@ -164,7 +249,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://comflag.github.com/blog/2012/05/18/bian-yi-zi-ji-de-lfsxi-tong-xiao-ji/" data-via="" data-counturl="http://comflag.github.com/blog/2012/05/18/bian-yi-zi-ji-de-lfsxi-tong-xiao-ji/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://comflag.github.com/blog/2012/05/23/macoszi-yuan-zheng-li/" data-via="" data-counturl="http://comflag.github.com/blog/2012/05/23/macoszi-yuan-zheng-li/" >Tweet</a>
   
   
   
@@ -173,10 +258,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/05/18/grub2yin-dao-an-zhuang-ubuntu11-dot-04/" title="Previous Post: grub2引导安装ubuntu11.04">&laquo; grub2引导安装ubuntu11.04</a>
+        <a class="basic-alignment left" href="/blog/2012/05/21/xiu-gai-hostswen-jian-fan-qiang/" title="Previous Post: 修改hosts文件翻墙">&laquo; 修改hosts文件翻墙</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2012/05/20/windowsxia-ying-pan-an-zhuang-mac-os/" title="Next Post: Windows下硬盘安装Mac OS">Windows下硬盘安装Mac OS &raquo;</a>
       
     </p>
   </footer>
@@ -476,8 +559,8 @@ http://bandj.us/jo/blog/blog/2011/12/03/adding-google-plus-sidebar-to-octopress/
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://comflag.github.com/blog/2012/05/18/bian-yi-zi-ji-de-lfsxi-tong-xiao-ji/';
-        var disqus_url = 'http://comflag.github.com/blog/2012/05/18/bian-yi-zi-ji-de-lfsxi-tong-xiao-ji/';
+        var disqus_identifier = 'http://comflag.github.com/blog/2012/05/23/macoszi-yuan-zheng-li/';
+        var disqus_url = 'http://comflag.github.com/blog/2012/05/23/macoszi-yuan-zheng-li/';
         var disqus_script = 'embed.js';
       
     (function () {
