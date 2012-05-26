@@ -4,7 +4,7 @@
   <title><![CDATA[comflag]]></title>
   <link href="http://comflag.github.com/atom.xml" rel="self"/>
   <link href="http://comflag.github.com/"/>
-  <updated>2012-05-25T13:01:00+08:00</updated>
+  <updated>2012-05-26T11:46:52+08:00</updated>
   <id>http://comflag.github.com/</id>
   <author>
     <name><![CDATA[liang]]></name>
@@ -12,6 +12,82 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Mac OS Lion识别触控板]]></title>
+    <link href="http://comflag.github.com/blog/2012/05/26/mac-os-lionkai-qi-alpshong-kong-ban-qu-dong/"/>
+    <updated>2012-05-26T10:08:00+08:00</updated>
+    <id>http://comflag.github.com/blog/2012/05/26/mac-os-lionkai-qi-alpshong-kong-ban-qu-dong</id>
+    <content type="html"><![CDATA[<p>关于触控板，我遇见两个问题。首先，在Mac OS X 10.7下，Dell D630的触控板是能够被系统识别的，可以正常使用(还不支持多点甚至两点触控)，但是，打开触控板的偏好设置会提示说找不到触控板。其次，系统升级到10.7.3后，Dell D630的触控板和小蓝点压根就不被系统识别。</p>
+
+<p>今天，我终于从http://www.osx86.net论坛上找到一组驱动，解决了Mac OS不能识别触控板的问题。现在，在系统偏好设置里可以打开并设置触控板选项了。我现在系统版本是10.7，所以并不知道这个方法能不能让Mac OS 10.7.3正常识别触控板。</p>
+
+<!--more-->
+
+
+<p>说明:这组驱动是为ALPS触控板设计的，应该支持现在大多数触控板。</p>
+
+<h3>驱动包下载:</h3>
+
+<p>触控板驱动:<a href="http://dl.dbank.com/c09f5fplbp">传送门</a></p>
+
+<p>或者查看&#8221;资源帖&#8221; ,<a href="http://comflag.com/blog/2012/05/23/macoszi-yuan-zheng-li/">传送门</a></p>
+
+<h3>支持的系统:</h3>
+
+<ul>
+<li>Mac OS X 10.5.X</li>
+<li>MAC OS X 10.6.X</li>
+<li>MAC OS X 10.7.X</li>
+</ul>
+
+
+<h3>使用方法:</h3>
+
+<ul>
+<li>备份并移除/System/Library/PreferencePanes/Trackpad.prefPane文件。</li>
+<li>解压ALPS.zip，用Kext Wizard把里面的驱动安装到/System/Library/Extension目录下。</li>
+<li>解压Trackpad.prefPane.zip，把解压出的Trackpad.prefPane文件复制到/System/Library/PreferencePanes目录下。</li>
+<li>用磁盘实用工具修复权限。</li>
+<li>重启系统，记得第一次进入系统使用命令 “-f” 重建缓存。</li>
+</ul>
+
+
+<hr />
+
+<p>ps: 该驱动是32位的，在64位机器上打开触控板设置偏向时要进入两次。</p>
+
+<p><img src="http://pic.yupoo.com/comflag/BZCNw8hp/vcKBN.png" width="800" height="500" title="触摸板" ></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mac OS显示电池电量图标]]></title>
+    <link href="http://comflag.github.com/blog/2012/05/26/mac-osxian-shi-dian-chi-dian-liang-tu-biao/"/>
+    <updated>2012-05-26T09:33:00+08:00</updated>
+    <id>http://comflag.github.com/blog/2012/05/26/mac-osxian-shi-dian-chi-dian-liang-tu-biao</id>
+    <content type="html"><![CDATA[<p>Dell D630安装好Mac OS X 10.7后是不能在任务栏显示电池电量图标的，刚开始我也没有在意，并不觉得电池电量图标有什么用，后来，当拔掉电源使用电池工作时才感觉电池电量图标的重要性，没有电量显示，仿佛在黑屋子里工作，完全瞎掉了。总之，显示电池电量还是很重要的。</p>
+
+<!--more-->
+
+
+<p>经过一番努力，我在网上找到两组显示电池电量图标的驱动，经过尝试，这两组驱动一组没有效果，一组则能够使得Mac OS X 10.7正常显示电量图标。</p>
+
+<p>这两组驱动分别是:</p>
+
+<ul>
+<li>AppleACPIPlatform + AppleACPIBatteryManager (推荐)</li>
+<li>AppleACPIPlatform + VoodooBattery</li>
+</ul>
+
+
+<p>经过测试，我使用第一组驱动成功显示了电池电量图标。不同的机型可能不一样，建议大家先尝试第一组驱动。</p>
+
+<p>显示电池电量图标驱动，<a href="http://dl.dbank.com/c0bb7872ip">传送门</a></p>
+
+<p><img src="http://pic.yupoo.com/comflag/BZCkTvRj/2NCCg.png" width="800" height="600" title="显示电池电量" ></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Mac OS X 资源整理]]></title>
@@ -93,6 +169,7 @@
 <li>显示电池电量补丁:<a href="http://dl.dbank.com/c0a89eg00k">传送门</a></li>
 <li>防止BIOS重置补丁:<a href="http://dl.dbank.com/c0facwn2sv">传送门</a></li>
 <li>VoodooHDA-2.7.2声卡驱动:<a href="http://dl.dbank.com/c06d7hd7tp">传送门</a></li>
+<li>ALPS触控板驱动(10.5,10.6,10.7):<a href="http://dl.dbank.com/c09f5fplbp">传送门</a></li>
 </ul>
 
 
@@ -1040,23 +1117,37 @@
 
 <p>建个Dell D630的QQ群，群里基本上都已经体验上Mac OS X了。</p>
 
-<p>群号:190557497</p>
+<p>群号:<font color="green">190557497</font></p>
 
 <!--more-->
 
 
 <p>Dell D630的相关驱动已经上传到Dbank上了，<a href="http://www.dbank.com/">传送门</a></p>
 
-<pre><code>账户名:  d630driver@163.com
-密码: helloworld
+<pre><code>账号:  d630driver@163.com
+密码:  helloworld
 </code></pre>
 
-<p>电脑现状： 显卡驱动正常1024x800 无线网卡驱动正常 有线网卡驱动正常 蓝牙驱动正常 声卡驱动正常，可以视频聊QQ 关机/重启/睡眠正常使用</p>
+<h3>电脑现状</h3>
+
+<ul>
+<li>蓝牙驱动正常</li>
+<li>无线网卡驱动正常</li>
+<li>有线网卡驱动正常</li>
+<li>电池电量显示正常</li>
+<li>关机/重启/睡眠正常使用</li>
+<li>触控板正常，小蓝点正常</li>
+<li>声卡驱动正常，可以视频聊QQ</li>
+<li>显卡驱动正常1024x800，可以开启水纹效果</li>
+</ul>
+
+
+<h3>电脑配置</h3>
 
 <ul>
 <li>电脑型号：  戴尔 Latitude D630</li>
 <li>操作系统：   Mac os X 10.7 Lion 原版<br/></li>
-<li>处理器：      特尔 酷睿2 双核 T8100 @ 2.10GHz 笔记本处理器</li>
+<li>处理器：     英特尔 酷睿2 双核 T8100 @ 2.10GHz 笔记本处理器</li>
 <li>主板：         戴尔 0WM416 (英特尔 PM965/GM965/GL960/GS965 - ICH8M 笔记本芯片组)</li>
 <li>内存：         2 GB ( 金士顿 DDR2 800MHz / 三星 DDR2 800MHz )</li>
 <li>主硬盘：      希捷 ST9160411ASG ( 160 GB / 7200 转/分 )</li>
