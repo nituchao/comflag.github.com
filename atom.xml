@@ -4,7 +4,7 @@
   <title><![CDATA[comflag]]></title>
   <link href="http://comflag.github.com/atom.xml" rel="self"/>
   <link href="http://comflag.github.com/"/>
-  <updated>2012-05-26T11:46:52+08:00</updated>
+  <updated>2012-05-26T13:12:18+08:00</updated>
   <id>http://comflag.github.com/</id>
   <author>
     <name><![CDATA[liang]]></name>
@@ -14,7 +14,62 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Mac OS Lion识别触控板]]></title>
+    <title type="html"><![CDATA[Mac OS X开启CPU自动变频]]></title>
+    <link href="http://comflag.github.com/blog/2012/05/26/mac-os-xkai-qi-cpuzi-dong-bian-pin/"/>
+    <updated>2012-05-26T12:24:00+08:00</updated>
+    <id>http://comflag.github.com/blog/2012/05/26/mac-os-xkai-qi-cpuzi-dong-bian-pin</id>
+    <content type="html"><![CDATA[<p>有时候不得不说在PC机上安装Mac OS是一件很搞怪的事情，因为安装过程和使用过程中会遇见一些莫名奇妙的问题，这些问题在Windows或者Linux下甚至闻所未闻。</p>
+
+<!--more-->
+
+
+<p>比如，在多数情况下。MacOS不会自动开启CPU自动降频功能，或者说CPU不会自动改变频率，无论空闲或者忙碌，无论它承载的任务是大是小，它总是保持自己的最高主频。这种情况，无论是在Windows还是在Linux下，我都完全没有听说过，或者从来没有想过CPU变频还需要操作系统来支持。</p>
+
+<p>CPU不能自动变频会带来很多麻烦，最大的问题就是温度了。因为CPU总是在高频率上运行，所以CPU发热很严重，如果再稍微运行一些复杂的程序，比如flash，风扇就会呼呼的响。同时，CPU不能自动变频也浪费了很多功率。</p>
+
+<p>通常解决这个问题的方法有两种:</p>
+
+<ul>
+<li>修改dsdt.aml文件</li>
+<li>使用CPU变频驱动</li>
+</ul>
+
+
+<p>因为dsdt.aml和具体的主板关系很紧密，不同的主板修改的内容都会有所不同，因此通常我不愿意修改dsdt。</p>
+
+<h3>修改方法</h3>
+
+<p>使用CPU自动降频驱动来开启Mac OS的自动降频非常简单。只需要把下面的两个驱动用Kext Wizard安装到S/L/E目录就可以了。</p>
+
+<ul>
+<li>VoodooMonitor.kext</li>
+<li>VoodooPState.kext</li>
+</ul>
+
+
+<p>安装完之后重启计算机，第一次启动要用 &#8220;-f&#8221; 命令重建缓存，否则，可能会五国。</p>
+
+<p>PS:有些版本的变色龙引导不支持CPU自动降频驱动的加载，所以不建议把上面两个驱动安装到E/E目录，我刚开始就装在E/E目录，结果没有成功。</p>
+
+<p><img class="right" src="http://pic.yupoo.com/comflag/BZDCBmxH/11KsQL.png" width="200" height="200" title="state" ></p>
+
+<h3>验证方法</h3>
+
+<p>使用下面三款软件中的任意一款，都可以查看变频中的CPU状态，CPU的频率会时高时低，但是通常不会达到主频的峰值，风扇也不会频繁的启动。如果从软件中看不到CPU频率的变化，或者软件意外退出，则说明Mac OS还没有开启自动降频，这时候就需要检查一下降频驱动有没有正确安装。</p>
+
+<ul>
+<li>PStateChanger</li>
+<li>VoodooMonitor</li>
+<li>SystemInfo (需要安装Java支持)</li>
+</ul>
+
+
+<p><img src="http://pic.yupoo.com/comflag/BZDCC3ug/XF9f2.png" width="800" height="400" title="PSstate" ></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mac OS X识别触控板]]></title>
     <link href="http://comflag.github.com/blog/2012/05/26/mac-os-lionkai-qi-alpshong-kong-ban-qu-dong/"/>
     <updated>2012-05-26T10:08:00+08:00</updated>
     <id>http://comflag.github.com/blog/2012/05/26/mac-os-lionkai-qi-alpshong-kong-ban-qu-dong</id>
@@ -62,7 +117,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Mac OS显示电池电量图标]]></title>
+    <title type="html"><![CDATA[Mac OS X显示电池电量图标]]></title>
     <link href="http://comflag.github.com/blog/2012/05/26/mac-osxian-shi-dian-chi-dian-liang-tu-biao/"/>
     <updated>2012-05-26T09:33:00+08:00</updated>
     <id>http://comflag.github.com/blog/2012/05/26/mac-osxian-shi-dian-chi-dian-liang-tu-biao</id>
@@ -181,8 +236,8 @@
 <li>iDSDT: <a href="http://dl.dbank.com/c00go95sop">传送门</a></li>
 <li>EDP 2.2: <a href="http://dl.dbank.com/c002f7vgzh">传送门</a></li>
 <li>TransMac:<a href="http://dl.dbank.com/c0zaj746gd">传送门</a></li>
-<li>Kext Wizard:<a href="http://dl.dbank.com/c090lpx06m">传送门</a></li>
 <li>Kext Helper b7:<a href="http://dl.dbank.com/c0bb7872ip">传送门</a></li>
+<li>Kext Wizard 3.10:<a href="http://dl.dbank.com/c05pojtxb6">传送门</a></li>
 <li>DSDTSE1.43中文版:<a href="http://dl.dbank.com/c0q25b4jt6">传送门</a></li>
 <li>DSDT_Auto-Patcher:<a href="http://dl.dbank.com/c0glvh4cp0">传送门</a></li>
 </ul>
@@ -230,7 +285,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Windows下硬盘安装Mac OS]]></title>
+    <title type="html"><![CDATA[Windows下硬盘安装Mac OS Lion]]></title>
     <link href="http://comflag.github.com/blog/2012/05/20/windowsxia-ying-pan-an-zhuang-mac-os/"/>
     <updated>2012-05-20T08:28:00+08:00</updated>
     <id>http://comflag.github.com/blog/2012/05/20/windowsxia-ying-pan-an-zhuang-mac-os</id>
@@ -1122,7 +1177,7 @@
 <!--more-->
 
 
-<p>Dell D630的相关驱动已经上传到Dbank上了，<a href="http://www.dbank.com/">传送门</a></p>
+<p>Dell D630的安装Mac OS X 10.7的相关驱动已经上传到Dbank上了，<a href="http://dl.dbank.com/c06djgq36c">传送门</a></p>
 
 <pre><code>账号:  d630driver@163.com
 密码:  helloworld

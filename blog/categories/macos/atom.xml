@@ -4,7 +4,7 @@
   <title><![CDATA[Category: MacOS | comflag]]></title>
   <link href="http://comflag.github.com/blog/categories/macos/atom.xml" rel="self"/>
   <link href="http://comflag.github.com/"/>
-  <updated>2012-05-26T11:46:52+08:00</updated>
+  <updated>2012-05-26T13:12:18+08:00</updated>
   <id>http://comflag.github.com/</id>
   <author>
     <name><![CDATA[liang]]></name>
@@ -14,7 +14,62 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Mac OS Lion识别触控板]]></title>
+    <title type="html"><![CDATA[Mac OS X开启CPU自动变频]]></title>
+    <link href="http://comflag.github.com/blog/2012/05/26/mac-os-xkai-qi-cpuzi-dong-bian-pin/"/>
+    <updated>2012-05-26T12:24:00+08:00</updated>
+    <id>http://comflag.github.com/blog/2012/05/26/mac-os-xkai-qi-cpuzi-dong-bian-pin</id>
+    <content type="html"><![CDATA[<p>有时候不得不说在PC机上安装Mac OS是一件很搞怪的事情，因为安装过程和使用过程中会遇见一些莫名奇妙的问题，这些问题在Windows或者Linux下甚至闻所未闻。</p>
+
+<!--more-->
+
+
+<p>比如，在多数情况下。MacOS不会自动开启CPU自动降频功能，或者说CPU不会自动改变频率，无论空闲或者忙碌，无论它承载的任务是大是小，它总是保持自己的最高主频。这种情况，无论是在Windows还是在Linux下，我都完全没有听说过，或者从来没有想过CPU变频还需要操作系统来支持。</p>
+
+<p>CPU不能自动变频会带来很多麻烦，最大的问题就是温度了。因为CPU总是在高频率上运行，所以CPU发热很严重，如果再稍微运行一些复杂的程序，比如flash，风扇就会呼呼的响。同时，CPU不能自动变频也浪费了很多功率。</p>
+
+<p>通常解决这个问题的方法有两种:</p>
+
+<ul>
+<li>修改dsdt.aml文件</li>
+<li>使用CPU变频驱动</li>
+</ul>
+
+
+<p>因为dsdt.aml和具体的主板关系很紧密，不同的主板修改的内容都会有所不同，因此通常我不愿意修改dsdt。</p>
+
+<h3>修改方法</h3>
+
+<p>使用CPU自动降频驱动来开启Mac OS的自动降频非常简单。只需要把下面的两个驱动用Kext Wizard安装到S/L/E目录就可以了。</p>
+
+<ul>
+<li>VoodooMonitor.kext</li>
+<li>VoodooPState.kext</li>
+</ul>
+
+
+<p>安装完之后重启计算机，第一次启动要用 "-f" 命令重建缓存，否则，可能会五国。</p>
+
+<p>PS:有些版本的变色龙引导不支持CPU自动降频驱动的加载，所以不建议把上面两个驱动安装到E/E目录，我刚开始就装在E/E目录，结果没有成功。</p>
+
+<p><img class="right" src="http://pic.yupoo.com/comflag/BZDCBmxH/11KsQL.png" width="200" height="200" title="state" ></p>
+
+<h3>验证方法</h3>
+
+<p>使用下面三款软件中的任意一款，都可以查看变频中的CPU状态，CPU的频率会时高时低，但是通常不会达到主频的峰值，风扇也不会频繁的启动。如果从软件中看不到CPU频率的变化，或者软件意外退出，则说明Mac OS还没有开启自动降频，这时候就需要检查一下降频驱动有没有正确安装。</p>
+
+<ul>
+<li>PStateChanger</li>
+<li>VoodooMonitor</li>
+<li>SystemInfo (需要安装Java支持)</li>
+</ul>
+
+
+<p><img src="http://pic.yupoo.com/comflag/BZDCC3ug/XF9f2.png" width="800" height="400" title="PSstate" ></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mac OS X识别触控板]]></title>
     <link href="http://comflag.github.com/blog/2012/05/26/mac-os-lionkai-qi-alpshong-kong-ban-qu-dong/"/>
     <updated>2012-05-26T10:08:00+08:00</updated>
     <id>http://comflag.github.com/blog/2012/05/26/mac-os-lionkai-qi-alpshong-kong-ban-qu-dong</id>
@@ -62,7 +117,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Mac OS显示电池电量图标]]></title>
+    <title type="html"><![CDATA[Mac OS X显示电池电量图标]]></title>
     <link href="http://comflag.github.com/blog/2012/05/26/mac-osxian-shi-dian-chi-dian-liang-tu-biao/"/>
     <updated>2012-05-26T09:33:00+08:00</updated>
     <id>http://comflag.github.com/blog/2012/05/26/mac-osxian-shi-dian-chi-dian-liang-tu-biao</id>
@@ -181,8 +236,8 @@
 <li>iDSDT: <a href="http://dl.dbank.com/c00go95sop">传送门</a></li>
 <li>EDP 2.2: <a href="http://dl.dbank.com/c002f7vgzh">传送门</a></li>
 <li>TransMac:<a href="http://dl.dbank.com/c0zaj746gd">传送门</a></li>
-<li>Kext Wizard:<a href="http://dl.dbank.com/c090lpx06m">传送门</a></li>
 <li>Kext Helper b7:<a href="http://dl.dbank.com/c0bb7872ip">传送门</a></li>
+<li>Kext Wizard 3.10:<a href="http://dl.dbank.com/c05pojtxb6">传送门</a></li>
 <li>DSDTSE1.43中文版:<a href="http://dl.dbank.com/c0q25b4jt6">传送门</a></li>
 <li>DSDT_Auto-Patcher:<a href="http://dl.dbank.com/c0glvh4cp0">传送门</a></li>
 </ul>
@@ -208,7 +263,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Windows下硬盘安装Mac OS]]></title>
+    <title type="html"><![CDATA[Windows下硬盘安装Mac OS Lion]]></title>
     <link href="http://comflag.github.com/blog/2012/05/20/windowsxia-ying-pan-an-zhuang-mac-os/"/>
     <updated>2012-05-20T08:28:00+08:00</updated>
     <id>http://comflag.github.com/blog/2012/05/20/windowsxia-ying-pan-an-zhuang-mac-os</id>
@@ -358,63 +413,6 @@
 <hr />
 
 <p>安装完成后，进入Windows系统，把安装盘里刚刚建立的Extra文件夹(包括里面的文件)复制到Mac OS X的系统盘，如果没有这个Extra文件夹，安装好的Mac OS系统是进不去的，会提示五国。复制完后，重启计算机，用Windows版版色龙就可以引导进入新安装好的Mac OS X系统了。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Mac OS X安装过程常见问题总结]]></title>
-    <link href="http://comflag.github.com/blog/2012/05/18/mac-os-xan-zhuang-guo-cheng-chang-jian-cuo-wu-zong-jie/"/>
-    <updated>2012-05-18T20:27:00+08:00</updated>
-    <id>http://comflag.github.com/blog/2012/05/18/mac-os-xan-zhuang-guo-cheng-chang-jian-cuo-wu-zong-jie</id>
-    <content type="html"><![CDATA[<p>一直使用的是Mac OS 10.7，最近终于经受不住群里童鞋们的诱惑，准备安装10.7.3，于是下载了10.7.3原版dmg镜像，在Mac OS Lion下按照以前安装盘制作教程在硬盘上重新制作了一个10.7.3的安装盘，然后进行覆盖安装。这个安装盘位于我的硬盘的最后一个分区，大小8.0G。</p>
-
-<!--more-->
-
-
-<p>但是，在安装的过程中，出现了几个一起从来没有出现的问题。</p>
-
-<ul>
-<li>启动安装盘，风火轮后黑屏，除了电源灯和蓝牙灯亮外，计算机没有反应。使用-v -f命令查看，命令行字幕滚动完毕后，计算机也是黑屏，不响应。</li>
-<li>启动安装盘，风火轮后进入安装界面，选择语言后下一步，提示”此版本的Mac os Lion不能安装到您的计算机上”，然后，就没有然后了。</li>
-<li>启动安装盘，风火轮后进入安装界面，选择语言后下一步，计算机自动关机。</li>
-<li>安装万能声卡驱动VoodooHDA.pkg后，开机出现无限风火轮，需要在windows下删除S/L/E下的VoodooHDA.kext驱动后才能进系统，当然，此时声卡还是无法驱动。</li>
-<li>进入安装界面，选择分区时提示"Mac OS X 不能从这个磁盘启动"。</li>
-</ul>
-
-
-<p>表示以上几个问题在安装Mac OS 10.7时从来没有出现过。但是经过几天的研究，终于一个个都解决了。</p>
-
-<hr />
-
-<h1>解决办法:</h1>
-
-<ul>
-<li><p>启动安装盘，风火轮后黑屏</p>
-
-<p>  这个应该是显卡未识别的问题，解决办法很简单也很传统–替换dsdt.aml文件即可。需要说明的是，我用的是之前10.7版本的dsdt.aml，如果你的计算机出现这种黑屏，请替换下面我提供的新的dsdt.aml，我现在在10.7.3下用的就是这个dsdt.aml。</p></li>
-<li><p>启动安装盘，选择语言后提示”此版本的Mac os Lion不能安装到您的计算机上”</p></li>
-<li><p>启动安装盘，风火轮后进入安装界面，选择语言后下一步，计算机自动关机</p>
-
-<p>  这两个问题，通过查看安装日志，应该是安装盘里的OSInstall和OSInstall.mpkg没有替换或者替换的版本不当造成的。可以替换成下面提供的新的OSInstall和OSInstall.mpkg文件。</p></li>
-<li><p>声卡驱动导致系统无限风火轮</p>
-
-<p>  这个问题的解决很简单，我出现这个问题是因为在系统盘的E/E目录下放置了一个Apple原版的声卡驱动AppleHDADisabler.kext，导致两个驱动冲突了，只需要把E/E目录下的那个AppleHDADisabler.kext驱动删除，系统就可以正常引导，并且正常驱动声卡了。</p></li>
-<li><p>Mac OS X不能从这个磁盘启动</p>
-
-<p>  安装Mac OS系统出现这个问题，是由于OSInstall和OSInstall.mpkg没有替换造成的，用修改好的对应版本的文件替换后这个问题就解决了。网上很多人说要把整个分区格式化，然后将分区表类型改为GUID，不建议这么做，因为我的Windows还在硬盘上，我的文档，照片还在硬盘上，甚至我的安装盘都在硬盘上，重建分区表之后这些都没有啦~~</p></li>
-</ul>
-
-
-<hr />
-
-<p>适合于Dell D630的Mac OS X 10.7.3最新可用破解文件: 传送门</p>
-
-<ul>
-<li><p>dsdt.aml</p></li>
-<li><p>OSInstall和OSInstall.mpkg</p></li>
-<li><p>fakeSMC.kext</p></li>
-</ul>
-
 ]]></content>
   </entry>
   

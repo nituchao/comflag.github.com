@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Mac OS X安装过程常见问题总结 - comflag</title>
+  <title>Mac OS X开启CPU自动变频 - comflag</title>
   <meta name="author" content="liang">
 
   
-  <meta name="description" content="一直使用的是Mac OS 10.7，最近终于经受不住群里童鞋们的诱惑，准备安装10.7.3，于是下载了10.7.3原版dmg镜像，在Mac OS Lion下按照以前安装盘制作教程在硬盘上重新制作了一个10.7.3的安装盘，然后进行覆盖安装。这个安装盘位于我的硬盘的最后一个分区，大小8.0G。 但是 &hellip;">
+  <meta name="description" content="有时候不得不说在PC机上安装Mac OS是一件很搞怪的事情，因为安装过程和使用过程中会遇见一些莫名奇妙的问题，这些问题在Windows或者Linux下甚至闻所未闻。 比如，在多数情况下。MacOS不会自动开启CPU自动降频功能，或者说CPU不会自动改变频率，无论空闲或者忙碌， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://comflag.github.com/blog/2012/05/18/mac-os-xan-zhuang-guo-cheng-chang-jian-cuo-wu-zong-jie">
+  <link rel="canonical" href="http://comflag.github.com/blog/2012/05/26/mac-os-xkai-qi-cpuzi-dong-bian-pin">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -87,7 +87,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
   
   <header>
     
-      <h1 class="entry-title">Mac OS X安装过程常见问题总结</h1>
+      <h1 class="entry-title">Mac OS X开启CPU自动变频</h1>
     
     
       <p class="meta">
@@ -103,62 +103,60 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
   
 
 
-<time datetime="2012-05-18T20:27:00+08:00" pubdate data-updated="true">May 18<span>th</span>, 2012</time>
+<time datetime="2012-05-26T12:24:00+08:00" pubdate data-updated="true">May 26<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>一直使用的是Mac OS 10.7，最近终于经受不住群里童鞋们的诱惑，准备安装10.7.3，于是下载了10.7.3原版dmg镜像，在Mac OS Lion下按照以前安装盘制作教程在硬盘上重新制作了一个10.7.3的安装盘，然后进行覆盖安装。这个安装盘位于我的硬盘的最后一个分区，大小8.0G。</p>
+<div class="entry-content"><p>有时候不得不说在PC机上安装Mac OS是一件很搞怪的事情，因为安装过程和使用过程中会遇见一些莫名奇妙的问题，这些问题在Windows或者Linux下甚至闻所未闻。</p>
 
 <!--more-->
 
 
-<p>但是，在安装的过程中，出现了几个一起从来没有出现的问题。</p>
+<p>比如，在多数情况下。MacOS不会自动开启CPU自动降频功能，或者说CPU不会自动改变频率，无论空闲或者忙碌，无论它承载的任务是大是小，它总是保持自己的最高主频。这种情况，无论是在Windows还是在Linux下，我都完全没有听说过，或者从来没有想过CPU变频还需要操作系统来支持。</p>
+
+<p>CPU不能自动变频会带来很多麻烦，最大的问题就是温度了。因为CPU总是在高频率上运行，所以CPU发热很严重，如果再稍微运行一些复杂的程序，比如flash，风扇就会呼呼的响。同时，CPU不能自动变频也浪费了很多功率。</p>
+
+<p>通常解决这个问题的方法有两种:</p>
 
 <ul>
-<li>启动安装盘，风火轮后黑屏，除了电源灯和蓝牙灯亮外，计算机没有反应。使用-v -f命令查看，命令行字幕滚动完毕后，计算机也是黑屏，不响应。</li>
-<li>启动安装盘，风火轮后进入安装界面，选择语言后下一步，提示”此版本的Mac os Lion不能安装到您的计算机上”，然后，就没有然后了。</li>
-<li>启动安装盘，风火轮后进入安装界面，选择语言后下一步，计算机自动关机。</li>
-<li>安装万能声卡驱动VoodooHDA.pkg后，开机出现无限风火轮，需要在windows下删除S/L/E下的VoodooHDA.kext驱动后才能进系统，当然，此时声卡还是无法驱动。</li>
-<li>进入安装界面，选择分区时提示&#8221;Mac OS X 不能从这个磁盘启动&#8221;。</li>
+<li>修改dsdt.aml文件</li>
+<li>使用CPU变频驱动</li>
 </ul>
 
 
-<p>表示以上几个问题在安装Mac OS 10.7时从来没有出现过。但是经过几天的研究，终于一个个都解决了。</p>
+<p>因为dsdt.aml和具体的主板关系很紧密，不同的主板修改的内容都会有所不同，因此通常我不愿意修改dsdt。</p>
 
-<hr />
+<h3>修改方法</h3>
 
-<h1>解决办法:</h1>
+<p>使用CPU自动降频驱动来开启Mac OS的自动降频非常简单。只需要把下面的两个驱动用Kext Wizard安装到S/L/E目录就可以了。</p>
 
 <ul>
-<li><p>启动安装盘，风火轮后黑屏</p>
-
-<p>  这个应该是显卡未识别的问题，解决办法很简单也很传统–替换dsdt.aml文件即可。需要说明的是，我用的是之前10.7版本的dsdt.aml，如果你的计算机出现这种黑屏，请替换下面我提供的新的dsdt.aml，我现在在10.7.3下用的就是这个dsdt.aml。</p></li>
-<li><p>启动安装盘，选择语言后提示”此版本的Mac os Lion不能安装到您的计算机上”</p></li>
-<li><p>启动安装盘，风火轮后进入安装界面，选择语言后下一步，计算机自动关机</p>
-
-<p>  这两个问题，通过查看安装日志，应该是安装盘里的OSInstall和OSInstall.mpkg没有替换或者替换的版本不当造成的。可以替换成下面提供的新的OSInstall和OSInstall.mpkg文件。</p></li>
-<li><p>声卡驱动导致系统无限风火轮</p>
-
-<p>  这个问题的解决很简单，我出现这个问题是因为在系统盘的E/E目录下放置了一个Apple原版的声卡驱动AppleHDADisabler.kext，导致两个驱动冲突了，只需要把E/E目录下的那个AppleHDADisabler.kext驱动删除，系统就可以正常引导，并且正常驱动声卡了。</p></li>
-<li><p>Mac OS X不能从这个磁盘启动</p>
-
-<p>  安装Mac OS系统出现这个问题，是由于OSInstall和OSInstall.mpkg没有替换造成的，用修改好的对应版本的文件替换后这个问题就解决了。网上很多人说要把整个分区格式化，然后将分区表类型改为GUID，不建议这么做，因为我的Windows还在硬盘上，我的文档，照片还在硬盘上，甚至我的安装盘都在硬盘上，重建分区表之后这些都没有啦~~</p></li>
+<li>VoodooMonitor.kext</li>
+<li>VoodooPState.kext</li>
 </ul>
 
 
-<hr />
+<p>安装完之后重启计算机，第一次启动要用 &#8220;-f&#8221; 命令重建缓存，否则，可能会五国。</p>
 
-<p>适合于Dell D630的Mac OS X 10.7.3最新可用破解文件: 传送门</p>
+<p>PS:有些版本的变色龙引导不支持CPU自动降频驱动的加载，所以不建议把上面两个驱动安装到E/E目录，我刚开始就装在E/E目录，结果没有成功。</p>
+
+<p><img class="right" src="http://pic.yupoo.com/comflag/BZDCBmxH/11KsQL.png" width="200" height="200" title="state" ></p>
+
+<h3>验证方法</h3>
+
+<p>使用下面三款软件中的任意一款，都可以查看变频中的CPU状态，CPU的频率会时高时低，但是通常不会达到主频的峰值，风扇也不会频繁的启动。如果从软件中看不到CPU频率的变化，或者软件意外退出，则说明Mac OS还没有开启自动降频，这时候就需要检查一下降频驱动有没有正确安装。</p>
 
 <ul>
-<li><p>dsdt.aml</p></li>
-<li><p>OSInstall和OSInstall.mpkg</p></li>
-<li><p>fakeSMC.kext</p></li>
+<li>PStateChanger</li>
+<li>VoodooMonitor</li>
+<li>SystemInfo (需要安装Java支持)</li>
 </ul>
 
+
+<p><img src="http://pic.yupoo.com/comflag/BZDCC3ug/XF9f2.png" width="800" height="400" title="PSstate" ></p>
 </div>
 
 
@@ -181,7 +179,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
   
 
 
-<time datetime="2012-05-18T20:27:00+08:00" pubdate data-updated="true">May 18<span>th</span>, 2012</time>
+<time datetime="2012-05-26T12:24:00+08:00" pubdate data-updated="true">May 26<span>th</span>, 2012</time>
       
 
 <span class="categories">
@@ -195,7 +193,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://comflag.github.com/blog/2012/05/18/mac-os-xan-zhuang-guo-cheng-chang-jian-cuo-wu-zong-jie/" data-via="" data-counturl="http://comflag.github.com/blog/2012/05/18/mac-os-xan-zhuang-guo-cheng-chang-jian-cuo-wu-zong-jie/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://comflag.github.com/blog/2012/05/26/mac-os-xkai-qi-cpuzi-dong-bian-pin/" data-via="" data-counturl="http://comflag.github.com/blog/2012/05/26/mac-os-xkai-qi-cpuzi-dong-bian-pin/" >Tweet</a>
   
   
   
@@ -204,10 +202,8 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/05/18/eclipseli-rmicha-jian-de-shi-yong/" title="Previous Post: Eclipse里RMI插件的使用">&laquo; Eclipse里RMI插件的使用</a>
+        <a class="basic-alignment left" href="/blog/2012/05/26/mac-os-lionkai-qi-alpshong-kong-ban-qu-dong/" title="Previous Post: Mac OS X识别触控板">&laquo; Mac OS X识别触控板</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2012/05/18/fei-ge-chuan-shu-ppcban-shi-xian-ppcyu-pcde-tong-xin-he-wen-jian-jiao-liu/" title="Next Post: 飞鸽传输PPC版实现PPC与PC的通信和文件交流">飞鸽传输PPC版实现PPC与PC的通信和文件交流 &raquo;</a>
       
     </p>
   </footer>
@@ -507,8 +503,8 @@ http://bandj.us/jo/blog/blog/2011/12/03/adding-google-plus-sidebar-to-octopress/
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://comflag.github.com/blog/2012/05/18/mac-os-xan-zhuang-guo-cheng-chang-jian-cuo-wu-zong-jie/';
-        var disqus_url = 'http://comflag.github.com/blog/2012/05/18/mac-os-xan-zhuang-guo-cheng-chang-jian-cuo-wu-zong-jie/';
+        var disqus_identifier = 'http://comflag.github.com/blog/2012/05/26/mac-os-xkai-qi-cpuzi-dong-bian-pin/';
+        var disqus_url = 'http://comflag.github.com/blog/2012/05/26/mac-os-xkai-qi-cpuzi-dong-bian-pin/';
         var disqus_script = 'embed.js';
       
     (function () {
