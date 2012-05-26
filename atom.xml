@@ -4,7 +4,7 @@
   <title><![CDATA[comflag]]></title>
   <link href="http://comflag.github.com/atom.xml" rel="self"/>
   <link href="http://comflag.github.com/"/>
-  <updated>2012-05-26T13:31:30+08:00</updated>
+  <updated>2012-05-26T13:43:42+08:00</updated>
   <id>http://comflag.github.com/</id>
   <author>
     <name><![CDATA[liang]]></name>
@@ -29,10 +29,10 @@
 
 <p>通常解决这个问题的方法有两种:</p>
 
-<ul>
+<ol>
 <li>修改dsdt.aml文件</li>
 <li>使用CPU变频驱动</li>
-</ul>
+</ol>
 
 
 <p>因为dsdt.aml和具体的主板关系很紧密，不同的主板修改的内容都会有所不同，因此通常我不愿意修改dsdt。</p>
@@ -43,10 +43,10 @@
 
 <p>使用CPU自动降频驱动来开启Mac OS的自动降频非常简单。只需要把下面的两个驱动用Kext Wizard安装到S/L/E目录就可以了。</p>
 
-<ul>
+<ol>
 <li>VoodooMonitor.kext</li>
 <li>VoodooPState.kext</li>
-</ul>
+</ol>
 
 
 <p>安装完之后重启计算机，第一次启动要用 &#8220;-f&#8221; 命令重建缓存，否则，可能会五国。</p>
@@ -55,10 +55,10 @@
 
 <h3>文件下载</h3>
 
-<ul>
+<ol>
 <li><p>CPU变频驱动:<a href="http://dl.dbank.com/c005vqd2i2">传送门</a></p></li>
 <li><p>MacOS资源整理:<a href="http://comflag.com/blog/2012/05/23/macoszi-yuan-zheng-li/">传送门</a></p></li>
-</ul>
+</ol>
 
 
 <p><img class="right" src="http://pic.yupoo.com/comflag/BZDCBmxH/11KsQL.png" width="200" height="200" title="state" ></p>
@@ -67,11 +67,11 @@
 
 <p>使用下面三款软件中的任意一款，都可以查看变频中的CPU状态，CPU的频率会时高时低，但是通常不会达到主频的峰值，风扇也不会频繁的启动。如果从软件中看不到CPU频率的变化，或者软件意外退出，则说明Mac OS还没有开启自动降频，这时候就需要检查一下降频驱动有没有正确安装。</p>
 
-<ul>
+<ol>
 <li>PStateChanger</li>
 <li>VoodooMonitor</li>
 <li>SystemInfo (需要安装Java支持)</li>
-</ul>
+</ol>
 
 
 <p><img src="http://pic.yupoo.com/comflag/BZDCC3ug/XF9f2.png" width="800" height="400" title="PSstate" ></p>
@@ -120,7 +120,7 @@
 
 <hr />
 
-<p>ps: 该驱动是32位的，在64位机器上打开触控板设置偏向时要进入两次。</p>
+<p>ps: 该驱动是32位的，在64位机器上打开触控板设置偏好时要进入两次。</p>
 
 <p><img src="http://pic.yupoo.com/comflag/BZCNw8hp/vcKBN.png" width="800" height="500" title="触摸板" ></p>
 ]]></content>
