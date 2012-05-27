@@ -4,7 +4,7 @@
   <title><![CDATA[comflag]]></title>
   <link href="http://comflag.github.com/atom.xml" rel="self"/>
   <link href="http://comflag.github.com/"/>
-  <updated>2012-05-26T23:07:25+08:00</updated>
+  <updated>2012-05-27T14:05:14+08:00</updated>
   <id>http://comflag.github.com/</id>
   <author>
     <name><![CDATA[liang]]></name>
@@ -12,6 +12,41 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[我心中的桌面Linux系统]]></title>
+    <link href="http://comflag.github.com/blog/2012/05/27/wo-xin-zhong-de-zhuo-mian-linuxxi-tong/"/>
+    <updated>2012-05-27T13:49:00+08:00</updated>
+    <id>http://comflag.github.com/blog/2012/05/27/wo-xin-zhong-de-zhuo-mian-linuxxi-tong</id>
+    <content type="html"><![CDATA[<p>现在的Linux发行版通常以华丽的图形界面占尽风头，但是，作为桌面操作系统(不是服务器操作系统)，我非常希望Linux能考虑从下面几方面做一些努力:</p>
+
+<!--more-->
+
+
+<blockquote><p>1，允许多个软件安装进程同时运行。<br/>
+2，提供像Mac OS X 一样的软件安装方式:既可以用安装包安装，也可以直接把软件拖到&#8221;应用程序文件夹&#8221;下就可以使用，软件卸载也是。<br/>
+3，提供一个统一，高效的软件开发集成环境，类似与Windows下的VS和Mac OS下的Xcode。<br/>
+4，提供更好的库依赖解决办法。<br/></p></blockquote>
+
+<p>现在的Linux发行版一次都只能允许一个安装进程运行，我很想知道这会不会和Linux内核是单内核而非微内核的原因有关，如果真的有关系，这真的太无奈了。毕竟，Windows，Mac OS，和BSD这些系统的内核都是基于微内核，他们都可以支持多个安装进程同时运行，因此linux在这方面显得非常奇怪而且低效。</p>
+
+<p>有人说Mac OS X 是绿色软件鼻祖。的确，Mac OS X 的大多应用程序都经过精心打包，一个单程序包双击就可以运行，把这个程序包拖到废纸篓里就相当于把程序卸载了。不得不说这真的太方便了，老少皆宜，大大降低了系统的使用难度。希望Linux是不是也考虑一下往这方面发展一下。</p>
+
+<p>关于开发环境，很多人说真正的大牛使用vi，或者emacs等文本编辑器就可以搞定绝大多数的开发工作，IDE仿佛显得很没有必要，很多人甚至崇拜用vi编辑器的人。真的是这样吗，我也使用vi编辑器写代码，平时简单的笔记都用vi编辑器，我之前写过一个php网站，无论是前端的页面设计，css布局还是后台管理模块和数据库操作的编写都是用的纯文本编辑器，网站规模不大，只有7000+行代码，这个过程也让我深深喜欢上用文本编辑器写代码的感觉。但是，发现没有，这些大多都是一些脚本语言(比如php,js)性质的，编译，调试过程通常都非常简单，即使是搞c开发也很少用框架的吧。随着软件开发变得越来越复杂，很多软件开发过程靠vi真的是很不靠谱的事情。比如用vi编辑器搞Java开发，随便开发个基于SSH框架(struts+spring+hibernate)的系统，如果没有类似Eclipse这样的IDE我真不敢想象其开发过程会多么复杂，同样，用文本编辑器写基于MFC框架的应用程序就更不敢想了。</p>
+
+<p>很多次在Linux下安装软件时出错原因都是缺乏必要的依赖库，然后就是查看安装日志，到网上找相关的依赖库，有的还很不好找，有的甚至要翻墙才能搞到。这还是好的，有时软件对缺乏的库只提供模糊的提示，找都没法找。在这块我对linux很不了解，所以没办法说出linux这样子设计的具体好处。</p>
+
+<p>库依赖，在Windows和Mac OS下几乎很少被提到，尤其是在Windows下，有时会提示系统的.net framework 版本过低，但也仅此而已，而且通常会直接给出下载链接，绝不会出现缺乏大量库文件的情况。这时，我想到了JAVA，一个JRE通常不超过35M，但是已经可以运行绝大多数的程序了，如果有些程序需要额外的运行环境支持，可以在开发时包含对应的jar包，而且，软件发布时，这些额外jar包是随软件一起发布的，因此通常不会出现缺少jar包的错误。可以说，Java已经提供了一个完整的运行时环境，Java应用程序在JVM里几乎可以脱离具体操作系统运行，这也是Java标榜自己一次编译到处运行的原因。我想，Android使用Java作为开发平台，一个很大的原因是考虑到Java完整的开发和运行环境，放眼望去，除了Windows下的C#，VC++以及Mac OS下的Objective-C，也只有Java能提供这么完整的开发运行环境了(而且Java还是现成的)。</p>
+
+<p>Linux桌面发行版要是能提供一个完整的库依赖环境和程序运行环境，为桌面程序开发者提供更统一的开发环境，哪怕是抛弃一部分技术，抛弃一部分平台，也绝对是值得的。</p>
+
+<p>再说说Mac OS X 吧。用了一阵子Mac OS X 系统后，我深深的喜欢上了这个系统，有时我甚至觉得Mac OS X 是最适合开发者使用的操作系统了。它有几乎最正宗的UNIX内核(微内核)，Linux可以做的事情，Mac OS X 也都可以做，而且，它还有自己完整而统一的Objective-C开发环境和Cocoa框架，美轮美奂、简单易用又极其稳定的图形用户界面(在Mac OS下几乎不用考虑修改界面主题，而linux下的图形界面经常发生变化和崩溃)以及越来越丰富的应用程序，当然它也内置了Apache，php，perl等程序，很容易进行这些脚本程序的开发。Mac OS X 是苹果硬件的灵魂，无数人为Mac OS X着迷真的一点都不为过。</p>
+
+<p>我是一个Linux菜鸟，用Ubuntu只有几年，但是最近Unity界面真的惹恼我了，不方便，老崩溃，甚至还没有原版的Gnome桌面好用，网上提供那么多漂亮主题又顶什么用呢。当年第一次用ubuntu 9.10时是眼前一亮，真心喜欢啊；装上12.04后是眼前一黑，真心无语了。对Ubuntu的巨大失望，也是我前阵子下定决心编译了自己的Egg Boiler Linux 1.0的原因。</p>
+
+<p>上面提出的几个问题可能很幼稚，还请大牛不要嘲笑，当然，更希望得到高手的指点~~</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[煮酒探西游]]></title>
@@ -1335,59 +1370,6 @@ at demo.rmi.print.client.PrintClient.main(PrintClient.java:35)
 <p>9，使用日志API (这需要更多的技术和对Logging APIs的了解)RMI Spy把RMI loggers的logging level修改为”ALL”。你之所在控制台上看不到RMI的日志是因为RMI日志的控制者拥有更高的等级(默认是”SILENT”)。如果因为某些原因日志控制者等级被修改了，或者另一个控制者被注册到RMI日志，他们将获取他们本不会获取到的事件(如果RMI Spy没有被使用的话)。当然，如果你手动修改了RMI日志等级，你就可以影响RMI Spy的行为了。</p>
 
 <p>英语原文:<a href="http://www.genady.net/rmi/v20/docs/spy/spy_effects.html">传送门</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iCloud提示已达到帐户数量限制的解决办法]]></title>
-    <link href="http://comflag.github.com/blog/2012/04/20/icloudti-shi-yi-da-dao-zhang-hu-shu-liang-xian-zhi-de-jie-jue-ban-fa/"/>
-    <updated>2012-04-20T20:31:00+08:00</updated>
-    <id>http://comflag.github.com/blog/2012/04/20/icloudti-shi-yi-da-dao-zhang-hu-shu-liang-xian-zhi-de-jie-jue-ban-fa</id>
-    <content type="html"><![CDATA[<p>自从安装了Mac OS X 10.7.3后，iClound就一直不能使用，输入Apple ID后一直提示”已达到账户数量限制”，英文提示”Account Limit Reached”，但自己明明只在这一个Mac OS下登陆过，并且App Store和iTunes都可以正常登陆和使用。后来用英文在google里才找到了解决办法。现在已经能正常登陆iClound了。</p>
-
-<!--more-->
-
-
-<h1>解决办法</h1>
-
-<ul>
-<li>使用Chameleon Wizard生成一个带有有效serial number的smbios.plist文件，并把这个文件放到系统盘Extra目录下，注意，这一步最总要的是那个serial number，比如我的是 “CK9377851G0”。</li>
-</ul>
-
-
-<p><img src="http://pic.yupoo.com/comflag/BUbbT9VO/yqEJU.png" width="800" height="600"></p>
-
-<ul>
-<li>确保你的以太网卡(有线网)在系统信息页面显示的是”en0”。</li>
-</ul>
-
-
-<p><img src="http://pic.yupoo.com/comflag/BUbbUUKC/F47sC.png" width="800" height="600"></p>
-
-<ul>
-<li>确保你的WI-FI网卡(无线网)在系统信息页面显示的是”en1”。</li>
-</ul>
-
-
-<p><img src="http://pic.yupoo.com/comflag/BUbbUzCB/snoL8.png" width="800" height="600"></p>
-
-<ul>
-<li><p>确保你的org.chameleon.Boot.plist中有下面两行代码，如果没有请手动添加</p>
-
-<pre><code>  &lt;key&gt;EthernetBuiltIn&lt;/key&gt;
-  &lt;string&gt;Yes&lt;/string&gt;
-</code></pre></li>
-<li><p>重启计算机</p></li>
-</ul>
-
-
-<h5>说明:用到的工具比如Chameleon Wizard 4.1可以在网上很容易找到~~</h5>
-
-<hr />
-
-<p>重启计算机后，在系统设置偏好里打开icloud，输入账号，密码就应该能登陆了。</p>
-
-<p><img src="http://pic.yupoo.com/comflag/BUbbUsV7/4rr16.png" width="800" height="600"></p>
 ]]></content>
   </entry>
   
