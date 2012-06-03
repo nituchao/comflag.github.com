@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Ubuntu在终端中使用lynx访问互联网 - comflag</title>
+  <title>chameleon引导ubuntu - comflag</title>
   <meta name="author" content="liang">
 
   
-  <meta name="description" content="大家熟悉的Opera是一个灵巧的浏览器。它发布于1996年。但是在它诞生的前一年一个命令行下的全能的浏览器已经在众多志愿者的帮助一下悄然走进了我们的世界，这就是Lynx浏览器. Lynx 是一个字符界面下的全功能的WWW浏览器。Lynx 可以运行在很多种 操作系统下，如VMS, UNIX, &hellip;">
+  <meta name="description" content="现在，我的笔记本上同时运行着3个系统，Windows 7，Mac OS 10.7和Ubuntu 10.10。Ubuntu 10.10主要是用来编译调试我的Egg Boiler系统。 Ubuntu的grub2不能引导Mac OS X系统，所以用chameleon来引导三个系统是非常好的选择， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://comflag.github.com/blog/2012/05/18/ubuntuzai-zhong-duan-zhong-shi-yong-lynxfang-wen-hu-lian-wang">
+  <link rel="canonical" href="http://comflag.github.com/blog/2012/06/03/chameleonyin-dao-ubuntu">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -87,7 +87,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
   
   <header>
     
-      <h1 class="entry-title">Ubuntu在终端中使用lynx访问互联网</h1>
+      <h1 class="entry-title">Chameleon引导ubuntu</h1>
     
     
       <p class="meta">
@@ -103,179 +103,35 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
   
 
 
-<time datetime="2012-05-18T20:42:00+08:00" pubdate data-updated="true">May 18<span>th</span>, 2012</time>
+<time datetime="2012-06-03T13:55:00+08:00" pubdate data-updated="true">Jun 3<span>rd</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>大家熟悉的Opera是一个灵巧的浏览器。它发布于1996年。但是在它诞生的前一年一个命令行下的全能的浏览器已经在众多志愿者的帮助一下悄然走进了我们的世界，这就是Lynx浏览器.</p>
+<div class="entry-content"><p>现在，我的笔记本上同时运行着3个系统，Windows 7，Mac OS 10.7和Ubuntu 10.10。Ubuntu 10.10主要是用来编译调试我的Egg Boiler系统。</p>
 
 <!--more-->
 
 
-<p>Lynx 是一个字符界面下的全功能的WWW浏览器。Lynx 可以运行在很多种 操作系统下，如VMS, UNIX, Windows 95, Windows NT等，当然也包括Linux。 由于没有漂亮的图形界面，所以 Lynx 占用资源极少，而且速度很快。另外 Lynx 还是唯一能在字符终端下运行的 WWW 浏览器，相比较之前介绍的w3m是有过之而无不及啊。</p>
+<p>Ubuntu的grub2不能引导Mac OS X系统，所以用chameleon来引导三个系统是非常好的选择，同时chameleon是完全的图形化引导，非常漂亮。</p>
 
-<p>Lynx支持多种协议。可以以 lynx filename 和 lynx PROTOCOL: //HOST/PATH/FILENAME 的形式 运行 Lynx ，其中前一种用于浏览本地文件，后一种用于浏览 Internet。 协议 (PROTOCOL)，可以是 http, gopher, ftp 和 wais。***### 在ubuntu下可以在终端输入如下命令安装即可:</p>
+<p>我的做法非常简单，首先要安装好三个系统，特别要注意的是安装Ubuntu时，要选择把gurb2安装到Ubuntu的/分区，而不能将boot loader安在整个硬盘上，否则变色龙不能识别Ubuntu。</p>
 
-<pre><code>sudo apt-get install lynx
-</code></pre>
+<p><img src="http://pic.yupoo.com/comflag/C0RN27m0/RHmjl.png" width="800" height="600" title="gurb2安装" ></p>
 
-<p>注意: 如果终端提示没有找到软件包，可以在添加如下源然后更新后在安装即可:</p>
+<p>然后在Mac OS下安装Mac版变色龙到Mac OS系统分区。</p>
 
-<ul>
-<li><p>打开源文件</p>
+<p><img src="http://pic.yupoo.com/comflag/C0RR7KwM/4EZW6.png" width="800" height="600" title="安装变色龙" ></p>
 
-<pre><code>  sudo gedit /etc/apt/sources.list
-</code></pre></li>
-<li><p>添加源</p></li>
-</ul>
+<p>最后，用Ubuntu的live-cd中的Gparted分区工具把Mac OS X所在分区的标记更改为&#8221;boot&#8221;，也就是开机从Mac OS X所在分区引导。</p>
 
+<p><img src="http://pic.yupoo.com/comflag/C0RN2mD1/14E8J2.png" width="800" height="600" title="设置boot标记" ></p>
 
-<figure class='code'><figcaption><span>添加源 </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>  deb http://mirrors.163.com/ubuntu/ maverick main universe restricted multiverse
-</span><span class='line'>  deb-src http://mirrors.163.com/ubuntu/ maverick main universe restricted multiverse
-</span><span class='line'>  deb http://mirrors.163.com/ubuntu/ maverick-security universe main multiverse restricted
-</span><span class='line'>  deb-src http://mirrors.163.com/ubuntu/ maverick-security universe main multiverse restricted
-</span><span class='line'>  deb http://mirrors.163.com/ubuntu/ maverick-updates universe main multiverse restricted
-</span><span class='line'>  deb http://mirrors.163.com/ubuntu/ maverick-proposed universe main multiverse restricted
-</span><span class='line'>  deb-src http://mirrors.163.com/ubuntu/ maverick-proposed universe main multiverse restricted
-</span><span class='line'>  deb http://mirrors.163.com/ubuntu/ maverick-backports universe main multiverse restricted
-</span><span class='line'>  deb-src http://mirrors.163.com/ubuntu/ maverick-backports universe main multiverse restricted
-</span><span class='line'>  deb-src http://mirrors.163.com/ubuntu/ maverick-updates universe main multiverse restricted
-</span><span class='line'>
-</span></code></pre></td></tr></table></div></figure>
+<p>最后附一个变色龙主题:<a href="http://dl.dbank.com/c08nqxu7af">传送门</a></p>
 
-
-<ul>
-<li><p>更新</p>
-
-<pre><code>  sudo apt-get update
-</code></pre></li>
-</ul>
-
-
-<hr />
-
-<h1>使用</h1>
-
-<ul>
-<li><p>浏览网页:直接在终端中输入命令即可</p>
-
-<pre><code>  lynx localhost/wordpress
-</code></pre></li>
-<li><p>浏览本地文件:直接在终端中输入本地目录,可以使用tab补全</p>
-
-<pre><code>  lynx /home
-</code></pre></li>
-</ul>
-
-
-<hr />
-
-<h1>基本操作</h1>
-
-<ul>
-<li><p>移动命令</p>
-
-<ul>
-<li>下方向键：页面上的下一个链接(用高亮度显示)。</li>
-<li>上方向键：页面上的前一个链接(用高亮度显示)。</li>
-<li>回车和右方向键：跳转到链接指向的地址。</li>
-<li>左方向键：回到上一个页面。</li>
-</ul>
-</li>
-<li><p>滚动命令：</p>
-
-<ul>
-<li>+,Page-Down,Space,Ctrl+f：向下翻页。</li>
-<li>-,Page-Up,b,Ctrl+b：向上翻页。</li>
-<li>Ctrl+a： 移动到当前页的最前面。</li>
-<li>Ctrl+e： 移动到当前页的最后面。</li>
-<li>Ctrl+n： 向下翻两行。</li>
-<li>Ctrl+p： 往回翻两行。</li>
-<li>)： 向下翻半页。</li>
-<li>(： 往回翻半页。</li>
-</ul>
-</li>
-<li><p>文件操作命令：</p>
-
-<ul>
-<li>c： 建立一个新文件。</li>
-<li>d： 下载选中的文件。</li>
-<li>E： 编辑选中的文件。</li>
-<li>f： 为当前文件显示一个选项菜单。</li>
-<li>m： 修改选中文件的名字或位置。</li>
-<li>r： 删除选中的文件。</li>
-<li>t： Tag highlighted file。</li>
-<li>u： 上载一个文件到当前目录。</li>
-</ul>
-</li>
-<li><p>其他命令：</p>
-
-<ul>
-<li>?,h： 帮助。</li>
-<li>a： 把当前链接加入到一个书签文件里。</li>
-<li>c： 向页面的拥有者发送意见或建议。</li>
-<li>d： 下载当前链接。</li>
-<li>e： 编辑当前文件。</li>
-<li>g： 跳转到一个用户指定的URL或文件。</li>
-<li>G： 编辑当前页的URL，并跳转到这个URL。</li>
-<li>i： 显示文档索引。</li>
-<li>j： 执行预先定义的“短”命令。</li>
-<li>k： 显示键盘命令列表。</li>
-<li>l： 列出当前页上所有链接的地址。</li>
-<li>m： 回到首页。</li>
-<li>o： 设置选项。</li>
-<li>p： 把当前页输出到文件，e-mail，打印机或其他地方。</li>
-<li>q： 退出。</li>
-<li>/： 在当前页内查找字符串。</li>
-<li>s： 在外部搜索输入的字符串。</li>
-<li>n： 搜索下一个。</li>
-<li>v： 查看一个书签文件。</li>
-<li>V： 跳转到访问过的地址。</li>
-<li>x： 不使用缓存。</li>
-<li>z： 停止当前传输。</li>
-<li>[backspace]：跳转到历史页(同 V 命令)。</li>
-<li>=： 显示当前页的信息。</li>
-<li>： 查看当前页的源代码。</li>
-<li>!： 回到shell提示符下。</li>
-<li>_： 清除当前任务的所有授权信息。</li>
-<li>： 图形链接模式的切换开关。</li>
-<li>@： 8位传输模式或CJK模式的切换开关。</li>
-<li>[： pseudo_inlines 模式的切换开关。</li>
-<li>]： 为当前页或当前链接发送一个“HEAD”请求。</li>
-<li>Ctrl+r： 重新装如当前页并且刷新屏幕。</li>
-<li>Ctrl+w： 刷新屏幕。</li>
-<li>）Ctrl+u： 删除输入的行。</li>
-<li>Ctrl+g： 取消输入或者传送。</li>
-<li>Ctrl+t： 跟踪模式的切换开关。</li>
-<li>;： 看 Lynx 对当前任务的跟踪记录。</li>
-<li>Ctrl+k： 调用 Cookie Jar 页。</li>
-<li>数字键： 到后面的第 n 个链接。</li>
-</ul>
-
-
-<hr />
-
-<p>  # Unix系统的终端真是可见一斑啊… <br/>
-  <img src="http://pic.yupoo.com/comflag/B6xMCJ5X/5EZqI.png" width="800" height="600"></p>
-
-<p>  <img src="http://pic.yupoo.com/comflag/B6xMyAss/jsKF2.png" width="800" height="600"></p></li>
-</ul>
-
+<p><img src="http://pic.yupoo.com/comflag/BZbxrr3n/10vfgW.png" width="800" height="600" title="chameleon" ></p>
 </div>
 
 
@@ -298,7 +154,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
   
 
 
-<time datetime="2012-05-18T20:42:00+08:00" pubdate data-updated="true">May 18<span>th</span>, 2012</time>
+<time datetime="2012-06-03T13:55:00+08:00" pubdate data-updated="true">Jun 3<span>rd</span>, 2012</time>
       
 
 <span class="categories">
@@ -319,10 +175,8 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/05/18/rang-ppccheng-wei-webfu-wu-qi-yu-pcjin-xing-shu-ju-tong-bu/" title="Previous Post: 让PPC成为web服务器与PC进行数据同步">&laquo; 让PPC成为web服务器与PC进行数据同步</a>
+        <a class="basic-alignment left" href="/blog/2012/05/27/wo-xin-zhong-de-zhuo-mian-linuxxi-tong/" title="Previous Post: 我心中的桌面Linux系统">&laquo; 我心中的桌面Linux系统</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2012/05/18/ubuntuxia-an-zhuang-apache-plus-php-plus-mysysql/" title="Next Post: ubuntu下安装Apache+PHP+Mysysql">ubuntu下安装Apache+PHP+Mysysql &raquo;</a>
       
     </p>
   </footer>
@@ -627,8 +481,8 @@ http://bandj.us/jo/blog/blog/2011/12/03/adding-google-plus-sidebar-to-octopress/
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://comflag.github.com/blog/2012/05/18/ubuntuzai-zhong-duan-zhong-shi-yong-lynxfang-wen-hu-lian-wang/';
-        var disqus_url = 'http://comflag.github.com/blog/2012/05/18/ubuntuzai-zhong-duan-zhong-shi-yong-lynxfang-wen-hu-lian-wang/';
+        var disqus_identifier = 'http://comflag.github.com/blog/2012/06/03/chameleonyin-dao-ubuntu/';
+        var disqus_url = 'http://comflag.github.com/blog/2012/06/03/chameleonyin-dao-ubuntu/';
         var disqus_script = 'embed.js';
       
     (function () {

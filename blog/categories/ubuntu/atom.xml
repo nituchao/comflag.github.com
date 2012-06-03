@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ubuntu | comflag]]></title>
   <link href="http://comflag.github.com/blog/categories/ubuntu/atom.xml" rel="self"/>
   <link href="http://comflag.github.com/"/>
-  <updated>2012-05-29T12:18:11+08:00</updated>
+  <updated>2012-06-03T15:09:21+08:00</updated>
   <id>http://comflag.github.com/</id>
   <author>
     <name><![CDATA[liang]]></name>
@@ -12,6 +12,36 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[chameleon引导ubuntu]]></title>
+    <link href="http://comflag.github.com/blog/2012/06/03/chameleonyin-dao-ubuntu/"/>
+    <updated>2012-06-03T13:55:00+08:00</updated>
+    <id>http://comflag.github.com/blog/2012/06/03/chameleonyin-dao-ubuntu</id>
+    <content type="html"><![CDATA[<p>现在，我的笔记本上同时运行着3个系统，Windows 7，Mac OS 10.7和Ubuntu 10.10。Ubuntu 10.10主要是用来编译调试我的Egg Boiler系统。</p>
+
+<!--more-->
+
+
+<p>Ubuntu的grub2不能引导Mac OS X系统，所以用chameleon来引导三个系统是非常好的选择，同时chameleon是完全的图形化引导，非常漂亮。</p>
+
+<p>我的做法非常简单，首先要安装好三个系统，特别要注意的是安装Ubuntu时，要选择把gurb2安装到Ubuntu的/分区，而不能将boot loader安在整个硬盘上，否则变色龙不能识别Ubuntu。</p>
+
+<p><img src="http://pic.yupoo.com/comflag/C0RN27m0/RHmjl.png" width="800" height="600" title="gurb2安装" ></p>
+
+<p>然后在Mac OS下安装Mac版变色龙到Mac OS系统分区。</p>
+
+<p><img src="http://pic.yupoo.com/comflag/C0RR7KwM/4EZW6.png" width="800" height="600" title="安装变色龙" ></p>
+
+<p>最后，用Ubuntu的live-cd中的Gparted分区工具把Mac OS X所在分区的标记更改为"boot"，也就是开机从Mac OS X所在分区引导。</p>
+
+<p><img src="http://pic.yupoo.com/comflag/C0RN2mD1/14E8J2.png" width="800" height="600" title="设置boot标记" ></p>
+
+<p>最后附一个变色龙主题:<a href="http://dl.dbank.com/c08nqxu7af">传送门</a></p>
+
+<p><img src="http://pic.yupoo.com/comflag/BZbxrr3n/10vfgW.png" width="800" height="600" title="chameleon" ></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[grub2引导安装ubuntu11.04]]></title>
