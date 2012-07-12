@@ -4,7 +4,7 @@
   <title><![CDATA[comflag]]></title>
   <link href="http://comflag.github.com/atom.xml" rel="self"/>
   <link href="http://comflag.github.com/"/>
-  <updated>2012-06-05T07:51:21+08:00</updated>
+  <updated>2012-07-12T19:26:21+08:00</updated>
   <id>http://comflag.github.com/</id>
   <author>
     <name><![CDATA[liang]]></name>
@@ -12,6 +12,26 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[毕业了]]></title>
+    <link href="http://comflag.github.com/blog/2012/07/12/bi-ye-liao/"/>
+    <updated>2012-07-12T19:15:00+08:00</updated>
+    <id>http://comflag.github.com/blog/2012/07/12/bi-ye-liao</id>
+    <content type="html"><![CDATA[<p>2012年，大学毕业了，晒一下我们班的班服。</p>
+
+<!--more-->
+
+
+<h2>正面</h2>
+
+<p><img src="http://pic.yupoo.com/comflag/C6PlmsXJ/RQhGQ.jpg" width="800" height="600"></p>
+
+<h2>反面</h2>
+
+<p><img src="http://pic.yupoo.com/comflag/C6PllA5b/mkMZM.jpg" width="800" height="600"></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[浪潮之巅]]></title>
@@ -1129,91 +1149,6 @@
 <hr />
 
 <p>希望上面的内容能为大家编写RMI程序提供一些帮助。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Java RMI出远程stub未找到异常]]></title>
-    <link href="http://comflag.github.com/blog/2012/05/18/java-rmichu-yuan-cheng-stubwei-zhao-dao-yi-chang/"/>
-    <updated>2012-05-18T20:18:00+08:00</updated>
-    <id>http://comflag.github.com/blog/2012/05/18/java-rmichu-yuan-cheng-stubwei-zhao-dao-yi-chang</id>
-    <content type="html"><![CDATA[<p>最近在做一个项目，题目是《基于Java的分布式计算系统》，这个题目要求使用Java RMI技术。</p>
-
-<p>这个分布式系统涉及到三个实体，分别是客户端，服务器，和工作站，因此我在Eclipse里分别创建了三个工程。每个工程维护自己的本地对象，并向其他的远程实体提供远程方法调用(RMI)接口。</p>
-
-<!--more-->
-
-
-<hr />
-
-<p>在Eclipse里编写RMI程序，我用到了一个Eclipse的RMI插件，它可以很方便的配置codebase和策略文件，并且能够自动生成桩(stub)文件。这里要说明的是，在JDK 1.6开发环境下，远程接口最后只生成stub文件，不再生成框架文件(skeleton)。 我按照文档上的格式，编写了本地类，远程接口类，及其实现类。</p>
-
-<p>编译运行，客户端调用服务器远程方法进行登陆，但是此时一直提示要用到的远程桩(stub)文件找不到，抛出类似java.lang.ClassNotFoundException的异常:</p>
-
-<figure class='code'><figcaption><span>java.lang.ClassNotFoundException  </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">java</span><span class="o">.</span><span class="na">rmi</span><span class="o">.</span><span class="na">UnmarshalException</span><span class="o">:</span> <span class="n">error</span> <span class="n">unmarshalling</span> <span class="k">return</span><span class="o">;</span> <span class="n">nested</span> <span class="n">exception</span> <span class="nl">is:</span>
-</span><span class='line'>  <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">ClassNotFoundException</span><span class="o">:</span> <span class="n">server</span><span class="o">.</span><span class="na">serverrmi</span><span class="o">.</span><span class="na">RmiWorkerRegistry_Stub</span>
-</span><span class='line'>  <span class="n">at</span> <span class="n">sun</span><span class="o">.</span><span class="na">rmi</span><span class="o">.</span><span class="na">registry</span><span class="o">.</span><span class="na">RegistryImpl_Stub</span><span class="o">.</span><span class="na">lookup</span><span class="o">(</span><span class="n">Unknown</span> <span class="n">Source</span><span class="o">)</span>
-</span><span class='line'>  <span class="n">at</span> <span class="n">java</span><span class="o">.</span><span class="na">rmi</span><span class="o">.</span><span class="na">Naming</span><span class="o">.</span><span class="na">lookup</span><span class="o">(</span><span class="n">Naming</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">84</span><span class="o">)</span>
-</span><span class='line'>  <span class="n">at</span> <span class="n">worker</span><span class="o">.</span><span class="na">gui</span><span class="o">.</span><span class="na">WorkerGuiPrime</span><span class="o">.</span><span class="na">Login</span><span class="o">(</span><span class="n">WorkerGuiPrime</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">324</span><span class="o">)</span>
-</span><span class='line'>  <span class="n">at</span> <span class="n">worker</span><span class="o">.</span><span class="na">gui</span><span class="o">.</span><span class="na">WorkerGuiPrime</span><span class="o">.</span><span class="na">access</span><span class="n">$1</span><span class="o">(</span><span class="n">WorkerGuiPrime</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">305</span><span class="o">)</span>
-</span><span class='line'>  <span class="n">at</span> <span class="n">worker</span><span class="o">.</span><span class="na">gui</span><span class="o">.</span><span class="na">WorkerGuiPrime</span><span class="n">$2</span><span class="o">.</span><span class="na">actionPerformed</span><span class="o">(</span><span class="n">WorkerGuiPrime</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">184</span><span class="o">)</span>
-</span><span class='line'>  <span class="n">at</span> <span class="n">javax</span><span class="o">.</span><span class="na">swing</span><span class="o">.</span><span class="na">AbstractButton</span><span class="o">.</span><span class="na">fireActionPerformed</span><span class="o">(</span><span class="n">AbstractButton</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">1995</span><span class="o">)</span>
-</span><span class='line'>  <span class="n">at</span> <span class="n">javax</span><span class="o">.</span><span class="na">swing</span><span class="o">.</span><span class="na">AbstractButton</span><span class="n">$Handler</span><span class="o">.</span><span class="na">actionPerformed</span><span class="o">(</span><span class="n">AbstractButton</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">2318</span><span class="o">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>java.lang.ClassNotFoundException </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">Caused</span> <span class="nl">by:</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">ClassNotFoundException</span><span class="o">:</span> <span class="n">server</span><span class="o">.</span><span class="na">serverrmi</span><span class="o">.</span><span class="na">RmiWorkerRegistry_Stub</span>
-</span><span class='line'>  <span class="n">at</span> <span class="n">java</span><span class="o">.</span><span class="na">net</span><span class="o">.</span><span class="na">URLClassLoader</span><span class="n">$1</span><span class="o">.</span><span class="na">run</span><span class="o">(</span><span class="n">URLClassLoader</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">202</span><span class="o">)</span>
-</span><span class='line'>  <span class="n">at</span> <span class="n">java</span><span class="o">.</span><span class="na">security</span><span class="o">.</span><span class="na">AccessController</span><span class="o">.</span><span class="na">doPrivileged</span><span class="o">(</span><span class="n">Native</span> <span class="n">Method</span><span class="o">)</span>
-</span><span class='line'>  <span class="n">at</span> <span class="n">java</span><span class="o">.</span><span class="na">net</span><span class="o">.</span><span class="na">URLClassLoader</span><span class="o">.</span><span class="na">findClass</span><span class="o">(</span><span class="n">URLClassLoader</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">190</span><span class="o">)</span>
-</span><span class='line'>  <span class="n">at</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">ClassLoader</span><span class="o">.</span><span class="na">loadClass</span><span class="o">(</span><span class="n">ClassLoader</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">306</span><span class="o">)</span>
-</span><span class='line'>  <span class="n">at</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">ClassLoader</span><span class="o">.</span><span class="na">loadClass</span><span class="o">(</span><span class="n">ClassLoader</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">247</span><span class="o">)</span>
-</span><span class='line'>  <span class="n">at</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">Class</span><span class="o">.</span><span class="na">forName0</span><span class="o">(</span><span class="n">Native</span> <span class="n">Method</span><span class="o">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>按理说，客户端会自动下载服务器的远程桩文件，但是在客户端bin/目录下根本看不到需要的stub桩文件，抛出异常也是情理之中的事情。</p>
-
-<hr />
-
-<p>我尝试了至少下面三种办法都不行，比如:</p>
-
-<p>将服务器bin/目录配置为服务器的codebase。
-将服务器bin/目录打成jar包，并把它配置成服务器的codebase。
-开启Apache服务器，把服务器bin/打成jar包后放在Apache的www目录下，并配置服务器codebase。
-其中，将bin/目录打成的jar包放在Apache的www目录下，在另一台连通的计算机上可以直接在浏览器里输入url地址进行下载，但是客户端程序无论如何都无法自动下载。</p>
-
-<hr />
-
-<h1>解决办法</h1>
-
-<p>最后，我放弃了让客户端自动下载远程桩(stub)文件的想法，直接把服务器生成的桩(stub)文件复制到客户端bin/目录下的相应位置，这时候，客户端可以正常连接远程服务器了，再没有抛出异常。</p>
-
-<p>这里要说明的是，虽然是直接将stub文件复制到客户端程序目录下了，但是远程计算依旧是在服务器上执行的，stub只是起到中间数据中转的作用。</p>
-
-<p>问题暂时解决了，但是我依旧在寻找让客户端自动下载服务器桩(stub)的方法，希望有心人解决了之后能拿出来分享一下。</p>
-
-<hr />
 ]]></content>
   </entry>
   
